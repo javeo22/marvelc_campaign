@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://core-protocol.example/schemas/ui-settings.schema.json",
+  "title": "Core Protocol UI Settings",
+  "type": "object",
+  "required": [
+    "uiLanguage",
+    "physicalCardLanguage",
+    "theme",
+    "reducedMotion",
+    "cardImageMode",
+    "keepAwakeDuringPlay",
+    "analyticsConsent"
+  ],
+  "properties": {
+    "uiLanguage": {
+      "enum": [
+        "en",
+        "es"
+      ]
+    },
+    "physicalCardLanguage": {
+      "enum": [
+        "en",
+        "es",
+        "both"
+      ]
+    },
+    "theme": {
+      "enum": [
+        "comic-light",
+        "comic-dark",
+        "system"
+      ]
+    },
+    "reducedMotion": {
+      "type": "boolean"
+    },
+    "cardImageMode": {
+      "enum": [
+        "off",
+        "remote"
+      ]
+    },
+    "keepAwakeDuringPlay": {
+      "type": "boolean"
+    },
+    "analyticsConsent": {
+      "type": "boolean"
+    },
+    "largeControls": {
+      "type": "boolean"
+    },
+    "soundEffects": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

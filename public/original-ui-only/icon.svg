@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Core Protocol Companion">
+  <rect width="512" height="512" rx="64" fill="#F7F1E4"/>
+  <path d="M80 88h288l64 64v272H144l-64-64z" fill="#0C1F3D" stroke="#101318" stroke-width="18" stroke-linejoin="round"/>
+  <path d="M133 145h188M133 203h246M133 261h214M133 319h250" stroke="#FFFDF7" stroke-width="18" stroke-linecap="square"/>
+  <path d="M337 89v82h82" fill="#E2B341" stroke="#101318" stroke-width="18" stroke-linejoin="round"/>
+  <path d="M76 424l88-88M100 456l96-96M60 384l56-56" stroke="#C91F3A" stroke-width="18" stroke-linecap="square"/>
+</svg>

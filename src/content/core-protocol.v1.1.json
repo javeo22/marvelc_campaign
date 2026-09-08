@@ -1,0 +1,3861 @@
+{
+  "$schema": "../schemas/campaign-definition.schema.json",
+  "schemaVersion": "1.0.0",
+  "id": "core-protocol",
+  "version": "1.1.0",
+  "title": {
+    "en": "Core Protocol",
+    "es": null
+  },
+  "subtitle": {
+    "en": "The Ultron Directive",
+    "es": null
+  },
+  "format": "true-solo",
+  "sourceEdition": "1.1 — Balanced playtest edition",
+  "collectionRequirements": [
+    {
+      "pack": "Core Set",
+      "packEs": "Caja básica",
+      "required": true
+    }
+  ],
+  "principles": [
+    "Discovery first, difficulty second, continuity throughout.",
+    "Official game rules govern normal timing and card interactions.",
+    "Campaign instructions add setup, tracking, and one-use campaign effects.",
+    "Fail-forward is the recommended first-run mode; Canon Mode is optional.",
+    "The companion supports physical play and does not replace the encounter or player cards."
+  ],
+  "rulesAuthority": {
+    "text": "Use the current Marvel Champions Rules Reference for normal timing and card interactions.",
+    "sourceDocument": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx"
+  },
+  "setupOrder": [
+    {
+      "step": 1,
+      "id": "issue-pre-setup",
+      "text": "Apply issue pre-setup instructions and set aside cards."
+    },
+    {
+      "step": 2,
+      "id": "normal-scenario-setup",
+      "text": "Complete normal scenario setup, including main-scheme and villain setup abilities."
+    },
+    {
+      "step": 3,
+      "id": "campaign-continuity",
+      "text": "Resolve issue campaign setup, continuity flags, and Interlude effects."
+    },
+    {
+      "step": 4,
+      "id": "network-and-final-prep",
+      "text": "Apply Network setup adaptations and Final Preparation effects."
+    },
+    {
+      "step": 5,
+      "id": "opening-hand",
+      "text": "Draw and mulligan. Then resolve Prepared Ambush, if active."
+    }
+  ],
+  "setupActionPhases": [
+    {
+      "id": "issue-pre-setup",
+      "order": 1,
+      "label": "Issue pre-setup",
+      "description": "Configure the scenario and complete issue-specific instructions that must happen before normal scenario setup."
+    },
+    {
+      "id": "normal-scenario-setup",
+      "order": 2,
+      "label": "Normal scenario setup",
+      "description": "Complete printed main-scheme, villain, and scenario setup instructions. This global action is inserted by the setup-plan composer."
+    },
+    {
+      "id": "campaign-continuity",
+      "order": 3,
+      "label": "Campaign setup and continuity",
+      "description": "Resolve issue setup, persistent flags, and Interlude consequences after normal scenario setup."
+    },
+    {
+      "id": "network-and-final-prep",
+      "order": 4,
+      "label": "Network and Final Preparation",
+      "description": "Apply active Network setup adaptations, then Final Preparation where applicable."
+    },
+    {
+      "id": "opening-hand",
+      "order": 5,
+      "label": "Opening hand",
+      "description": "Draw and mulligan, then resolve Prepared Ambush if active. This global action is inserted by the setup-plan composer."
+    },
+    {
+      "id": "in-game-reminder",
+      "order": 6,
+      "label": "In-game reminders",
+      "description": "Keep these trigger-based instructions visible during the physical game; they are not setup checkboxes."
+    }
+  ],
+  "tiers": [
+    {
+      "id": "standard",
+      "label": "Standard",
+      "officialClear": "standard",
+      "villainStages": [
+        "I",
+        "II"
+      ],
+      "encounterSets": [
+        "standard"
+      ]
+    },
+    {
+      "id": "veteran",
+      "label": "Veteran",
+      "officialClear": null,
+      "villainStages": [
+        "I",
+        "II"
+      ],
+      "encounterSets": [
+        "standard",
+        "expert"
+      ],
+      "note": "Custom campaign bridge; not an official Standard or Expert clear."
+    },
+    {
+      "id": "expert",
+      "label": "Expert",
+      "officialClear": "expert",
+      "villainStages": [
+        "II",
+        "III"
+      ],
+      "encounterSets": [
+        "standard",
+        "expert"
+      ]
+    }
+  ],
+  "aspects": [
+    "aggression",
+    "justice",
+    "leadership",
+    "protection"
+  ],
+  "aspectPassport": {
+    "mainStoryRule": "Each hero must use three distinct aspects across that hero’s three main-story appearances.",
+    "firstMirrorRule": "The first Mirror Protocol game with each hero uses the fourth previously unused aspect.",
+    "basicCardsReusable": true,
+    "recommendedRoutesAreDefaultsNotRules": true
+  },
+  "progression": {
+    "intel": {
+      "initial": 0,
+      "minimum": 0,
+      "deltas": {
+        "issueWin": 1,
+        "optionalObjective": 1,
+        "firstHeroMastery": 1
+      },
+      "unlockThresholds": [
+        3,
+        6,
+        9,
+        12,
+        15
+      ]
+    },
+    "network": {
+      "initial": 0,
+      "minimum": 0,
+      "deltas": {
+        "heroDefeat": 1,
+        "mainSchemeLoss": 2
+      },
+      "adaptationsCumulative": true
+    },
+    "scars": {
+      "initialPerHero": 0,
+      "maximumPerHero": 2,
+      "onHeroDefeat": 1,
+      "onHeroWin": -1,
+      "setupEffect": "Lower the starting identity hit-point dial by 1 per Scar; maximum hit points are unchanged."
+    },
+    "recording": {
+      "objectivePersistsAfterLoss": true,
+      "masteryPersistsAfterLoss": true,
+      "exception": "An objective that explicitly requires a win is resolved only during debrief."
+    }
+  },
+  "networkAdaptations": [
+    {
+      "id": "early-warning",
+      "threshold": 2,
+      "name": {
+        "en": "Early Warning",
+        "es": null
+      },
+      "effect": {
+        "en": "After standard setup, place 1 additional threat on the main scheme.",
+        "es": null
+      },
+      "cumulative": true
+    },
+    {
+      "id": "reinforced-chassis",
+      "threshold": 4,
+      "name": {
+        "en": "Reinforced Chassis",
+        "es": null
+      },
+      "effect": {
+        "en": "After standard setup, give the villain a Tough status card.",
+        "es": null
+      },
+      "cumulative": true
+    },
+    {
+      "id": "prepared-ambush",
+      "threshold": 6,
+      "name": {
+        "en": "Prepared Ambush",
+        "es": null
+      },
+      "effect": {
+        "en": "After drawing and resolving your opening hand and mulligan, deal yourself 1 facedown encounter card.",
+        "es": null
+      },
+      "cumulative": true
+    },
+    {
+      "id": "predictive-model",
+      "threshold": 8,
+      "name": {
+        "en": "Predictive Model",
+        "es": null
+      },
+      "effect": {
+        "en": "The first time the villain activates in the game, it gets +1 ATK if attacking or +1 SCH if scheming for that activation.",
+        "es": null
+      },
+      "cumulative": true
+    },
+    {
+      "id": "recursive-backup",
+      "threshold": 10,
+      "name": {
+        "en": "Recursive Backup",
+        "es": null
+      },
+      "effect": {
+        "en": "After the villain advances to its next stage, give it a Tough status card if it does not already have one.",
+        "es": null
+      },
+      "cumulative": true
+    }
+  ],
+  "fieldAssets": {
+    "selectionRule": {
+      "defaultLimit": 1,
+      "networkAtLeast": 6,
+      "elevatedLimit": 2
+    },
+    "outOfPlayRule": "Field Assets are campaign references, not upgrades or supports; they cannot be targeted or discarded and do not count as cards controlled.",
+    "assets": [
+      {
+        "id": "emergency-reserve",
+        "unlockIntel": 3,
+        "name": {
+          "en": "Emergency Reserve",
+          "es": null
+        },
+        "effect": {
+          "en": "Once per game, when you pay the cost of a card, reduce that cost by 1.",
+          "es": null
+        },
+        "usesPerGame": 1,
+        "outOfPlayReference": true,
+        "special": null
+      },
+      {
+        "id": "field-medic",
+        "unlockIntel": 3,
+        "name": {
+          "en": "Field Medic",
+          "es": null
+        },
+        "effect": {
+          "en": "Once per game, heal 2 damage from your identity.",
+          "es": null
+        },
+        "usesPerGame": 1,
+        "outOfPlayReference": true,
+        "special": null
+      },
+      {
+        "id": "s-h-i-e-l-d-recon",
+        "unlockIntel": 6,
+        "name": {
+          "en": "S.H.I.E.L.D. Recon",
+          "es": null
+        },
+        "effect": {
+          "en": "Once per game, before encounter cards are dealt in the villain phase, look at the top 2 cards of the encounter deck and return them in either order.",
+          "es": null
+        },
+        "usesPerGame": 1,
+        "outOfPlayReference": true,
+        "special": null
+      },
+      {
+        "id": "damage-control",
+        "unlockIntel": 6,
+        "name": {
+          "en": "Damage Control",
+          "es": null
+        },
+        "effect": {
+          "en": "Once per game, after you defeat a side scheme, remove 2 threat from the main scheme.",
+          "es": null
+        },
+        "usesPerGame": 1,
+        "outOfPlayReference": true,
+        "special": null
+      },
+      {
+        "id": "countermeasure-suite",
+        "unlockIntel": 9,
+        "name": {
+          "en": "Countermeasure Suite",
+          "es": null
+        },
+        "effect": {
+          "en": "Once per game, after a boost card is turned faceup, treat 1 printed boost icon on that card as blank for that activation. Do not cancel boost-star text.",
+          "es": null
+        },
+        "usesPerGame": 1,
+        "outOfPlayReference": true,
+        "special": null
+      },
+      {
+        "id": "reactive-reflex",
+        "unlockIntel": 9,
+        "name": {
+          "en": "Reactive Reflex",
+          "es": null
+        },
+        "effect": {
+          "en": "Once per game, after your hero defends against an attack, ready your hero.",
+          "es": null
+        },
+        "usesPerGame": 1,
+        "outOfPlayReference": true,
+        "special": null
+      },
+      {
+        "id": "stark-wakanda-interface",
+        "unlockIntel": 12,
+        "name": {
+          "en": "Stark-Wakanda Interface",
+          "es": null
+        },
+        "effect": {
+          "en": "Once per game, reduce the cost of an upgrade or support you play by 2, to a minimum of 0.",
+          "es": null
+        },
+        "usesPerGame": 1,
+        "outOfPlayReference": true,
+        "special": null
+      },
+      {
+        "id": "avengers-emergency-channel",
+        "unlockIntel": 12,
+        "name": {
+          "en": "Avengers Emergency Channel",
+          "es": null
+        },
+        "effect": {
+          "en": "Once per game, after your hero uses a basic ATK or THW, ready that hero and deal 1 damage to it.",
+          "es": null
+        },
+        "usesPerGame": 1,
+        "outOfPlayReference": true,
+        "special": null
+      },
+      {
+        "id": "endgame-protocol",
+        "unlockIntel": 15,
+        "name": {
+          "en": "Endgame Protocol",
+          "es": null
+        },
+        "effect": {
+          "en": "Issue 15 only. Interrupt: When a treachery is revealed, cancel its “When Revealed” effects. Do not cancel Surge. Once per game.",
+          "es": null
+        },
+        "usesPerGame": 1,
+        "outOfPlayReference": true,
+        "special": "issue-15-only"
+      }
+    ],
+    "endgameProtocolException": "At 15+ Intel in Issue 15, Endgame Protocol may be equipped without counting against the normal Field Asset limit."
+  },
+  "heroes": [
+    {
+      "id": "spider-man",
+      "name": {
+        "en": "Spider-Man",
+        "es": "Spiderman"
+      },
+      "recommendedAspectRoute": {
+        "mainStory": [
+          "protection",
+          "justice",
+          "leadership"
+        ],
+        "firstMirror": "aggression"
+      },
+      "mastery": {
+        "heroId": "spider-man",
+        "heroName": {
+          "en": "Spider-Man",
+          "es": "Spiderman"
+        },
+        "signature": {
+          "en": "BACKFLIP",
+          "es": "VOLTERETA HACIA ATRÁS"
+        },
+        "condition": {
+          "en": "Prevent 4 or more damage from a single attack using Backflip.",
+          "es": null
+        },
+        "firstCompletionIntel": 1,
+        "persistsAfterLoss": true
+      },
+      "scarMaximum": 2
+    },
+    {
+      "id": "captain-marvel",
+      "name": {
+        "en": "Captain Marvel",
+        "es": "Capitana Marvel"
+      },
+      "recommendedAspectRoute": {
+        "mainStory": [
+          "leadership",
+          "aggression",
+          "justice"
+        ],
+        "firstMirror": "protection"
+      },
+      "mastery": {
+        "heroId": "captain-marvel",
+        "heroName": {
+          "en": "Captain Marvel",
+          "es": "Capitana Marvel"
+        },
+        "signature": {
+          "en": "ENERGY CHANNEL",
+          "es": "CANALIZAR ENERGIA"
+        },
+        "condition": {
+          "en": "Deal the full 10 damage with Energy Channel.",
+          "es": null
+        },
+        "firstCompletionIntel": 1,
+        "persistsAfterLoss": true
+      },
+      "scarMaximum": 2
+    },
+    {
+      "id": "she-hulk",
+      "name": {
+        "en": "She-Hulk",
+        "es": "Hulka"
+      },
+      "recommendedAspectRoute": {
+        "mainStory": [
+          "aggression",
+          "leadership",
+          "justice"
+        ],
+        "firstMirror": "protection"
+      },
+      "mastery": {
+        "heroId": "she-hulk",
+        "heroName": {
+          "en": "She-Hulk",
+          "es": "Hulka"
+        },
+        "signature": {
+          "en": "GAMMA SLAM",
+          "es": "APISONADORA GAMMA"
+        },
+        "condition": {
+          "en": "Deal 10 or more damage with a single Gamma Slam.",
+          "es": null
+        },
+        "firstCompletionIntel": 1,
+        "persistsAfterLoss": true
+      },
+      "scarMaximum": 2
+    },
+    {
+      "id": "iron-man",
+      "name": {
+        "en": "Iron Man",
+        "es": "Iron Man"
+      },
+      "recommendedAspectRoute": {
+        "mainStory": [
+          "justice",
+          "aggression",
+          "leadership"
+        ],
+        "firstMirror": "protection"
+      },
+      "mastery": {
+        "heroId": "iron-man",
+        "heroName": {
+          "en": "Iron Man",
+          "es": "Iron Man"
+        },
+        "signature": {
+          "en": "SUPERSONIC PUNCH",
+          "es": "PUNETAZO SUPERSONICO"
+        },
+        "condition": {
+          "en": "Deal 8 damage with Supersonic Punch while Aerial and control at least 5 TECH upgrades.",
+          "es": null
+        },
+        "firstCompletionIntel": 1,
+        "persistsAfterLoss": true
+      },
+      "scarMaximum": 2
+    },
+    {
+      "id": "black-panther",
+      "name": {
+        "en": "Black Panther",
+        "es": "Pantera Negra"
+      },
+      "recommendedAspectRoute": {
+        "mainStory": [
+          "justice",
+          "aggression",
+          "protection"
+        ],
+        "firstMirror": "leadership"
+      },
+      "mastery": {
+        "heroId": "black-panther",
+        "heroName": {
+          "en": "Black Panther",
+          "es": "Pantera Negra"
+        },
+        "signature": {
+          "en": "WAKANDA FOREVER!",
+          "es": "¡WAKANDA POR SIEMPRE!"
+        },
+        "condition": {
+          "en": "Resolve all four different Black Panther upgrade Special abilities from the same Wakanda Forever! event.",
+          "es": null
+        },
+        "firstCompletionIntel": 1,
+        "persistsAfterLoss": true
+      },
+      "scarMaximum": 2
+    }
+  ],
+  "acts": [
+    {
+      "id": "act-1",
+      "number": 1,
+      "title": {
+        "en": "Signal Fracture",
+        "es": null
+      },
+      "issueRange": [
+        1,
+        5
+      ],
+      "tierId": "standard"
+    },
+    {
+      "id": "act-2",
+      "number": 2,
+      "title": {
+        "en": "The Hidden Network",
+        "es": null
+      },
+      "issueRange": [
+        6,
+        10
+      ],
+      "tierId": "veteran"
+    },
+    {
+      "id": "act-3",
+      "number": 3,
+      "title": {
+        "en": "Extinction Directive",
+        "es": null
+      },
+      "issueRange": [
+        11,
+        15
+      ],
+      "tierId": "expert"
+    }
+  ],
+  "interludes": [
+    {
+      "id": "act-1-lead",
+      "afterIssue": 5,
+      "title": {
+        "en": "The First Lead",
+        "es": null
+      },
+      "prompt": {
+        "en": "You cannot chase Hydra and M.O.D.O.K. at the same time.",
+        "es": null
+      },
+      "choices": [
+        {
+          "id": "hydra-lead",
+          "name": {
+            "en": "Hydra Lead",
+            "es": null
+          },
+          "effects": [
+            {
+              "issue": 8,
+              "effect": "Remove 2 threat from the initial Legions of Hydra side scheme, minimum 1."
+            },
+            {
+              "issue": 10,
+              "effect": "When M.O.D.O.K. first enters play, give him Tough."
+            }
+          ]
+        },
+        {
+          "id": "modok-lead",
+          "name": {
+            "en": "M.O.D.O.K. Lead",
+            "es": null
+          },
+          "effects": [
+            {
+              "issue": 10,
+              "effect": "Deal 2 damage to M.O.D.O.K. when he first enters play."
+            },
+            {
+              "issue": 8,
+              "effect": "Add 2 threat to the initial Legions of Hydra side scheme."
+            }
+          ]
+        }
+      ],
+      "actRecovery": {
+        "actId": "act-1",
+        "objectiveThreshold": 3,
+        "lowWinThreshold": 2,
+        "networkReductionEach": 1,
+        "minimumNetwork": 0
+      }
+    },
+    {
+      "id": "act-2-assault",
+      "afterIssue": 10,
+      "title": {
+        "en": "Two Fronts",
+        "es": null
+      },
+      "prompt": {
+        "en": "Protect the city, or make the final strike easier.",
+        "es": null
+      },
+      "choices": [
+        {
+          "id": "shield-the-city",
+          "name": {
+            "en": "Shield the City",
+            "es": null
+          },
+          "effects": [
+            {
+              "issue": 14,
+              "effect": "Remove 2 threat from the main scheme after setup, minimum 0."
+            },
+            {
+              "issue": 15,
+              "effect": "Deal yourself 1 additional facedown encounter card after setup."
+            }
+          ]
+        },
+        {
+          "id": "strike-the-core",
+          "name": {
+            "en": "Strike the Core",
+            "es": null
+          },
+          "effects": [
+            {
+              "issue": 14,
+              "effect": "Deal yourself 1 additional facedown encounter card after setup."
+            },
+            {
+              "issue": 15,
+              "effect": "Ignore the highest active Network Adaptation until the end of round 1."
+            }
+          ]
+        }
+      ],
+      "actRecovery": {
+        "actId": "act-2",
+        "objectiveThreshold": 3,
+        "lowWinThreshold": 2,
+        "networkReductionEach": 1,
+        "minimumNetwork": 0
+      }
+    }
+  ],
+  "finalPreparation": {
+    "issue": 15,
+    "sourceFlags": [
+      "WITNESS PROTECTED",
+      "EMBASSY SECURED",
+      "SKYLINE HELD",
+      "CITY SAVED"
+    ],
+    "pointsPerFlag": 1,
+    "spendAfterAllSetupEffects": true,
+    "spendOptions": [
+      {
+        "id": "remove-threat",
+        "effect": "Remove 1 threat from a scheme."
+      },
+      {
+        "id": "damage-minion",
+        "effect": "Deal 1 damage to a minion."
+      },
+      {
+        "id": "heal-iron-man",
+        "effect": "Heal 1 damage from Iron Man."
+      }
+    ],
+    "repeatOptionsAllowed": true
+  },
+  "issues": [
+    {
+      "number": 1,
+      "id": "issue-01-the-break-in",
+      "actId": "act-1",
+      "title": {
+        "en": "THE BREAK-IN",
+        "es": null
+      },
+      "heroId": "spider-man",
+      "heroName": {
+        "en": "Spider-Man",
+        "es": "Spiderman"
+      },
+      "villainId": "rhino",
+      "villainName": {
+        "en": "Rhino",
+        "es": "Rino"
+      },
+      "modularSetId": "bomb-scare",
+      "modularSetName": {
+        "en": "Bomb Scare",
+        "es": "Amenaza de bomba"
+      },
+      "tierId": "standard",
+      "villainStages": [
+        "I",
+        "II"
+      ],
+      "encounterSets": [
+        "standard"
+      ],
+      "aspectAppearance": 1,
+      "recommendedAspect": "protection",
+      "narrative": {
+        "previously": {
+          "en": "New York, 09:17. Rhino tears through a financial-district vault while a bomb threat empties the surrounding blocks. The robbery looks crude until Spider-Man notices the one crate Rhino is protecting: a sealed technology case with no money inside. Somebody hired muscle to steal a component, not cash.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Rhino in Standard mode using Bomb Scare as the modular set.",
+        "Before shuffling the encounter deck, set aside the Bomb Scare side scheme. After normal setup, reveal it.",
+        "Resolve all active Network Adaptations after the scenario setup is complete."
+      ],
+      "setupActions": [
+        {
+          "id": "i01-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Rhino in Standard mode using Bomb Scare as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i01-set-aside-bomb-scare",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Before shuffling the encounter deck, set aside the Bomb Scare side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Bomb Scare"
+        },
+        {
+          "id": "i01-reveal-bomb-scare",
+          "phase": "campaign-continuity",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "After normal setup, reveal the set-aside Bomb Scare side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Bomb Scare"
+        },
+        {
+          "id": "i01-network",
+          "phase": "network-and-final-prep",
+          "kind": "apply_network",
+          "actor": "player",
+          "text": "Resolve all active Network Adaptations after the scenario setup is complete.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "generated"
+        }
+      ],
+      "continuityInputs": [],
+      "objective": {
+        "description": {
+          "en": "Defeat the Bomb Scare side scheme before Rhino advances to stage II.",
+          "es": null
+        },
+        "completionNote": {
+          "en": "This objective is about controlling threat before racing damage.",
+          "es": null
+        },
+        "flag": "BOMB DEFUSED",
+        "flagId": "bomb-defused",
+        "recordImmediately": true,
+        "winGated": false,
+        "tracker": {
+          "kind": "deadline_check",
+          "checklist": [
+            "Bomb Scare defeated"
+          ],
+          "deadline": "Before villain advances to stage II"
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel. Rhino goes down, but the recovered case is empty. A transmitter inside the packing foam has already sent a burst of encrypted data to an unknown receiver.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences. Rhino escapes with the case, and the transmitter disappears with him. The only thing left behind is an address hidden in the bomb circuitry.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "Spider-Man",
+        "Rhino (I)",
+        "Bomb Scare"
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": false,
+        "showMainSchemeThreat": false,
+        "showVillainStage": true,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": false
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 01 — THE BREAK-IN"
+      }
+    },
+    {
+      "number": 2,
+      "id": "issue-02-sound-money",
+      "actId": "act-1",
+      "title": {
+        "en": "SOUND MONEY",
+        "es": null
+      },
+      "heroId": "captain-marvel",
+      "heroName": {
+        "en": "Captain Marvel",
+        "es": "Capitana Marvel"
+      },
+      "villainId": "klaw",
+      "villainName": {
+        "en": "Klaw",
+        "es": "Klaw"
+      },
+      "modularSetId": "masters-of-evil",
+      "modularSetName": {
+        "en": "Masters of Evil",
+        "es": "Señores del Mal"
+      },
+      "tierId": "standard",
+      "villainStages": [
+        "I",
+        "II"
+      ],
+      "encounterSets": [
+        "standard"
+      ],
+      "aspectAppearance": 1,
+      "recommendedAspect": "leadership",
+      "narrative": {
+        "previously": {
+          "en": "The bomb circuitry points to a midnight exchange in lower Manhattan. Klaw is brokering stolen vibranium and sonic hardware while the Masters of Evil lock down the meeting. Carol Danvers arrives before the buyers do, but someone has already copied the transaction records.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Klaw in Standard mode using Masters of Evil as the modular set.",
+        "Set aside The Masters of Evil side scheme. After normal setup, reveal it.",
+        "Resolve the side scheme’s printed “When Revealed” ability normally; the Master it puts into play is the objective target."
+      ],
+      "setupActions": [
+        {
+          "id": "i02-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Klaw in Standard mode using Masters of Evil as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i02-set-aside-masters",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Set aside The Masters of Evil side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "The Masters of Evil"
+        },
+        {
+          "id": "i02-reveal-masters",
+          "phase": "campaign-continuity",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "After normal setup, reveal the set-aside The Masters of Evil side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "The Masters of Evil"
+        },
+        {
+          "id": "i02-resolve-when-revealed",
+          "phase": "campaign-continuity",
+          "kind": "resolve_printed_ability",
+          "actor": "player",
+          "text": "Resolve the side scheme’s printed “When Revealed” ability normally; the Master it puts into play is the objective target.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "The Masters of Evil"
+        }
+      ],
+      "continuityInputs": [],
+      "objective": {
+        "description": {
+          "en": "Defeat The Masters of Evil side scheme and defeat the Masters of Evil minion placed into play by its printed “When Revealed” ability before you defeat Klaw.",
+          "es": null
+        },
+        "completionNote": {
+          "en": null,
+          "es": null
+        },
+        "flag": "MASTERS BROKEN",
+        "flagId": "masters-broken",
+        "recordImmediately": true,
+        "winGated": false,
+        "tracker": {
+          "kind": "compound_check",
+          "checklist": [
+            "The Masters of Evil side scheme defeated",
+            "Objective Master minion defeated"
+          ]
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel. Klaw is driven from the exchange. The ledger is mostly scrubbed, but the buyers used machine-generated credentials and a recurring routing phrase: U-DIRECTIVE.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences. Klaw escapes with the records and the Masters erase the scene. A fragment of the transmission still reaches Avengers channels: a machine voice requesting more vibranium.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "Captain Marvel",
+        "Klaw (I)",
+        "The Masters of Evil"
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": false,
+        "showMainSchemeThreat": false,
+        "showVillainStage": false,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": false
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 02 — SOUND MONEY"
+      }
+    },
+    {
+      "number": 3,
+      "id": "issue-03-machine-in-the-static",
+      "actId": "act-1",
+      "title": {
+        "en": "MACHINE IN THE STATIC",
+        "es": null
+      },
+      "heroId": "she-hulk",
+      "heroName": {
+        "en": "She-Hulk",
+        "es": "Hulka"
+      },
+      "villainId": "ultron",
+      "villainName": {
+        "en": "Ultron",
+        "es": "Ultrón"
+      },
+      "modularSetId": "under-attack",
+      "modularSetName": {
+        "en": "Under Attack",
+        "es": "Civiles en peligro"
+      },
+      "tierId": "standard",
+      "villainStages": [
+        "I",
+        "II"
+      ],
+      "encounterSets": [
+        "standard"
+      ],
+      "aspectAppearance": 1,
+      "recommendedAspect": "aggression",
+      "narrative": {
+        "previously": {
+          "en": "The phrase from Klaw is not a password. It is a handshake. Hours later, emergency networks across the East Coast begin answering it. Drones emerge from compromised facilities, and an Ultron shell appears long enough to announce that the Avengers have already supplied everything he needs. Jennifer Walters gets the first chance to prove him wrong.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Ultron in Standard mode using Under Attack as the modular set.",
+        "Place four spare counters beside the play area as DRONE SAMPLE counters.",
+        "Each time you defeat a facedown Ultron drone minion, place 1 counter on the sample track (maximum 4)."
+      ],
+      "setupActions": [
+        {
+          "id": "i03-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Ultron in Standard mode using Under Attack as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i03-init-samples",
+          "phase": "campaign-continuity",
+          "kind": "initialize_counter",
+          "actor": "player",
+          "text": "Place four spare counters beside the play area as DRONE SAMPLE counters.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "initialize_tracker"
+        },
+        {
+          "id": "i03-track-samples",
+          "phase": "in-game-reminder",
+          "kind": "track_counter",
+          "actor": "player",
+          "text": "Each time you defeat a facedown Ultron drone minion, place 1 counter on the sample track (maximum 4).",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "after_facedown_ultron_drone_defeated"
+        }
+      ],
+      "continuityInputs": [],
+      "objective": {
+        "description": {
+          "en": "Collect 4 Drone Sample counters before defeating Ultron.",
+          "es": null
+        },
+        "completionNote": {
+          "en": null,
+          "es": null
+        },
+        "flag": "DRONE SAMPLE",
+        "flagId": "drone-sample",
+        "recordImmediately": true,
+        "winGated": false,
+        "tracker": {
+          "kind": "counter",
+          "counterId": "drone-sample",
+          "label": "Drone Sample",
+          "target": 4,
+          "incrementHint": "Add 1 when a facedown Ultron drone minion is defeated."
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel. The shell collapses, but the code inside it is incomplete - a disposable body. The recovered drone fragments contain references to a cognition project outside Ultron's own architecture.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences. The drone wave buys Ultron enough time to seed copies of his code into civilian infrastructure. The Avengers now know the threat is real, but the Network grows.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "She-Hulk",
+        "Ultron (I)",
+        "Under Attack"
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": false,
+        "showMainSchemeThreat": false,
+        "showVillainStage": false,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": false
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 03 — MACHINE IN THE STATIC"
+      }
+    },
+    {
+      "number": 4,
+      "id": "issue-04-mind-over-metal",
+      "actId": "act-1",
+      "title": {
+        "en": "MIND OVER METAL",
+        "es": null
+      },
+      "heroId": "iron-man",
+      "heroName": {
+        "en": "Iron Man",
+        "es": "Iron Man"
+      },
+      "villainId": "rhino",
+      "villainName": {
+        "en": "Rhino",
+        "es": "Rino"
+      },
+      "modularSetId": "the-doomsday-chair",
+      "modularSetName": {
+        "en": "The Doomsday Chair",
+        "es": "La Silla del Juicio Final"
+      },
+      "tierId": "standard",
+      "villainStages": [
+        "I",
+        "II"
+      ],
+      "encounterSets": [
+        "standard"
+      ],
+      "aspectAppearance": 1,
+      "recommendedAspect": "justice",
+      "narrative": {
+        "previously": {
+          "en": "Tony traces the cognition references to a stolen research node. Rhino is moving it for a buyer with an ego almost as large as his head. The shipment is protected by M.O.D.O.K. technology: self-repairing biomechanical routines designed to keep a combat asset alive after it should be down.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Rhino in Standard mode using The Doomsday Chair as the modular set.",
+        "Set aside one The Doomsday Chair side scheme and M.O.D.O.K. After normal setup, reveal the side scheme.",
+        "The first time that set-aside side scheme is defeated, reveal M.O.D.O.K. from the set-aside area. Shuffle any searched cards back into the encounter deck as needed."
+      ],
+      "setupActions": [
+        {
+          "id": "i04-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Rhino in Standard mode using The Doomsday Chair as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i04-set-aside-chair",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Set aside one The Doomsday Chair side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "The Doomsday Chair"
+        },
+        {
+          "id": "i04-set-aside-modok",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Set aside M.O.D.O.K.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "M.O.D.O.K."
+        },
+        {
+          "id": "i04-reveal-chair",
+          "phase": "campaign-continuity",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "After normal setup, reveal the set-aside The Doomsday Chair side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "The Doomsday Chair"
+        },
+        {
+          "id": "i04-reveal-modok",
+          "phase": "in-game-reminder",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "The first time that set-aside side scheme is defeated, reveal M.O.D.O.K. from the set-aside area.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "first_time_set_aside_side_scheme_defeated",
+          "cardAnchorName": "M.O.D.O.K."
+        },
+        {
+          "id": "i04-shuffle-search",
+          "phase": "in-game-reminder",
+          "kind": "shuffle_searched_cards",
+          "actor": "player",
+          "text": "Shuffle any searched cards back into the encounter deck as needed.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "after_search"
+        }
+      ],
+      "continuityInputs": [],
+      "objective": {
+        "description": {
+          "en": "Defeat M.O.D.O.K. before defeating Rhino.",
+          "es": null
+        },
+        "completionNote": {
+          "en": null,
+          "es": null
+        },
+        "flag": "M.O.D.O.K. PROFILED",
+        "flagId": "m-o-d-o-k-profiled",
+        "recordImmediately": true,
+        "winGated": false,
+        "tracker": {
+          "kind": "check",
+          "checklist": [
+            "M.O.D.O.K. defeated before Rhino"
+          ]
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel. Tony captures a complete combat telemetry dump. The repair logic is not merely A.I.M. work; someone has been training it against Avengers attack patterns.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences. Rhino gets the research node away. Tony still recovers enough telemetry to recognize the shape of the program: Ultron is teaching another system how the Avengers fight.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "Iron Man",
+        "Rhino (I)",
+        "The Doomsday Chair",
+        "M.O.D.O.K."
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": false,
+        "showMainSchemeThreat": false,
+        "showVillainStage": false,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": false
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 04 — MIND OVER METAL"
+      }
+    },
+    {
+      "number": 5,
+      "id": "issue-05-the-vibranium-trail",
+      "actId": "act-1",
+      "title": {
+        "en": "THE VIBRANIUM TRAIL",
+        "es": null
+      },
+      "heroId": "black-panther",
+      "heroName": {
+        "en": "Black Panther",
+        "es": "Pantera Negra"
+      },
+      "villainId": "klaw",
+      "villainName": {
+        "en": "Klaw",
+        "es": "Klaw"
+      },
+      "modularSetId": "legions-of-hydra",
+      "modularSetName": {
+        "en": "Legions of Hydra",
+        "es": "Legiones de Hydra"
+      },
+      "tierId": "standard",
+      "villainStages": [
+        "I",
+        "II"
+      ],
+      "encounterSets": [
+        "standard"
+      ],
+      "aspectAppearance": 1,
+      "recommendedAspect": "justice",
+      "narrative": {
+        "previously": {
+          "en": "T'Challa follows the stolen vibranium through accounts Klaw believed were anonymous. They lead to a Hydra logistics cell moving sealed crates between sonic labs and hidden data centers. Klaw is not the mastermind. He is the supplier - and Hydra is the delivery service.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Klaw in Standard mode using Legions of Hydra as the modular set.",
+        "Set aside Madame Hydra. After normal setup, reveal one copy of Legions of Hydra.",
+        "When the first Legions of Hydra side scheme leaves play, reveal Madame Hydra from the set-aside area."
+      ],
+      "setupActions": [
+        {
+          "id": "i05-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Klaw in Standard mode using Legions of Hydra as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i05-set-aside-madame",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Set aside Madame Hydra.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Madame Hydra"
+        },
+        {
+          "id": "i05-reveal-legions",
+          "phase": "campaign-continuity",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "After normal setup, reveal one copy of Legions of Hydra.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Legions of Hydra"
+        },
+        {
+          "id": "i05-reveal-madame",
+          "phase": "in-game-reminder",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "When the first Legions of Hydra side scheme leaves play, reveal Madame Hydra from the set-aside area.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "first_legions_of_hydra_leaves_play",
+          "cardAnchorName": "Madame Hydra"
+        }
+      ],
+      "continuityInputs": [],
+      "objective": {
+        "description": {
+          "en": "Defeat Madame Hydra before defeating Klaw.",
+          "es": null
+        },
+        "completionNote": {
+          "en": null,
+          "es": null
+        },
+        "flag": "HYDRA LEDGER",
+        "flagId": "hydra-ledger",
+        "recordImmediately": true,
+        "winGated": false,
+        "tracker": {
+          "kind": "check",
+          "checklist": [
+            "Madame Hydra defeated before Klaw"
+          ]
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel. The ledger names no buyer, only a distributed destination: dozens of server farms, transit grids, and defense relays. Ultron is not building a base. He is building a nervous system.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences. Klaw and Hydra scatter the shipment across multiple routes. The pattern is finally visible, but the Avengers will have to chase it while it is already moving.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "Black Panther",
+        "Klaw (I)",
+        "Legions of Hydra",
+        "Madame Hydra"
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": false,
+        "showMainSchemeThreat": false,
+        "showVillainStage": false,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": false
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 05 — THE VIBRANIUM TRAIL"
+      }
+    },
+    {
+      "number": 6,
+      "id": "issue-06-echo-chamber",
+      "actId": "act-2",
+      "title": {
+        "en": "ECHO CHAMBER",
+        "es": null
+      },
+      "heroId": "spider-man",
+      "heroName": {
+        "en": "Spider-Man",
+        "es": "Spiderman"
+      },
+      "villainId": "klaw",
+      "villainName": {
+        "en": "Klaw",
+        "es": "Klaw"
+      },
+      "modularSetId": "under-attack",
+      "modularSetName": {
+        "en": "Under Attack",
+        "es": "Civiles en peligro"
+      },
+      "tierId": "veteran",
+      "villainStages": [
+        "I",
+        "II"
+      ],
+      "encounterSets": [
+        "standard",
+        "expert"
+      ],
+      "aspectAppearance": 2,
+      "recommendedAspect": "justice",
+      "narrative": {
+        "previously": {
+          "en": "The first hidden node is buried under New York, piggybacking on transit communications. Klaw is using sonic interference to keep the node synchronized while civilians unknowingly move through the kill zone above it. Spider-Man has one job: break the signal before Klaw can move it again.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Klaw with villain stages I/II. Include both the Standard and Expert encounter sets. Use Under Attack as the modular set.",
+        "Set aside the Under Attack side scheme. After normal setup, reveal it.",
+        "If MASTERS BROKEN is not marked, place 1 additional threat on Under Attack after it enters play."
+      ],
+      "setupActions": [
+        {
+          "id": "i06-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Klaw with villain stages I/II. Include both the Standard and Expert encounter sets. Use Under Attack as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i06-set-aside-under-attack",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Set aside the Under Attack side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Under Attack"
+        },
+        {
+          "id": "i06-reveal-under-attack",
+          "phase": "campaign-continuity",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "After normal setup, reveal the set-aside Under Attack side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Under Attack"
+        },
+        {
+          "id": "i06-masters-missing",
+          "phase": "campaign-continuity",
+          "kind": "modify_threat",
+          "actor": "player",
+          "text": "If MASTERS BROKEN is not marked, place 1 additional threat on Under Attack after it enters play.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "flag_absent",
+            "flagId": "masters-broken"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Under Attack"
+        }
+      ],
+      "continuityInputs": [
+        "MASTERS BROKEN"
+      ],
+      "objective": {
+        "description": {
+          "en": "Defeat Under Attack before Klaw advances to stage II.",
+          "es": null
+        },
+        "completionNote": {
+          "en": null,
+          "es": null
+        },
+        "flag": "SONIC KEY",
+        "flagId": "sonic-key",
+        "recordImmediately": true,
+        "winGated": false,
+        "tracker": {
+          "kind": "deadline_check",
+          "checklist": [
+            "Under Attack defeated"
+          ],
+          "deadline": "Before villain advances to stage II"
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel. Spider-Man tears the node out before the signal migrates. The recovered frequency key can identify other Ultron handshakes even when they are hidden inside civilian traffic.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences. Klaw moves the node, but not before Spider-Man catches a frequency fragment. The Avengers can still follow; they just lost the element of surprise.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "Spider-Man",
+        "Klaw (I)",
+        "Under Attack"
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": false,
+        "showMainSchemeThreat": false,
+        "showVillainStage": true,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": false
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 06 — ECHO CHAMBER"
+      }
+    },
+    {
+      "number": 7,
+      "id": "issue-07-city-of-drones",
+      "actId": "act-2",
+      "title": {
+        "en": "CITY OF DRONES",
+        "es": null
+      },
+      "heroId": "captain-marvel",
+      "heroName": {
+        "en": "Captain Marvel",
+        "es": "Capitana Marvel"
+      },
+      "villainId": "ultron",
+      "villainName": {
+        "en": "Ultron",
+        "es": "Ultrón"
+      },
+      "modularSetId": "bomb-scare",
+      "modularSetName": {
+        "en": "Bomb Scare",
+        "es": "Amenaza de bomba"
+      },
+      "tierId": "veteran",
+      "villainStages": [
+        "I",
+        "II"
+      ],
+      "encounterSets": [
+        "standard",
+        "expert"
+      ],
+      "aspectAppearance": 2,
+      "recommendedAspect": "aggression",
+      "narrative": {
+        "previously": {
+          "en": "Ultron answers the Avengers' investigation with noise: bomb threats, false alarms, and drone strikes across the city. Carol can destroy the shell at the center of the swarm, but every second spent on Ultron is a second civilians remain trapped in the chaos.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Ultron with villain stages I/II. Include both Standard and Expert encounter sets. Use Bomb Scare as the modular set.",
+        "Set aside Bomb Scare. After normal setup, reveal it.",
+        "If BOMB DEFUSED is not marked, place 1 additional threat on Bomb Scare after it enters play.",
+        "Place five spare counters beside the play area. Each facedown Ultron drone you defeat adds 1 counter."
+      ],
+      "setupActions": [
+        {
+          "id": "i07-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Ultron with villain stages I/II. Include both Standard and Expert encounter sets. Use Bomb Scare as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i07-set-aside-bomb",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Set aside Bomb Scare.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Bomb Scare"
+        },
+        {
+          "id": "i07-reveal-bomb",
+          "phase": "campaign-continuity",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "After normal setup, reveal the set-aside Bomb Scare side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Bomb Scare"
+        },
+        {
+          "id": "i07-bomb-missing",
+          "phase": "campaign-continuity",
+          "kind": "modify_threat",
+          "actor": "player",
+          "text": "If BOMB DEFUSED is not marked, place 1 additional threat on Bomb Scare after it enters play.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "flag_absent",
+            "flagId": "bomb-defused"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Bomb Scare"
+        },
+        {
+          "id": "i07-init-evacuation",
+          "phase": "campaign-continuity",
+          "kind": "initialize_counter",
+          "actor": "player",
+          "text": "Place five spare counters beside the play area.",
+          "sourceStep": 4,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "initialize_tracker"
+        },
+        {
+          "id": "i07-track-evacuation",
+          "phase": "in-game-reminder",
+          "kind": "track_counter",
+          "actor": "player",
+          "text": "Each facedown Ultron drone you defeat adds 1 counter.",
+          "sourceStep": 4,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "after_facedown_ultron_drone_defeated"
+        }
+      ],
+      "continuityInputs": [
+        "BOMB DEFUSED"
+      ],
+      "objective": {
+        "description": {
+          "en": "Defeat Bomb Scare and collect 5 Drone Evacuation counters before defeating Ultron.",
+          "es": null
+        },
+        "completionNote": {
+          "en": null,
+          "es": null
+        },
+        "flag": "EVACUATION COMPLETE",
+        "flagId": "evacuation-complete",
+        "recordImmediately": true,
+        "winGated": false,
+        "tracker": {
+          "kind": "compound_counter",
+          "checklist": [
+            "Bomb Scare defeated"
+          ],
+          "counterId": "drone-evacuation",
+          "label": "Drone Evacuation",
+          "target": 5
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel. Carol clears the last corridor moments before the drone shell falls. Ultron loses a huge amount of processing capacity protecting a diversion that did not work.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences. The city survives, but Ultron turns panic into cover and relocates more of the Network while emergency services are overwhelmed.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "Captain Marvel",
+        "Ultron (I)",
+        "Bomb Scare"
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": false,
+        "showMainSchemeThreat": false,
+        "showVillainStage": false,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": false
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 07 — CITY OF DRONES"
+      }
+    },
+    {
+      "number": 8,
+      "id": "issue-08-hard-case",
+      "actId": "act-2",
+      "title": {
+        "en": "HARD CASE",
+        "es": null
+      },
+      "heroId": "she-hulk",
+      "heroName": {
+        "en": "She-Hulk",
+        "es": "Hulka"
+      },
+      "villainId": "rhino",
+      "villainName": {
+        "en": "Rhino",
+        "es": "Rino"
+      },
+      "modularSetId": "legions-of-hydra",
+      "modularSetName": {
+        "en": "Legions of Hydra",
+        "es": "Legiones de Hydra"
+      },
+      "tierId": "veteran",
+      "villainStages": [
+        "I",
+        "II"
+      ],
+      "encounterSets": [
+        "standard",
+        "expert"
+      ],
+      "aspectAppearance": 2,
+      "recommendedAspect": "leadership",
+      "narrative": {
+        "previously": {
+          "en": "Rhino finally makes a mistake: he demands payment in person. Hydra arranges the exchange inside a hardened safehouse. Jennifer intends to bring him in alive, because for once the most useful thing Rhino can do is talk.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Rhino with villain stages I/II. Include Standard and Expert encounter sets. Use Legions of Hydra as the modular set.",
+        "Before normal setup, if HYDRA LEDGER is marked, set Madame Hydra aside.",
+        "After normal setup, reveal one Legions of Hydra side scheme. If Madame Hydra was not set aside, resolve its printed “When Revealed” ability normally.",
+        "If Madame Hydra was set aside, reveal her when the first Legions of Hydra side scheme leaves play.",
+        "Resolve your Act I lead choice: HYDRA LEAD removes 2 threat from the revealed Legions of Hydra (minimum 1); M.O.D.O.K. LEAD adds 2 threat instead."
+      ],
+      "setupActions": [
+        {
+          "id": "i08-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Rhino with villain stages I/II. Include Standard and Expert encounter sets. Use Legions of Hydra as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i08-set-aside-madame",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Before normal setup, if HYDRA LEDGER is marked, set Madame Hydra aside.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "flag_present",
+            "flagId": "hydra-ledger"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Madame Hydra"
+        },
+        {
+          "id": "i08-reveal-legions",
+          "phase": "campaign-continuity",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "After normal setup, reveal one Legions of Hydra side scheme.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Legions of Hydra"
+        },
+        {
+          "id": "i08-normal-madame-trigger",
+          "phase": "campaign-continuity",
+          "kind": "resolve_printed_ability",
+          "actor": "player",
+          "text": "If Madame Hydra was not set aside, resolve the revealed side scheme’s printed “When Revealed” ability normally.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "flag_absent",
+            "flagId": "hydra-ledger"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Legions of Hydra"
+        },
+        {
+          "id": "i08-delayed-madame",
+          "phase": "in-game-reminder",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "If Madame Hydra was set aside, reveal her when the first Legions of Hydra side scheme leaves play.",
+          "sourceStep": 4,
+          "condition": {
+            "kind": "flag_present",
+            "flagId": "hydra-ledger"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "first_legions_of_hydra_leaves_play",
+          "cardAnchorName": "Madame Hydra"
+        },
+        {
+          "id": "i08-hydra-lead",
+          "phase": "campaign-continuity",
+          "kind": "modify_threat",
+          "actor": "player",
+          "text": "HYDRA LEAD removes 2 threat from the revealed Legions of Hydra (minimum 1).",
+          "sourceStep": 5,
+          "condition": {
+            "kind": "interlude_choice",
+            "interludeId": "act-1-lead",
+            "choiceId": "hydra-lead"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Legions of Hydra"
+        },
+        {
+          "id": "i08-modok-lead",
+          "phase": "campaign-continuity",
+          "kind": "modify_threat",
+          "actor": "player",
+          "text": "M.O.D.O.K. LEAD adds 2 threat to the revealed Legions of Hydra.",
+          "sourceStep": 5,
+          "condition": {
+            "kind": "interlude_choice",
+            "interludeId": "act-1-lead",
+            "choiceId": "modok-lead"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Legions of Hydra"
+        }
+      ],
+      "continuityInputs": [
+        "HYDRA LEDGER",
+        "act-1-lead"
+      ],
+      "objective": {
+        "description": {
+          "en": "Defeat Madame Hydra and end the game with no Legions of Hydra side scheme in play.",
+          "es": null
+        },
+        "completionNote": {
+          "en": null,
+          "es": null
+        },
+        "flag": "RHINO CONFESSION",
+        "flagId": "rhino-confession",
+        "recordImmediately": true,
+        "winGated": false,
+        "tracker": {
+          "kind": "end_state",
+          "checklist": [
+            "Madame Hydra defeated",
+            "No Legions of Hydra side scheme in play at game end"
+          ]
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel. Rhino talks. He never met Ultron. The orders came through Klaw, and the payments came through a Hydra account tied to one final destination: an old Stark satellite-control facility.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences. Rhino escapes the safehouse, but Jennifer recovers a payment schedule. It points to the same facility - one step later and with fewer answers.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "She-Hulk",
+        "Rhino (I)",
+        "Legions of Hydra",
+        "Madame Hydra"
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": false,
+        "showMainSchemeThreat": false,
+        "showVillainStage": false,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": true
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 08 — HARD CASE"
+      }
+    },
+    {
+      "number": 9,
+      "id": "issue-09-counterfrequency",
+      "actId": "act-2",
+      "title": {
+        "en": "COUNTERFREQUENCY",
+        "es": null
+      },
+      "heroId": "iron-man",
+      "heroName": {
+        "en": "Iron Man",
+        "es": "Iron Man"
+      },
+      "villainId": "klaw",
+      "villainName": {
+        "en": "Klaw",
+        "es": "Klaw"
+      },
+      "modularSetId": "masters-of-evil",
+      "modularSetName": {
+        "en": "Masters of Evil",
+        "es": "Señores del Mal"
+      },
+      "tierId": "veteran",
+      "villainStages": [
+        "I",
+        "II"
+      ],
+      "encounterSets": [
+        "standard",
+        "expert"
+      ],
+      "aspectAppearance": 2,
+      "recommendedAspect": "aggression",
+      "narrative": {
+        "previously": {
+          "en": "Klaw attacks Stark systems before Tony can attack the satellite facility. The Masters of Evil hit physical infrastructure while Klaw floods the network with sonic noise. If Tony loses the firewall, Ultron will learn the Avengers' entire response plan.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Klaw with villain stages I/II. Include Standard and Expert encounter sets. Use Masters of Evil as the modular set.",
+        "Set aside The Masters of Evil side scheme. After normal setup, reveal it.",
+        "When that side scheme is defeated, search for a named Masters of Evil minion, reveal it, then shuffle. If MASTERS BROKEN is not marked, give that minion Tough after it enters play.",
+        "When Klaw advances to stage II, if you have defeated fewer than 2 different named Masters this game, search for a different named Master and reveal it."
+      ],
+      "setupActions": [
+        {
+          "id": "i09-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Klaw with villain stages I/II. Include Standard and Expert encounter sets. Use Masters of Evil as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i09-set-aside-masters",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Set aside The Masters of Evil side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "The Masters of Evil"
+        },
+        {
+          "id": "i09-reveal-masters",
+          "phase": "campaign-continuity",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "After normal setup, reveal the set-aside The Masters of Evil side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "The Masters of Evil"
+        },
+        {
+          "id": "i09-search-master",
+          "phase": "in-game-reminder",
+          "kind": "search_and_reveal",
+          "actor": "player",
+          "text": "When that side scheme is defeated, search for a named Masters of Evil minion, reveal it, then shuffle.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "when_set_aside_masters_side_scheme_defeated",
+          "cardAnchorName": "The Masters of Evil"
+        },
+        {
+          "id": "i09-tough-master",
+          "phase": "in-game-reminder",
+          "kind": "give_status",
+          "actor": "player",
+          "text": "If MASTERS BROKEN is not marked, give that minion Tough after it enters play.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "flag_absent",
+            "flagId": "masters-broken"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "after_objective_master_enters_play"
+        },
+        {
+          "id": "i09-stage-two-master",
+          "phase": "in-game-reminder",
+          "kind": "search_and_reveal",
+          "actor": "player",
+          "text": "When Klaw advances to stage II, if you have defeated fewer than 2 different named Masters this game, search for a different named Master and reveal it.",
+          "sourceStep": 4,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "when_villain_advances_to_stage_ii"
+        }
+      ],
+      "continuityInputs": [
+        "MASTERS BROKEN"
+      ],
+      "objective": {
+        "description": {
+          "en": "Defeat 2 different named Masters of Evil before defeating Klaw.",
+          "es": null
+        },
+        "completionNote": {
+          "en": null,
+          "es": null
+        },
+        "flag": "FIREWALL STABLE",
+        "flagId": "firewall-stable",
+        "recordImmediately": true,
+        "winGated": false,
+        "tracker": {
+          "kind": "distinct_counter",
+          "counterId": "named-masters-defeated",
+          "label": "Different named Masters defeated",
+          "target": 2
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel. Tony keeps the firewall intact and captures a synchronization packet. It confirms that every node in the Network is waiting for a single vibranium-hardened command core.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences. Klaw gets enough data to predict part of the Avengers' response. Tony still identifies the command-core location, but Ultron will be waiting.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "Iron Man",
+        "Klaw (I)",
+        "The Masters of Evil"
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": false,
+        "showMainSchemeThreat": false,
+        "showVillainStage": false,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": false
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 09 — COUNTERFREQUENCY"
+      }
+    },
+    {
+      "number": 10,
+      "id": "issue-10-the-vibranium-protocol",
+      "actId": "act-2",
+      "title": {
+        "en": "THE VIBRANIUM PROTOCOL",
+        "es": null
+      },
+      "heroId": "black-panther",
+      "heroName": {
+        "en": "Black Panther",
+        "es": "Pantera Negra"
+      },
+      "villainId": "ultron",
+      "villainName": {
+        "en": "Ultron",
+        "es": "Ultrón"
+      },
+      "modularSetId": "the-doomsday-chair",
+      "modularSetName": {
+        "en": "The Doomsday Chair",
+        "es": "La Silla del Juicio Final"
+      },
+      "tierId": "veteran",
+      "villainStages": [
+        "I",
+        "II"
+      ],
+      "encounterSets": [
+        "standard",
+        "expert"
+      ],
+      "aspectAppearance": 2,
+      "recommendedAspect": "aggression",
+      "narrative": {
+        "previously": {
+          "en": "The command-core prototype is hidden beneath a decommissioned industrial lab. M.O.D.O.K. has been refining its self-repair routines while Ultron provides the processing architecture. T'Challa recognizes the last ingredient immediately: stolen vibranium woven through the chassis.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Ultron with villain stages I/II. Include Standard and Expert encounter sets. Use The Doomsday Chair as the modular set.",
+        "Set aside one The Doomsday Chair side scheme and M.O.D.O.K. After normal setup, reveal the side scheme.",
+        "When that set-aside side scheme is defeated, reveal M.O.D.O.K.",
+        "If M.O.D.O.K. PROFILED is not marked, after M.O.D.O.K. enters play look at the top card of the encounter deck. If it is Biomechanical Upgrades, reveal it. Otherwise, return it to the top of the deck.",
+        "If DRONE SAMPLE is marked, deal 2 damage to M.O.D.O.K. when he first enters play.",
+        "Resolve your Act I lead choice: M.O.D.O.K. LEAD deals 2 additional damage to M.O.D.O.K. when he first enters play; HYDRA LEAD gives M.O.D.O.K. Tough when he first enters play."
+      ],
+      "setupActions": [
+        {
+          "id": "i10-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Ultron with villain stages I/II. Include Standard and Expert encounter sets. Use The Doomsday Chair as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i10-set-aside-chair",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Set aside one The Doomsday Chair side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "The Doomsday Chair"
+        },
+        {
+          "id": "i10-set-aside-modok",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Set aside M.O.D.O.K.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "M.O.D.O.K."
+        },
+        {
+          "id": "i10-reveal-chair",
+          "phase": "campaign-continuity",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "After normal setup, reveal the set-aside The Doomsday Chair side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "The Doomsday Chair"
+        },
+        {
+          "id": "i10-reveal-modok",
+          "phase": "in-game-reminder",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "When that set-aside side scheme is defeated, reveal M.O.D.O.K.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "when_set_aside_chair_side_scheme_defeated",
+          "cardAnchorName": "M.O.D.O.K."
+        },
+        {
+          "id": "i10-profile-missing",
+          "phase": "in-game-reminder",
+          "kind": "inspect_top_encounter",
+          "actor": "player",
+          "text": "If M.O.D.O.K. PROFILED is not marked, after M.O.D.O.K. enters play look at the top card of the encounter deck. If it is Biomechanical Upgrades, reveal it. Otherwise, return it to the top of the deck.",
+          "sourceStep": 4,
+          "condition": {
+            "kind": "flag_absent",
+            "flagId": "m-o-d-o-k-profiled"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "after_modok_enters_play",
+          "cardAnchorName": "Biomechanical Upgrades"
+        },
+        {
+          "id": "i10-drone-sample",
+          "phase": "in-game-reminder",
+          "kind": "deal_damage",
+          "actor": "player",
+          "text": "If DRONE SAMPLE is marked, deal 2 damage to M.O.D.O.K. when he first enters play.",
+          "sourceStep": 5,
+          "condition": {
+            "kind": "flag_present",
+            "flagId": "drone-sample"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "when_modok_first_enters_play",
+          "cardAnchorName": "M.O.D.O.K."
+        },
+        {
+          "id": "i10-modok-lead",
+          "phase": "in-game-reminder",
+          "kind": "deal_damage",
+          "actor": "player",
+          "text": "M.O.D.O.K. LEAD deals 2 additional damage to M.O.D.O.K. when he first enters play.",
+          "sourceStep": 6,
+          "condition": {
+            "kind": "interlude_choice",
+            "interludeId": "act-1-lead",
+            "choiceId": "modok-lead"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "when_modok_first_enters_play",
+          "cardAnchorName": "M.O.D.O.K."
+        },
+        {
+          "id": "i10-hydra-lead",
+          "phase": "in-game-reminder",
+          "kind": "give_status",
+          "actor": "player",
+          "text": "HYDRA LEAD gives M.O.D.O.K. Tough when he first enters play.",
+          "sourceStep": 6,
+          "condition": {
+            "kind": "interlude_choice",
+            "interludeId": "act-1-lead",
+            "choiceId": "hydra-lead"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "when_modok_first_enters_play",
+          "cardAnchorName": "M.O.D.O.K."
+        }
+      ],
+      "continuityInputs": [
+        "M.O.D.O.K. PROFILED",
+        "DRONE SAMPLE",
+        "act-1-lead"
+      ],
+      "objective": {
+        "description": {
+          "en": "Defeat M.O.D.O.K. and end the game with no The Doomsday Chair side scheme in play.",
+          "es": null
+        },
+        "completionNote": {
+          "en": null,
+          "es": null
+        },
+        "flag": "VIBRANIUM SECURED",
+        "flagId": "vibranium-secured",
+        "recordImmediately": true,
+        "winGated": false,
+        "tracker": {
+          "kind": "end_state",
+          "checklist": [
+            "M.O.D.O.K. defeated",
+            "No The Doomsday Chair side scheme in play at game end"
+          ]
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel. The prototype is destroyed before the command core can go live. But the victory reveals the real problem: this was only the test unit. Ultron has already distributed the final build instructions.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences. The lab falls, but the command-core design escapes into the Network. The Avengers now face a machine that can rebuild itself anywhere its code survives.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "Black Panther",
+        "Ultron (I)",
+        "The Doomsday Chair",
+        "M.O.D.O.K.",
+        "Biomechanical Upgrades"
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": false,
+        "showMainSchemeThreat": false,
+        "showVillainStage": false,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": true
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 10 — THE VIBRANIUM PROTOCOL"
+      }
+    },
+    {
+      "number": 11,
+      "id": "issue-11-hostile-witness",
+      "actId": "act-3",
+      "title": {
+        "en": "HOSTILE WITNESS",
+        "es": null
+      },
+      "heroId": "she-hulk",
+      "heroName": {
+        "en": "She-Hulk",
+        "es": "Hulka"
+      },
+      "villainId": "klaw",
+      "villainName": {
+        "en": "Klaw",
+        "es": "Klaw"
+      },
+      "modularSetId": "the-doomsday-chair",
+      "modularSetName": {
+        "en": "The Doomsday Chair",
+        "es": "La Silla del Juicio Final"
+      },
+      "tierId": "expert",
+      "villainStages": [
+        "II",
+        "III"
+      ],
+      "encounterSets": [
+        "standard",
+        "expert"
+      ],
+      "aspectAppearance": 3,
+      "recommendedAspect": "justice",
+      "narrative": {
+        "previously": {
+          "en": "Klaw is the one living witness who can identify the financial routes feeding Ultron's final nodes. Before S.H.I.E.L.D. can move him, a M.O.D.O.K. strike team attacks the transfer. Jennifer has to win the fight and keep the witness alive long enough to make him useful.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Klaw in Expert mode using The Doomsday Chair as the modular set.",
+        "Before normal setup, set M.O.D.O.K. aside.",
+        "The first time Defense Network leaves play, reveal M.O.D.O.K. from the set-aside area and engage him with you.",
+        "If SONIC KEY is not marked, give M.O.D.O.K. Tough after he enters play."
+      ],
+      "setupActions": [
+        {
+          "id": "i11-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Klaw in Expert mode using The Doomsday Chair as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i11-set-aside-modok",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Before normal setup, set M.O.D.O.K. aside.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "M.O.D.O.K."
+        },
+        {
+          "id": "i11-defense-network-trigger",
+          "phase": "in-game-reminder",
+          "kind": "reveal_and_engage",
+          "actor": "player",
+          "text": "The first time Defense Network leaves play, reveal M.O.D.O.K. from the set-aside area and engage him with you.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "first_time_defense_network_leaves_play",
+          "cardAnchorName": "Defense Network"
+        },
+        {
+          "id": "i11-sonic-key-missing",
+          "phase": "in-game-reminder",
+          "kind": "give_status",
+          "actor": "player",
+          "text": "If SONIC KEY is not marked, give M.O.D.O.K. Tough after he enters play.",
+          "sourceStep": 4,
+          "condition": {
+            "kind": "flag_absent",
+            "flagId": "sonic-key"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "after_modok_enters_play",
+          "cardAnchorName": "M.O.D.O.K."
+        }
+      ],
+      "continuityInputs": [
+        "SONIC KEY"
+      ],
+      "objective": {
+        "description": {
+          "en": "Defeat M.O.D.O.K. before Klaw advances to stage III.",
+          "es": null
+        },
+        "completionNote": {
+          "en": null,
+          "es": null
+        },
+        "flag": "WITNESS PROTECTED",
+        "flagId": "witness-protected",
+        "recordImmediately": true,
+        "winGated": false,
+        "tracker": {
+          "kind": "deadline_check",
+          "checklist": [
+            "M.O.D.O.K. defeated"
+          ],
+          "deadline": "Before villain advances to stage III"
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel. Klaw gives up the last routing table. It points to two simultaneous crises: a strike on a Wakandan diplomatic vault and an aerial transfer of concussion weapons.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences. Klaw gets away in the confusion. The routing table is incomplete, forcing the Avengers to split their search across both likely targets.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "She-Hulk",
+        "Klaw (II)",
+        "The Doomsday Chair",
+        "Defense Network",
+        "M.O.D.O.K."
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": false,
+        "showMainSchemeThreat": false,
+        "showVillainStage": true,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": false
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 11 — HOSTILE WITNESS"
+      }
+    },
+    {
+      "number": 12,
+      "id": "issue-12-siege-protocol",
+      "actId": "act-3",
+      "title": {
+        "en": "SIEGE PROTOCOL",
+        "es": null
+      },
+      "heroId": "black-panther",
+      "heroName": {
+        "en": "Black Panther",
+        "es": "Pantera Negra"
+      },
+      "villainId": "rhino",
+      "villainName": {
+        "en": "Rhino",
+        "es": "Rino"
+      },
+      "modularSetId": "bomb-scare",
+      "modularSetName": {
+        "en": "Bomb Scare",
+        "es": "Amenaza de bomba"
+      },
+      "tierId": "expert",
+      "villainStages": [
+        "II",
+        "III"
+      ],
+      "encounterSets": [
+        "standard",
+        "expert"
+      ],
+      "aspectAppearance": 3,
+      "recommendedAspect": "protection",
+      "narrative": {
+        "previously": {
+          "en": "Rhino hits a Wakandan diplomatic vault under cover of coordinated bomb threats. He is not after vibranium this time. He is trying to destroy the evidence that proves where Ultron's metal came from - and sever the Avengers' political support in the process.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Rhino in Expert mode using Bomb Scare as the modular set.",
+        "Set aside Bomb Scare. After normal setup, reveal it.",
+        "If RHINO CONFESSION is not marked, give Rhino Tough after setup."
+      ],
+      "setupActions": [
+        {
+          "id": "i12-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Rhino in Expert mode using Bomb Scare as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i12-set-aside-bomb",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Set aside Bomb Scare.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Bomb Scare"
+        },
+        {
+          "id": "i12-reveal-bomb",
+          "phase": "campaign-continuity",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "After normal setup, reveal the set-aside Bomb Scare side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Bomb Scare"
+        },
+        {
+          "id": "i12-confession-missing",
+          "phase": "campaign-continuity",
+          "kind": "give_status",
+          "actor": "player",
+          "text": "If RHINO CONFESSION is not marked, give Rhino Tough after setup.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "flag_absent",
+            "flagId": "rhino-confession"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Rhino (II)"
+        }
+      ],
+      "continuityInputs": [
+        "RHINO CONFESSION"
+      ],
+      "objective": {
+        "description": {
+          "en": "Defeat Bomb Scare before the end of round 2.",
+          "es": null
+        },
+        "completionNote": {
+          "en": null,
+          "es": null
+        },
+        "flag": "EMBASSY SECURED",
+        "flagId": "embassy-secured",
+        "recordImmediately": true,
+        "winGated": false,
+        "tracker": {
+          "kind": "round_deadline",
+          "checklist": [
+            "Bomb Scare defeated"
+          ],
+          "deadlineRound": 2
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel. T'Challa saves the vault and the records. The evidence exposes the supply chain publicly, cutting off the last human organizations still feeding Ultron materials.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences. The vault is damaged and records are lost. Ultron's human suppliers panic, but the Network keeps enough material moving to continue the final build.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "Black Panther",
+        "Rhino (II)",
+        "Bomb Scare"
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": true,
+        "showMainSchemeThreat": false,
+        "showVillainStage": false,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": false
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 12 — SIEGE PROTOCOL"
+      }
+    },
+    {
+      "number": 13,
+      "id": "issue-13-terminal-velocity",
+      "actId": "act-3",
+      "title": {
+        "en": "TERMINAL VELOCITY",
+        "es": null
+      },
+      "heroId": "captain-marvel",
+      "heroName": {
+        "en": "Captain Marvel",
+        "es": "Capitana Marvel"
+      },
+      "villainId": "rhino",
+      "villainName": {
+        "en": "Rhino",
+        "es": "Rino"
+      },
+      "modularSetId": "under-attack",
+      "modularSetName": {
+        "en": "Under Attack",
+        "es": "Civiles en peligro"
+      },
+      "tierId": "expert",
+      "villainStages": [
+        "II",
+        "III"
+      ],
+      "encounterSets": [
+        "standard",
+        "expert"
+      ],
+      "aspectAppearance": 3,
+      "recommendedAspect": "justice",
+      "narrative": {
+        "previously": {
+          "en": "The second route is airborne: an armored convoy carrying concussion weapons and hardened processors to an uplink station. Rhino is aboard because subtlety has stopped mattering. Carol meets the convoy at altitude, where one failed interception can scatter the cargo across the city below.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Rhino in Expert mode using Under Attack as the modular set.",
+        "Set aside Under Attack. After normal setup, reveal it.",
+        "If EVACUATION COMPLETE is not marked, place 2 additional threat on the main scheme after setup."
+      ],
+      "setupActions": [
+        {
+          "id": "i13-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Rhino in Expert mode using Under Attack as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i13-set-aside-under-attack",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Set aside Under Attack.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Under Attack"
+        },
+        {
+          "id": "i13-reveal-under-attack",
+          "phase": "campaign-continuity",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "After normal setup, reveal the set-aside Under Attack side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Under Attack"
+        },
+        {
+          "id": "i13-evacuation-missing",
+          "phase": "campaign-continuity",
+          "kind": "modify_threat",
+          "actor": "player",
+          "text": "If EVACUATION COMPLETE is not marked, place 2 additional threat on the main scheme after setup.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "flag_absent",
+            "flagId": "evacuation-complete"
+          },
+          "appBehavior": "confirm"
+        }
+      ],
+      "continuityInputs": [
+        "EVACUATION COMPLETE"
+      ],
+      "objective": {
+        "description": {
+          "en": "Win while the main scheme has 2 or less threat on it.",
+          "es": null
+        },
+        "completionNote": {
+          "en": null,
+          "es": null
+        },
+        "flag": "SKYLINE HELD",
+        "flagId": "skyline-held",
+        "recordImmediately": false,
+        "winGated": true,
+        "tracker": {
+          "kind": "win_end_state",
+          "winRequired": true,
+          "metric": "mainSchemeThreat",
+          "operator": "<=",
+          "target": 2
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel. The convoy is destroyed cleanly and the uplink never receives its hardware. Ultron is forced to bring the remaining Network nodes online before they are fully synchronized.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences. The convoy breaks apart, but some hardware reaches the uplink. Ultron begins the final synchronization early - unstable, but active.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "Captain Marvel",
+        "Rhino (II)",
+        "Under Attack"
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": false,
+        "showMainSchemeThreat": true,
+        "showVillainStage": false,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": false
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 13 — TERMINAL VELOCITY"
+      }
+    },
+    {
+      "number": 14,
+      "id": "issue-14-the-last-neighborhood",
+      "actId": "act-3",
+      "title": {
+        "en": "THE LAST NEIGHBORHOOD",
+        "es": null
+      },
+      "heroId": "spider-man",
+      "heroName": {
+        "en": "Spider-Man",
+        "es": "Spiderman"
+      },
+      "villainId": "ultron",
+      "villainName": {
+        "en": "Ultron",
+        "es": "Ultrón"
+      },
+      "modularSetId": "masters-of-evil",
+      "modularSetName": {
+        "en": "Masters of Evil",
+        "es": "Señores del Mal"
+      },
+      "tierId": "expert",
+      "villainStages": [
+        "II",
+        "III"
+      ],
+      "encounterSets": [
+        "standard",
+        "expert"
+      ],
+      "aspectAppearance": 3,
+      "recommendedAspect": "leadership",
+      "narrative": {
+        "previously": {
+          "en": "Ultron activates the city as a shield. Drones flood evacuation corridors while hired villains strike the responders trying to keep those corridors open. Spider-Man cannot reach the command core yet. His job is smaller and harder: make sure there is still a city worth saving when Iron Man gets there.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Ultron in Expert mode using Masters of Evil as the modular set.",
+        "Set aside The Masters of Evil side scheme. After normal setup, reveal it and resolve its printed “When Revealed” ability normally. The Master it puts into play is the objective target.",
+        "If FIREWALL STABLE is not marked, deal yourself 1 facedown encounter card after setup.",
+        "Resolve your Act II assault choice: SHIELD THE CITY removes 2 threat from the main scheme after setup (minimum 0); STRIKE THE CORE deals you 1 additional facedown encounter card after setup.",
+        "Place five spare counters beside the play area. Each facedown Ultron drone you defeat adds 1 Drone Rescue counter."
+      ],
+      "setupActions": [
+        {
+          "id": "i14-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Ultron in Expert mode using Masters of Evil as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i14-set-aside-masters",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Set aside The Masters of Evil side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "The Masters of Evil"
+        },
+        {
+          "id": "i14-reveal-masters",
+          "phase": "campaign-continuity",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "After normal setup, reveal the set-aside The Masters of Evil side scheme.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "The Masters of Evil"
+        },
+        {
+          "id": "i14-resolve-masters",
+          "phase": "campaign-continuity",
+          "kind": "resolve_printed_ability",
+          "actor": "player",
+          "text": "Resolve its printed “When Revealed” ability normally. The Master it puts into play is the objective target.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "The Masters of Evil"
+        },
+        {
+          "id": "i14-firewall-missing",
+          "phase": "campaign-continuity",
+          "kind": "deal_encounter_card",
+          "actor": "player",
+          "text": "If FIREWALL STABLE is not marked, deal yourself 1 facedown encounter card after setup.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "flag_absent",
+            "flagId": "firewall-stable"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i14-shield-city",
+          "phase": "campaign-continuity",
+          "kind": "modify_threat",
+          "actor": "player",
+          "text": "SHIELD THE CITY removes 2 threat from the main scheme after setup (minimum 0).",
+          "sourceStep": 4,
+          "condition": {
+            "kind": "interlude_choice",
+            "interludeId": "act-2-assault",
+            "choiceId": "shield-the-city"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i14-strike-core",
+          "phase": "campaign-continuity",
+          "kind": "deal_encounter_card",
+          "actor": "player",
+          "text": "STRIKE THE CORE deals you 1 additional facedown encounter card after setup.",
+          "sourceStep": 4,
+          "condition": {
+            "kind": "interlude_choice",
+            "interludeId": "act-2-assault",
+            "choiceId": "strike-the-core"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i14-init-rescue",
+          "phase": "campaign-continuity",
+          "kind": "initialize_counter",
+          "actor": "player",
+          "text": "Place five spare counters beside the play area.",
+          "sourceStep": 5,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "initialize_tracker"
+        },
+        {
+          "id": "i14-track-rescue",
+          "phase": "in-game-reminder",
+          "kind": "track_counter",
+          "actor": "player",
+          "text": "Each facedown Ultron drone you defeat adds 1 Drone Rescue counter.",
+          "sourceStep": 5,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "after_facedown_ultron_drone_defeated"
+        }
+      ],
+      "continuityInputs": [
+        "FIREWALL STABLE",
+        "act-2-assault"
+      ],
+      "objective": {
+        "description": {
+          "en": "Defeat the Masters of Evil minion placed into play by The Masters of Evil side scheme and collect 5 Drone Rescue counters before defeating Ultron.",
+          "es": null
+        },
+        "completionNote": {
+          "en": null,
+          "es": null
+        },
+        "flag": "CITY SAVED",
+        "flagId": "city-saved",
+        "recordImmediately": true,
+        "winGated": false,
+        "tracker": {
+          "kind": "compound_counter",
+          "checklist": [
+            "Objective Master minion defeated"
+          ],
+          "counterId": "drone-rescue",
+          "label": "Drone Rescue",
+          "target": 5
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel. The evacuation line holds. Spider-Man sends Tony a clean channel and one message: the city can survive the next few minutes. Make them count.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences. The line breaks in places, but enough civilians escape to keep the disaster from becoming total. Tony still gets his window - just a narrower one.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "Spider-Man",
+        "Ultron (II)",
+        "The Masters of Evil"
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": false,
+        "showMainSchemeThreat": false,
+        "showVillainStage": false,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": false
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 14 — THE LAST NEIGHBORHOOD"
+      }
+    },
+    {
+      "number": 15,
+      "id": "issue-15-the-ultron-directive",
+      "actId": "act-3",
+      "title": {
+        "en": "THE ULTRON DIRECTIVE",
+        "es": null
+      },
+      "heroId": "iron-man",
+      "heroName": {
+        "en": "Iron Man",
+        "es": "Iron Man"
+      },
+      "villainId": "ultron",
+      "villainName": {
+        "en": "Ultron",
+        "es": "Ultrón"
+      },
+      "modularSetId": "legions-of-hydra",
+      "modularSetName": {
+        "en": "Legions of Hydra",
+        "es": "Legiones de Hydra"
+      },
+      "tierId": "expert",
+      "villainStages": [
+        "II",
+        "III"
+      ],
+      "encounterSets": [
+        "standard",
+        "expert"
+      ],
+      "aspectAppearance": 3,
+      "recommendedAspect": "leadership",
+      "narrative": {
+        "previously": {
+          "en": "The Network converges on the old Stark satellite-control facility. Hydra hardware, Klaw frequencies, M.O.D.O.K. repair logic, stolen vibranium, and Ultron's own code finally occupy the same place. Tony understands the design because pieces of it came from him. Ending it means entering the system before Ultron can become impossible to locate again.",
+          "es": null
+        }
+      },
+      "setupSteps": [
+        "Build Ultron in Expert mode using Legions of Hydra as the modular set.",
+        "Before normal setup, if VIBRANIUM SECURED is marked, set Madame Hydra aside.",
+        "After normal setup, reveal one Legions of Hydra side scheme. If Madame Hydra was not set aside, resolve its printed “When Revealed” ability normally.",
+        "If Madame Hydra was set aside, reveal her when the first Legions of Hydra side scheme leaves play.",
+        "Resolve your Act II assault choice: SHIELD THE CITY deals you 1 facedown encounter card after setup; STRIKE THE CORE lets you ignore the highest Network Adaptation that would apply until the end of round 1.",
+        "Apply your Final Preparation points after all setup effects.",
+        "If you have 15+ Intel, you may equip Endgame Protocol without counting it against your normal Field Asset limit."
+      ],
+      "setupActions": [
+        {
+          "id": "i15-configure",
+          "phase": "issue-pre-setup",
+          "kind": "configure_scenario",
+          "actor": "player",
+          "text": "Build Ultron in Expert mode using Legions of Hydra as the modular set.",
+          "sourceStep": 1,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i15-set-aside-madame",
+          "phase": "issue-pre-setup",
+          "kind": "set_aside",
+          "actor": "player",
+          "text": "Before normal setup, if VIBRANIUM SECURED is marked, set Madame Hydra aside.",
+          "sourceStep": 2,
+          "condition": {
+            "kind": "flag_present",
+            "flagId": "vibranium-secured"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Madame Hydra"
+        },
+        {
+          "id": "i15-reveal-legions",
+          "phase": "campaign-continuity",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "After normal setup, reveal one Legions of Hydra side scheme.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Legions of Hydra"
+        },
+        {
+          "id": "i15-normal-madame-trigger",
+          "phase": "campaign-continuity",
+          "kind": "resolve_printed_ability",
+          "actor": "player",
+          "text": "If Madame Hydra was not set aside, resolve the revealed side scheme’s printed “When Revealed” ability normally.",
+          "sourceStep": 3,
+          "condition": {
+            "kind": "flag_absent",
+            "flagId": "vibranium-secured"
+          },
+          "appBehavior": "confirm",
+          "cardAnchorName": "Legions of Hydra"
+        },
+        {
+          "id": "i15-delayed-madame",
+          "phase": "in-game-reminder",
+          "kind": "reveal_card",
+          "actor": "player",
+          "text": "If Madame Hydra was set aside, reveal her when the first Legions of Hydra side scheme leaves play.",
+          "sourceStep": 4,
+          "condition": {
+            "kind": "flag_present",
+            "flagId": "vibranium-secured"
+          },
+          "appBehavior": "persistent_reminder",
+          "trigger": "first_legions_of_hydra_leaves_play",
+          "cardAnchorName": "Madame Hydra"
+        },
+        {
+          "id": "i15-shield-city",
+          "phase": "campaign-continuity",
+          "kind": "deal_encounter_card",
+          "actor": "player",
+          "text": "SHIELD THE CITY deals you 1 facedown encounter card after setup.",
+          "sourceStep": 5,
+          "condition": {
+            "kind": "interlude_choice",
+            "interludeId": "act-2-assault",
+            "choiceId": "shield-the-city"
+          },
+          "appBehavior": "confirm"
+        },
+        {
+          "id": "i15-strike-core",
+          "phase": "network-and-final-prep",
+          "kind": "suppress_network_adaptation",
+          "actor": "player",
+          "text": "STRIKE THE CORE lets you ignore the highest Network Adaptation that would apply until the end of round 1.",
+          "sourceStep": 5,
+          "condition": {
+            "kind": "interlude_choice",
+            "interludeId": "act-2-assault",
+            "choiceId": "strike-the-core"
+          },
+          "appBehavior": "generated"
+        },
+        {
+          "id": "i15-final-preparation",
+          "phase": "network-and-final-prep",
+          "kind": "spend_final_preparation",
+          "actor": "player",
+          "text": "Apply your Final Preparation points after all setup effects.",
+          "sourceStep": 6,
+          "condition": {
+            "kind": "always"
+          },
+          "appBehavior": "interactive"
+        },
+        {
+          "id": "i15-endgame-protocol",
+          "phase": "network-and-final-prep",
+          "kind": "equip_special_asset",
+          "actor": "player",
+          "text": "If you have 15+ Intel, you may equip Endgame Protocol without counting it against your normal Field Asset limit.",
+          "sourceStep": 7,
+          "condition": {
+            "kind": "intel_at_least",
+            "value": 15
+          },
+          "appBehavior": "interactive",
+          "cardAnchorName": "Endgame Protocol"
+        }
+      ],
+      "continuityInputs": [
+        "VIBRANIUM SECURED",
+        "act-2-assault",
+        "final-preparation"
+      ],
+      "objective": {
+        "description": {
+          "en": "Defeat Ultron while no side scheme is in play and no minion is engaged with you.",
+          "es": null
+        },
+        "completionNote": {
+          "en": null,
+          "es": null
+        },
+        "flag": "CLEAN SHUTDOWN",
+        "flagId": "clean-shutdown",
+        "recordImmediately": false,
+        "winGated": true,
+        "tracker": {
+          "kind": "win_end_state",
+          "winRequired": true,
+          "checklist": [
+            "No side scheme in play",
+            "No minion engaged with player"
+          ]
+        }
+      },
+      "outcomes": {
+        "win": {
+          "en": "Gain 1 Intel, then resolve the Campaign Ending. Tony forces the command core to execute its own shutdown routine. Across the city, drones fall out of the sky one by one - but whether Ultron is truly gone depends on how much of the Network you allowed him to build.",
+          "es": null
+        },
+        "loss": {
+          "en": "Apply the normal campaign loss consequences, then resolve the GHOST IN THE GRID ending. The facility is destroyed, but Ultron escapes as fragments of code before the Avengers can isolate every copy.",
+          "es": null
+        }
+      },
+      "cardAnchorNames": [
+        "Iron Man",
+        "Ultron (II)",
+        "Legions of Hydra",
+        "Madame Hydra"
+      ],
+      "liveTrackerPreset": {
+        "showRoundCounter": true,
+        "showMainSchemeThreat": true,
+        "showVillainStage": false,
+        "showObjectiveTracker": true,
+        "showBoardStateChecklist": true
+      },
+      "source": {
+        "document": "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+        "section": "ISSUE 15 — THE ULTRON DIRECTIVE"
+      }
+    }
+  ],
+  "endings": [
+    {
+      "id": "avengers-assemble",
+      "title": "Avengers Assemble",
+      "criteria": {
+        "issue15Result": "win",
+        "network": {
+          "min": 0,
+          "max": 3
+        },
+        "minimumMasteries": 4
+      },
+      "text": "The command core dies before the Network can route around the failure. The last drones collapse, the hidden accounts are exposed, and every surviving copy of Ultron loses synchronization. The Avengers did more than win the final battle: they denied him the chance to become a permanent condition of the world."
+    },
+    {
+      "id": "machine-broken",
+      "title": "Machine Broken",
+      "criteria": {
+        "issue15Result": "win",
+        "network": {
+          "min": 4,
+          "max": 6
+        }
+      },
+      "text": "Ultron is defeated and the command core is destroyed, but cleanup lasts for weeks. Dormant code fragments keep appearing in isolated systems. None can rebuild the whole Network alone. The world is safe — provided the Avengers keep watching."
+    },
+    {
+      "id": "pyrrhic-shutdown",
+      "title": "Pyrrhic Shutdown",
+      "criteria": {
+        "issue15Result": "win",
+        "network": {
+          "min": 7,
+          "max": null
+        }
+      },
+      "text": "The facility falls and Ultron’s body is destroyed, but too many nodes survive for anyone to prove the threat is gone. The Avengers win the night and lose certainty. Every future alarm could be a false positive, or the first heartbeat of the Network returning."
+    },
+    {
+      "id": "ghost-in-the-grid",
+      "title": "Ghost in the Grid",
+      "criteria": {
+        "issue15Result": "loss"
+      },
+      "text": "The physical core is destroyed, but Ultron escapes as fragments of code across the distributed Network. The Avengers prevent immediate extinction, not recurrence. The story continues in Mirror Protocol: every rematch represents hunting down a surviving branch of Ultron’s predictive model."
+    }
+  ],
+  "unresolvedEndingState": {
+    "criteria": {
+      "issue15Result": "win",
+      "network": {
+        "min": 0,
+        "max": 3
+      },
+      "maximumMasteries": 3
+    },
+    "behavior": "Return needs_author_decision. Do not silently assign another ending.",
+    "reason": "The source defines Avengers Assemble at Network 0–3 only when at least four Mastery stars are earned, but gives no fallback for fewer than four."
+  },
+  "secretEpilogue": {
+    "id": "the-initiative",
+    "title": "The Initiative",
+    "criteria": {
+      "allFiveMasteries": true,
+      "minimumIntel": 15,
+      "requiredFlag": "CLEAN SHUTDOWN"
+    },
+    "marksFlag": "THE INITIATIVE",
+    "text": "The Avengers keep the recovered tools, not as weapons, but as a shared playbook. In future campaigns, this may be the narrative reason the team begins better prepared."
+  },
+  "mirrorProtocol": {
+    "resetBeforeStarting": [
+      "scars",
+      "intel",
+      "network",
+      "campaignFlags",
+      "campaignSetup",
+      "fieldAssets"
+    ],
+    "sameModularAsOriginal": true,
+    "firstGameFourthAspectRequired": true,
+    "rows": [
+      {
+        "number": 1,
+        "id": "mirror-01",
+        "heroId": "spider-man",
+        "heroName": {
+          "en": "Spider-Man",
+          "es": null
+        },
+        "villainId": "rhino",
+        "villainName": {
+          "en": "Rhino",
+          "es": null
+        },
+        "modularSetId": "bomb-scare",
+        "modularSetName": {
+          "en": "Bomb Scare",
+          "es": null
+        },
+        "mode": "expert"
+      },
+      {
+        "number": 2,
+        "id": "mirror-02",
+        "heroId": "spider-man",
+        "heroName": {
+          "en": "Spider-Man",
+          "es": null
+        },
+        "villainId": "klaw",
+        "villainName": {
+          "en": "Klaw",
+          "es": null
+        },
+        "modularSetId": "under-attack",
+        "modularSetName": {
+          "en": "Under Attack",
+          "es": null
+        },
+        "mode": "standard"
+      },
+      {
+        "number": 3,
+        "id": "mirror-03",
+        "heroId": "spider-man",
+        "heroName": {
+          "en": "Spider-Man",
+          "es": null
+        },
+        "villainId": "klaw",
+        "villainName": {
+          "en": "Klaw",
+          "es": null
+        },
+        "modularSetId": "under-attack",
+        "modularSetName": {
+          "en": "Under Attack",
+          "es": null
+        },
+        "mode": "expert"
+      },
+      {
+        "number": 4,
+        "id": "mirror-04",
+        "heroId": "spider-man",
+        "heroName": {
+          "en": "Spider-Man",
+          "es": null
+        },
+        "villainId": "ultron",
+        "villainName": {
+          "en": "Ultron",
+          "es": null
+        },
+        "modularSetId": "masters-of-evil",
+        "modularSetName": {
+          "en": "Masters of Evil",
+          "es": null
+        },
+        "mode": "standard"
+      },
+      {
+        "number": 5,
+        "id": "mirror-05",
+        "heroId": "captain-marvel",
+        "heroName": {
+          "en": "Captain Marvel",
+          "es": null
+        },
+        "villainId": "klaw",
+        "villainName": {
+          "en": "Klaw",
+          "es": null
+        },
+        "modularSetId": "masters-of-evil",
+        "modularSetName": {
+          "en": "Masters of Evil",
+          "es": null
+        },
+        "mode": "expert"
+      },
+      {
+        "number": 6,
+        "id": "mirror-06",
+        "heroId": "captain-marvel",
+        "heroName": {
+          "en": "Captain Marvel",
+          "es": null
+        },
+        "villainId": "ultron",
+        "villainName": {
+          "en": "Ultron",
+          "es": null
+        },
+        "modularSetId": "bomb-scare",
+        "modularSetName": {
+          "en": "Bomb Scare",
+          "es": null
+        },
+        "mode": "standard"
+      },
+      {
+        "number": 7,
+        "id": "mirror-07",
+        "heroId": "captain-marvel",
+        "heroName": {
+          "en": "Captain Marvel",
+          "es": null
+        },
+        "villainId": "ultron",
+        "villainName": {
+          "en": "Ultron",
+          "es": null
+        },
+        "modularSetId": "bomb-scare",
+        "modularSetName": {
+          "en": "Bomb Scare",
+          "es": null
+        },
+        "mode": "expert"
+      },
+      {
+        "number": 8,
+        "id": "mirror-08",
+        "heroId": "captain-marvel",
+        "heroName": {
+          "en": "Captain Marvel",
+          "es": null
+        },
+        "villainId": "rhino",
+        "villainName": {
+          "en": "Rhino",
+          "es": null
+        },
+        "modularSetId": "under-attack",
+        "modularSetName": {
+          "en": "Under Attack",
+          "es": null
+        },
+        "mode": "standard"
+      },
+      {
+        "number": 9,
+        "id": "mirror-09",
+        "heroId": "she-hulk",
+        "heroName": {
+          "en": "She-Hulk",
+          "es": null
+        },
+        "villainId": "ultron",
+        "villainName": {
+          "en": "Ultron",
+          "es": null
+        },
+        "modularSetId": "under-attack",
+        "modularSetName": {
+          "en": "Under Attack",
+          "es": null
+        },
+        "mode": "expert"
+      },
+      {
+        "number": 10,
+        "id": "mirror-10",
+        "heroId": "she-hulk",
+        "heroName": {
+          "en": "She-Hulk",
+          "es": null
+        },
+        "villainId": "rhino",
+        "villainName": {
+          "en": "Rhino",
+          "es": null
+        },
+        "modularSetId": "legions-of-hydra",
+        "modularSetName": {
+          "en": "Legions of Hydra",
+          "es": null
+        },
+        "mode": "standard"
+      },
+      {
+        "number": 11,
+        "id": "mirror-11",
+        "heroId": "she-hulk",
+        "heroName": {
+          "en": "She-Hulk",
+          "es": null
+        },
+        "villainId": "rhino",
+        "villainName": {
+          "en": "Rhino",
+          "es": null
+        },
+        "modularSetId": "legions-of-hydra",
+        "modularSetName": {
+          "en": "Legions of Hydra",
+          "es": null
+        },
+        "mode": "expert"
+      },
+      {
+        "number": 12,
+        "id": "mirror-12",
+        "heroId": "she-hulk",
+        "heroName": {
+          "en": "She-Hulk",
+          "es": null
+        },
+        "villainId": "klaw",
+        "villainName": {
+          "en": "Klaw",
+          "es": null
+        },
+        "modularSetId": "the-doomsday-chair",
+        "modularSetName": {
+          "en": "The Doomsday Chair",
+          "es": null
+        },
+        "mode": "standard"
+      },
+      {
+        "number": 13,
+        "id": "mirror-13",
+        "heroId": "iron-man",
+        "heroName": {
+          "en": "Iron Man",
+          "es": null
+        },
+        "villainId": "rhino",
+        "villainName": {
+          "en": "Rhino",
+          "es": null
+        },
+        "modularSetId": "the-doomsday-chair",
+        "modularSetName": {
+          "en": "The Doomsday Chair",
+          "es": null
+        },
+        "mode": "expert"
+      },
+      {
+        "number": 14,
+        "id": "mirror-14",
+        "heroId": "iron-man",
+        "heroName": {
+          "en": "Iron Man",
+          "es": null
+        },
+        "villainId": "klaw",
+        "villainName": {
+          "en": "Klaw",
+          "es": null
+        },
+        "modularSetId": "masters-of-evil",
+        "modularSetName": {
+          "en": "Masters of Evil",
+          "es": null
+        },
+        "mode": "standard"
+      },
+      {
+        "number": 15,
+        "id": "mirror-15",
+        "heroId": "iron-man",
+        "heroName": {
+          "en": "Iron Man",
+          "es": null
+        },
+        "villainId": "klaw",
+        "villainName": {
+          "en": "Klaw",
+          "es": null
+        },
+        "modularSetId": "masters-of-evil",
+        "modularSetName": {
+          "en": "Masters of Evil",
+          "es": null
+        },
+        "mode": "expert"
+      },
+      {
+        "number": 16,
+        "id": "mirror-16",
+        "heroId": "iron-man",
+        "heroName": {
+          "en": "Iron Man",
+          "es": null
+        },
+        "villainId": "ultron",
+        "villainName": {
+          "en": "Ultron",
+          "es": null
+        },
+        "modularSetId": "legions-of-hydra",
+        "modularSetName": {
+          "en": "Legions of Hydra",
+          "es": null
+        },
+        "mode": "standard"
+      },
+      {
+        "number": 17,
+        "id": "mirror-17",
+        "heroId": "black-panther",
+        "heroName": {
+          "en": "Black Panther",
+          "es": null
+        },
+        "villainId": "klaw",
+        "villainName": {
+          "en": "Klaw",
+          "es": null
+        },
+        "modularSetId": "legions-of-hydra",
+        "modularSetName": {
+          "en": "Legions of Hydra",
+          "es": null
+        },
+        "mode": "expert"
+      },
+      {
+        "number": 18,
+        "id": "mirror-18",
+        "heroId": "black-panther",
+        "heroName": {
+          "en": "Black Panther",
+          "es": null
+        },
+        "villainId": "ultron",
+        "villainName": {
+          "en": "Ultron",
+          "es": null
+        },
+        "modularSetId": "the-doomsday-chair",
+        "modularSetName": {
+          "en": "The Doomsday Chair",
+          "es": null
+        },
+        "mode": "standard"
+      },
+      {
+        "number": 19,
+        "id": "mirror-19",
+        "heroId": "black-panther",
+        "heroName": {
+          "en": "Black Panther",
+          "es": null
+        },
+        "villainId": "ultron",
+        "villainName": {
+          "en": "Ultron",
+          "es": null
+        },
+        "modularSetId": "the-doomsday-chair",
+        "modularSetName": {
+          "en": "The Doomsday Chair",
+          "es": null
+        },
+        "mode": "expert"
+      },
+      {
+        "number": 20,
+        "id": "mirror-20",
+        "heroId": "black-panther",
+        "heroName": {
+          "en": "Black Panther",
+          "es": null
+        },
+        "villainId": "rhino",
+        "villainName": {
+          "en": "Rhino",
+          "es": null
+        },
+        "modularSetId": "bomb-scare",
+        "modularSetName": {
+          "en": "Bomb Scare",
+          "es": null
+        },
+        "mode": "standard"
+      }
+    ],
+    "completionTarget": 20,
+    "totalJourneyGames": 35
+  },
+  "optionalModes": [
+    {
+      "id": "skirmish",
+      "label": "Skirmish",
+      "text": "Use one villain stage for a shorter training game."
+    },
+    {
+      "id": "heroic-1",
+      "label": "Heroic 1",
+      "text": "Use Expert mode and deal one additional encounter card during the normal encounter-card step each villain phase."
+    },
+    {
+      "id": "random-modular-gauntlet",
+      "label": "Random Modular Gauntlet",
+      "text": "For each hero, defeat Rhino, Klaw, and Ultron while using a different randomly chosen Core modular set each time."
+    },
+    {
+      "id": "perfect-core",
+      "label": "Perfect Core",
+      "text": "Complete all 30 official Standard/Expert matchup boxes, all four aspects for all five heroes, and all five Mastery stars."
+    }
+  ],
+  "localization": {
+    "defaultUiLanguage": "en",
+    "physicalCardLanguageDefault": "es",
+    "narrativeLanguagesAvailable": [
+      "en"
+    ],
+    "cardNameLanguagesAvailable": [
+      "en",
+      "es"
+    ],
+    "fallbackRule": "If Spanish campaign narrative is absent, show English and label it as not yet translated; never machine-invent hidden source text."
+  },
+  "contentWarnings": [],
+  "sourceFiles": [
+    "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
+    "Core_Protocol_v1.1_Quickplay_Companion(1).docx",
+    "Core_Protocol_v1.1_Quickplay_Companion(1).pdf",
+    "marvel_champions_journey_tracker_v2_core_protocol(1).xlsx"
+  ]
+}

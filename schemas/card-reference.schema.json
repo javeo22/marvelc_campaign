@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://core-protocol.example/schemas/card-reference.schema.json",
+  "title": "Bilingual Card Reference Export",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source_workbook",
+    "record_count",
+    "records"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "source_workbook": {
+      "type": "string"
+    },
+    "record_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "integration_note": {
+      "type": "string"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "record_id",
+          "pack_en",
+          "pack_es",
+          "collector_number",
+          "name_en",
+          "name_es",
+          "category",
+          "set_en",
+          "set_es",
+          "source_en",
+          "source_es",
+          "marvelcdb_code",
+          "marvelcdb_alternate_codes",
+          "match_status"
+        ],
+        "properties": {
+          "record_id": {
+            "type": "string"
+          },
+          "pack_en": {
+            "type": "string"
+          },
+          "pack_es": {
+            "type": "string"
+          },
+          "collector_number": {
+            "type": "string"
+          },
+          "name_en": {
+            "type": "string"
+          },
+          "name_es": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "set_en": {
+            "type": "string"
+          },
+          "set_es": {
+            "type": "string"
+          },
+          "source_en": {
+            "type": "string"
+          },
+          "source_es": {
+            "type": "string"
+          },
+          "marvelcdb_code": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "match_status": {
+            "type": "string"
+          },
+          "marvelcdb_alternate_codes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

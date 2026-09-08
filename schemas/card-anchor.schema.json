@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://core-protocol.example/schemas/card-anchor.schema.json",
+  "title": "Core Protocol Card Anchors",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "source",
+    "anchors",
+    "launchGate"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "verificationNotes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "launchGate": {
+      "type": "string",
+      "minLength": 1
+    },
+    "anchors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "requestedName",
+          "status",
+          "matches"
+        ],
+        "properties": {
+          "requestedName": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "matched",
+              "ambiguous",
+              "missing"
+            ]
+          },
+          "matches": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "recordId",
+                "nameEn",
+                "nameEs",
+                "packEn",
+                "collectorNumber",
+                "marvelcdbCode",
+                "alternateMarvelcdbCodes",
+                "matchStatus"
+              ],
+              "properties": {
+                "recordId": {
+                  "type": "string"
+                },
+                "nameEn": {
+                  "type": "string"
+                },
+                "nameEs": {
+                  "type": "string"
+                },
+                "packEn": {
+                  "type": "string"
+                },
+                "collectorNumber": {
+                  "type": "string"
+                },
+                "marvelcdbCode": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "alternateMarvelcdbCodes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "uniqueItems": true
+                },
+                "matchStatus": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

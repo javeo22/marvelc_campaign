@@ -1,0 +1,2033 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://core-protocol.example/schemas/campaign-definition.schema.json",
+  "title": "Core Protocol Campaign Definition",
+  "type": "object",
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "id",
+    "version",
+    "title",
+    "subtitle",
+    "format",
+    "sourceEdition",
+    "collectionRequirements",
+    "rulesAuthority",
+    "principles",
+    "setupOrder",
+    "setupActionPhases",
+    "tiers",
+    "aspects",
+    "aspectPassport",
+    "progression",
+    "networkAdaptations",
+    "fieldAssets",
+    "heroes",
+    "acts",
+    "interludes",
+    "finalPreparation",
+    "issues",
+    "endings",
+    "unresolvedEndingState",
+    "secretEpilogue",
+    "mirrorProtocol",
+    "optionalModes",
+    "localization",
+    "contentWarnings",
+    "sourceFiles"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "schemaVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "id": {
+      "const": "core-protocol"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "$ref": "#/$defs/localized"
+    },
+    "subtitle": {
+      "$ref": "#/$defs/localized"
+    },
+    "format": {
+      "const": "true-solo"
+    },
+    "sourceEdition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "collectionRequirements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/collectionRequirement"
+      },
+      "minItems": 1
+    },
+    "rulesAuthority": {
+      "$ref": "#/$defs/rulesAuthority"
+    },
+    "principles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "setupOrder": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/setupOrderStep"
+      },
+      "minItems": 5,
+      "maxItems": 5
+    },
+    "setupActionPhases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/setupActionPhase"
+      },
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "tiers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/tier"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "aspects": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "aggression",
+          "justice",
+          "leadership",
+          "protection"
+        ]
+      },
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true
+    },
+    "aspectPassport": {
+      "$ref": "#/$defs/aspectPassport"
+    },
+    "progression": {
+      "$ref": "#/$defs/progression"
+    },
+    "networkAdaptations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/networkAdaptation"
+      },
+      "minItems": 5,
+      "maxItems": 5
+    },
+    "fieldAssets": {
+      "$ref": "#/$defs/fieldAssetSet"
+    },
+    "heroes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/hero"
+      },
+      "minItems": 5,
+      "maxItems": 5
+    },
+    "acts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/act"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "interludes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/interlude"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "finalPreparation": {
+      "$ref": "#/$defs/finalPreparation"
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/issue"
+      },
+      "minItems": 15,
+      "maxItems": 15
+    },
+    "endings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ending"
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "unresolvedEndingState": {
+      "$ref": "#/$defs/unresolvedEndingState"
+    },
+    "secretEpilogue": {
+      "$ref": "#/$defs/secretEpilogue"
+    },
+    "mirrorProtocol": {
+      "$ref": "#/$defs/mirrorProtocol"
+    },
+    "optionalModes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/optionalMode"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "localization": {
+      "$ref": "#/$defs/localization"
+    },
+    "contentWarnings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "sourceFiles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "localized": {
+      "type": "object",
+      "required": [
+        "en",
+        "es"
+      ],
+      "properties": {
+        "en": {
+          "type": "string",
+          "minLength": 1
+        },
+        "es": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "localizedNullable": {
+      "type": "object",
+      "required": [
+        "en",
+        "es"
+      ],
+      "properties": {
+        "en": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "es": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "collectionRequirement": {
+      "type": "object",
+      "required": [
+        "pack",
+        "packEs",
+        "required"
+      ],
+      "properties": {
+        "pack": {
+          "type": "string",
+          "minLength": 1
+        },
+        "packEs": {
+          "type": "string",
+          "minLength": 1
+        },
+        "required": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "rulesAuthority": {
+      "type": "object",
+      "required": [
+        "text",
+        "sourceDocument"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceDocument": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "setupOrderStep": {
+      "type": "object",
+      "required": [
+        "step",
+        "id",
+        "text"
+      ],
+      "properties": {
+        "step": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "setupActionPhase": {
+      "type": "object",
+      "required": [
+        "id",
+        "order",
+        "label",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "issue-pre-setup",
+            "normal-scenario-setup",
+            "campaign-continuity",
+            "network-and-final-prep",
+            "opening-hand",
+            "in-game-reminder"
+          ]
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "setupActionCondition": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "kind"
+          ],
+          "properties": {
+            "kind": {
+              "const": "always"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "flagId"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "flag_present",
+                "flag_absent"
+              ]
+            },
+            "flagId": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "interludeId",
+            "choiceId"
+          ],
+          "properties": {
+            "kind": {
+              "const": "interlude_choice"
+            },
+            "interludeId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "choiceId": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "value"
+          ],
+          "properties": {
+            "kind": {
+              "const": "intel_at_least"
+            },
+            "value": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "setupAction": {
+      "type": "object",
+      "required": [
+        "id",
+        "phase",
+        "kind",
+        "actor",
+        "text",
+        "sourceStep",
+        "condition",
+        "appBehavior"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^i[0-9]{2}-[a-z0-9-]+$"
+        },
+        "phase": {
+          "enum": [
+            "issue-pre-setup",
+            "campaign-continuity",
+            "network-and-final-prep",
+            "in-game-reminder"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "actor": {
+          "const": "player"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceStep": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "condition": {
+          "$ref": "#/$defs/setupActionCondition"
+        },
+        "appBehavior": {
+          "enum": [
+            "confirm",
+            "generated",
+            "initialize_tracker",
+            "persistent_reminder",
+            "interactive"
+          ]
+        },
+        "trigger": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cardAnchorName": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": {
+      "type": "object",
+      "required": [
+        "id",
+        "label",
+        "officialClear",
+        "villainStages",
+        "encounterSets"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "standard",
+            "veteran",
+            "expert"
+          ]
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "officialClear": {
+          "enum": [
+            "standard",
+            "expert",
+            null
+          ]
+        },
+        "villainStages": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "I",
+              "II",
+              "III"
+            ]
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "encounterSets": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "standard",
+              "expert"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "aspectPassport": {
+      "type": "object",
+      "required": [
+        "mainStoryRule",
+        "firstMirrorRule",
+        "basicCardsReusable",
+        "recommendedRoutesAreDefaultsNotRules"
+      ],
+      "properties": {
+        "mainStoryRule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "firstMirrorRule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "basicCardsReusable": {
+          "type": "boolean"
+        },
+        "recommendedRoutesAreDefaultsNotRules": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "progression": {
+      "type": "object",
+      "required": [
+        "intel",
+        "network",
+        "scars",
+        "recording"
+      ],
+      "properties": {
+        "intel": {
+          "type": "object",
+          "required": [
+            "initial",
+            "minimum",
+            "deltas",
+            "unlockThresholds"
+          ],
+          "properties": {
+            "initial": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minimum": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "deltas": {
+              "type": "object",
+              "required": [
+                "issueWin",
+                "optionalObjective",
+                "firstHeroMastery"
+              ],
+              "properties": {
+                "issueWin": {
+                  "type": "integer"
+                },
+                "optionalObjective": {
+                  "type": "integer"
+                },
+                "firstHeroMastery": {
+                  "type": "integer"
+                }
+              },
+              "additionalProperties": false
+            },
+            "unlockThresholds": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "minItems": 5,
+              "maxItems": 5,
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "network": {
+          "type": "object",
+          "required": [
+            "initial",
+            "minimum",
+            "deltas",
+            "adaptationsCumulative"
+          ],
+          "properties": {
+            "initial": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minimum": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "deltas": {
+              "type": "object",
+              "required": [
+                "heroDefeat",
+                "mainSchemeLoss"
+              ],
+              "properties": {
+                "heroDefeat": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "mainSchemeLoss": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "additionalProperties": false
+            },
+            "adaptationsCumulative": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "scars": {
+          "type": "object",
+          "required": [
+            "initialPerHero",
+            "maximumPerHero",
+            "onHeroDefeat",
+            "onHeroWin",
+            "setupEffect"
+          ],
+          "properties": {
+            "initialPerHero": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "maximumPerHero": {
+              "type": "integer",
+              "const": 2
+            },
+            "onHeroDefeat": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "onHeroWin": {
+              "type": "integer",
+              "maximum": 0
+            },
+            "setupEffect": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        "recording": {
+          "type": "object",
+          "required": [
+            "objectivePersistsAfterLoss",
+            "masteryPersistsAfterLoss",
+            "exception"
+          ],
+          "properties": {
+            "objectivePersistsAfterLoss": {
+              "type": "boolean"
+            },
+            "masteryPersistsAfterLoss": {
+              "type": "boolean"
+            },
+            "exception": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "networkAdaptation": {
+      "type": "object",
+      "required": [
+        "id",
+        "threshold",
+        "name",
+        "effect",
+        "cumulative"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "threshold": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "name": {
+          "$ref": "#/$defs/localized"
+        },
+        "effect": {
+          "$ref": "#/$defs/localized"
+        },
+        "cumulative": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "fieldAsset": {
+      "type": "object",
+      "required": [
+        "id",
+        "unlockIntel",
+        "name",
+        "effect",
+        "usesPerGame",
+        "outOfPlayReference",
+        "special"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "unlockIntel": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "name": {
+          "$ref": "#/$defs/localized"
+        },
+        "effect": {
+          "$ref": "#/$defs/localized"
+        },
+        "usesPerGame": {
+          "const": 1
+        },
+        "outOfPlayReference": {
+          "const": true
+        },
+        "special": {
+          "enum": [
+            "issue-15-only",
+            null
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "fieldAssetSet": {
+      "type": "object",
+      "required": [
+        "selectionRule",
+        "outOfPlayRule",
+        "assets",
+        "endgameProtocolException"
+      ],
+      "properties": {
+        "selectionRule": {
+          "type": "object",
+          "required": [
+            "defaultLimit",
+            "networkAtLeast",
+            "elevatedLimit"
+          ],
+          "properties": {
+            "defaultLimit": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "networkAtLeast": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "elevatedLimit": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        },
+        "outOfPlayRule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/fieldAsset"
+          },
+          "minItems": 9,
+          "maxItems": 9
+        },
+        "endgameProtocolException": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "hero": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "recommendedAspectRoute",
+        "mastery",
+        "scarMaximum"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "spider-man",
+            "captain-marvel",
+            "she-hulk",
+            "iron-man",
+            "black-panther"
+          ]
+        },
+        "name": {
+          "$ref": "#/$defs/localized"
+        },
+        "recommendedAspectRoute": {
+          "type": "object",
+          "required": [
+            "mainStory",
+            "firstMirror"
+          ],
+          "properties": {
+            "mainStory": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "aggression",
+                  "justice",
+                  "leadership",
+                  "protection"
+                ]
+              },
+              "minItems": 3,
+              "maxItems": 3,
+              "uniqueItems": true
+            },
+            "firstMirror": {
+              "enum": [
+                "aggression",
+                "justice",
+                "leadership",
+                "protection"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "mastery": {
+          "type": "object",
+          "required": [
+            "heroId",
+            "heroName",
+            "signature",
+            "condition",
+            "firstCompletionIntel",
+            "persistsAfterLoss"
+          ],
+          "properties": {
+            "heroId": {
+              "enum": [
+                "spider-man",
+                "captain-marvel",
+                "she-hulk",
+                "iron-man",
+                "black-panther"
+              ]
+            },
+            "heroName": {
+              "$ref": "#/$defs/localized"
+            },
+            "signature": {
+              "$ref": "#/$defs/localized"
+            },
+            "condition": {
+              "$ref": "#/$defs/localized"
+            },
+            "firstCompletionIntel": {
+              "const": 1
+            },
+            "persistsAfterLoss": {
+              "const": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "scarMaximum": {
+          "const": 2
+        }
+      },
+      "additionalProperties": false
+    },
+    "act": {
+      "type": "object",
+      "required": [
+        "id",
+        "number",
+        "title",
+        "issueRange",
+        "tierId"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "act-1",
+            "act-2",
+            "act-3"
+          ]
+        },
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "title": {
+          "$ref": "#/$defs/localized"
+        },
+        "issueRange": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 15
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "tierId": {
+          "enum": [
+            "standard",
+            "veteran",
+            "expert"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "interludeChoiceEffect": {
+      "type": "object",
+      "required": [
+        "issue",
+        "effect"
+      ],
+      "properties": {
+        "issue": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 15
+        },
+        "effect": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "interludeChoice": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "effects"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "name": {
+          "$ref": "#/$defs/localized"
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/interludeChoiceEffect"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "actRecovery": {
+      "type": "object",
+      "required": [
+        "actId",
+        "objectiveThreshold",
+        "lowWinThreshold",
+        "networkReductionEach",
+        "minimumNetwork"
+      ],
+      "properties": {
+        "actId": {
+          "enum": [
+            "act-1",
+            "act-2"
+          ]
+        },
+        "objectiveThreshold": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "lowWinThreshold": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "networkReductionEach": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "minimumNetwork": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "interlude": {
+      "type": "object",
+      "required": [
+        "id",
+        "afterIssue",
+        "title",
+        "prompt",
+        "choices",
+        "actRecovery"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "act-1-lead",
+            "act-2-assault"
+          ]
+        },
+        "afterIssue": {
+          "enum": [
+            5,
+            10
+          ]
+        },
+        "title": {
+          "$ref": "#/$defs/localized"
+        },
+        "prompt": {
+          "$ref": "#/$defs/localized"
+        },
+        "choices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/interludeChoice"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "actRecovery": {
+          "$ref": "#/$defs/actRecovery"
+        }
+      },
+      "additionalProperties": false
+    },
+    "finalPreparation": {
+      "type": "object",
+      "required": [
+        "issue",
+        "sourceFlags",
+        "pointsPerFlag",
+        "spendAfterAllSetupEffects",
+        "spendOptions",
+        "repeatOptionsAllowed"
+      ],
+      "properties": {
+        "issue": {
+          "const": 15
+        },
+        "sourceFlags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "pointsPerFlag": {
+          "const": 1
+        },
+        "spendAfterAllSetupEffects": {
+          "const": true
+        },
+        "spendOptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/spendOption"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "repeatOptionsAllowed": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "spendOption": {
+      "type": "object",
+      "required": [
+        "id",
+        "effect"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "remove-threat",
+            "damage-minion",
+            "heal-iron-man"
+          ]
+        },
+        "effect": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "objectiveTracker": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "checklist"
+          ],
+          "properties": {
+            "kind": {
+              "const": "check"
+            },
+            "checklist": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "checklist",
+            "deadline"
+          ],
+          "properties": {
+            "kind": {
+              "const": "deadline_check"
+            },
+            "checklist": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            },
+            "deadline": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "checklist"
+          ],
+          "properties": {
+            "kind": {
+              "const": "compound_check"
+            },
+            "checklist": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 2
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "counterId",
+            "label",
+            "target"
+          ],
+          "properties": {
+            "kind": {
+              "const": "counter"
+            },
+            "counterId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "target": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "incrementHint": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "checklist",
+            "counterId",
+            "label",
+            "target"
+          ],
+          "properties": {
+            "kind": {
+              "const": "compound_counter"
+            },
+            "checklist": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            },
+            "counterId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "target": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "counterId",
+            "label",
+            "target"
+          ],
+          "properties": {
+            "kind": {
+              "const": "distinct_counter"
+            },
+            "counterId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "target": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "checklist"
+          ],
+          "properties": {
+            "kind": {
+              "const": "end_state"
+            },
+            "checklist": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "checklist",
+            "deadlineRound"
+          ],
+          "properties": {
+            "kind": {
+              "const": "round_deadline"
+            },
+            "checklist": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            },
+            "deadlineRound": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "winRequired"
+          ],
+          "properties": {
+            "kind": {
+              "const": "win_end_state"
+            },
+            "winRequired": {
+              "const": true
+            },
+            "checklist": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            },
+            "metric": {
+              "enum": [
+                "mainSchemeThreat"
+              ]
+            },
+            "operator": {
+              "enum": [
+                "<="
+              ]
+            },
+            "target": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false,
+          "oneOf": [
+            {
+              "required": [
+                "checklist"
+              ],
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "metric"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "operator"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "target"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "required": [
+                "metric",
+                "operator",
+                "target"
+              ],
+              "not": {
+                "required": [
+                  "checklist"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "objective": {
+      "type": "object",
+      "required": [
+        "description",
+        "completionNote",
+        "flag",
+        "flagId",
+        "recordImmediately",
+        "winGated",
+        "tracker"
+      ],
+      "properties": {
+        "description": {
+          "$ref": "#/$defs/localized"
+        },
+        "completionNote": {
+          "$ref": "#/$defs/localizedNullable"
+        },
+        "flag": {
+          "type": "string",
+          "minLength": 1
+        },
+        "flagId": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "recordImmediately": {
+          "type": "boolean"
+        },
+        "winGated": {
+          "type": "boolean"
+        },
+        "tracker": {
+          "$ref": "#/$defs/objectiveTracker"
+        }
+      },
+      "additionalProperties": false
+    },
+    "liveTrackerPreset": {
+      "type": "object",
+      "required": [
+        "showRoundCounter",
+        "showMainSchemeThreat",
+        "showVillainStage",
+        "showObjectiveTracker",
+        "showBoardStateChecklist"
+      ],
+      "properties": {
+        "showRoundCounter": {
+          "type": "boolean"
+        },
+        "showMainSchemeThreat": {
+          "type": "boolean"
+        },
+        "showVillainStage": {
+          "type": "boolean"
+        },
+        "showObjectiveTracker": {
+          "type": "boolean"
+        },
+        "showBoardStateChecklist": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "sourceReference": {
+      "type": "object",
+      "required": [
+        "document",
+        "section"
+      ],
+      "properties": {
+        "document": {
+          "type": "string",
+          "minLength": 1
+        },
+        "section": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "issue": {
+      "type": "object",
+      "required": [
+        "number",
+        "id",
+        "actId",
+        "title",
+        "heroId",
+        "heroName",
+        "villainId",
+        "villainName",
+        "modularSetId",
+        "modularSetName",
+        "tierId",
+        "villainStages",
+        "encounterSets",
+        "aspectAppearance",
+        "recommendedAspect",
+        "narrative",
+        "setupSteps",
+        "setupActions",
+        "continuityInputs",
+        "objective",
+        "outcomes",
+        "cardAnchorNames",
+        "liveTrackerPreset",
+        "source"
+      ],
+      "properties": {
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 15
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^issue-[0-9]{2}-[a-z0-9-]+$"
+        },
+        "actId": {
+          "enum": [
+            "act-1",
+            "act-2",
+            "act-3"
+          ]
+        },
+        "title": {
+          "$ref": "#/$defs/localized"
+        },
+        "heroId": {
+          "enum": [
+            "spider-man",
+            "captain-marvel",
+            "she-hulk",
+            "iron-man",
+            "black-panther"
+          ]
+        },
+        "heroName": {
+          "$ref": "#/$defs/localized"
+        },
+        "villainId": {
+          "enum": [
+            "rhino",
+            "klaw",
+            "ultron"
+          ]
+        },
+        "villainName": {
+          "$ref": "#/$defs/localized"
+        },
+        "modularSetId": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "modularSetName": {
+          "$ref": "#/$defs/localized"
+        },
+        "tierId": {
+          "enum": [
+            "standard",
+            "veteran",
+            "expert"
+          ]
+        },
+        "villainStages": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "I",
+              "II",
+              "III"
+            ]
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "encounterSets": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "standard",
+              "expert"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "aspectAppearance": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "recommendedAspect": {
+          "enum": [
+            "aggression",
+            "justice",
+            "leadership",
+            "protection"
+          ]
+        },
+        "narrative": {
+          "type": "object",
+          "required": [
+            "previously"
+          ],
+          "properties": {
+            "previously": {
+              "$ref": "#/$defs/localized"
+            }
+          },
+          "additionalProperties": false
+        },
+        "setupSteps": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "setupActions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/setupAction"
+          },
+          "minItems": 1
+        },
+        "continuityInputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "objective": {
+          "$ref": "#/$defs/objective"
+        },
+        "outcomes": {
+          "type": "object",
+          "required": [
+            "win",
+            "loss"
+          ],
+          "properties": {
+            "win": {
+              "$ref": "#/$defs/localized"
+            },
+            "loss": {
+              "$ref": "#/$defs/localized"
+            }
+          },
+          "additionalProperties": false
+        },
+        "cardAnchorNames": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "liveTrackerPreset": {
+          "$ref": "#/$defs/liveTrackerPreset"
+        },
+        "source": {
+          "$ref": "#/$defs/sourceReference"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ending": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "criteria",
+        "text"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "criteria": {
+          "type": "object",
+          "minProperties": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "unresolvedEndingState": {
+      "type": "object",
+      "required": [
+        "criteria",
+        "behavior",
+        "reason"
+      ],
+      "properties": {
+        "criteria": {
+          "type": "object",
+          "minProperties": 1
+        },
+        "behavior": {
+          "const": "Return needs_author_decision. Do not silently assign another ending."
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "secretEpilogue": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "criteria",
+        "marksFlag",
+        "text"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "criteria": {
+          "type": "object",
+          "minProperties": 1
+        },
+        "marksFlag": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "mirrorRow": {
+      "type": "object",
+      "required": [
+        "number",
+        "id",
+        "heroId",
+        "heroName",
+        "villainId",
+        "villainName",
+        "modularSetId",
+        "modularSetName",
+        "mode"
+      ],
+      "properties": {
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^mirror-[0-9]{2}$"
+        },
+        "heroId": {
+          "enum": [
+            "spider-man",
+            "captain-marvel",
+            "she-hulk",
+            "iron-man",
+            "black-panther"
+          ]
+        },
+        "heroName": {
+          "$ref": "#/$defs/localized"
+        },
+        "villainId": {
+          "enum": [
+            "rhino",
+            "klaw",
+            "ultron"
+          ]
+        },
+        "villainName": {
+          "$ref": "#/$defs/localized"
+        },
+        "modularSetId": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "modularSetName": {
+          "$ref": "#/$defs/localized"
+        },
+        "mode": {
+          "enum": [
+            "standard",
+            "expert"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "mirrorProtocol": {
+      "type": "object",
+      "required": [
+        "resetBeforeStarting",
+        "sameModularAsOriginal",
+        "firstGameFourthAspectRequired",
+        "rows",
+        "completionTarget",
+        "totalJourneyGames"
+      ],
+      "properties": {
+        "resetBeforeStarting": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "sameModularAsOriginal": {
+          "const": true
+        },
+        "firstGameFourthAspectRequired": {
+          "const": true
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/mirrorRow"
+          },
+          "minItems": 20,
+          "maxItems": 20
+        },
+        "completionTarget": {
+          "const": 20
+        },
+        "totalJourneyGames": {
+          "const": 35
+        }
+      },
+      "additionalProperties": false
+    },
+    "optionalMode": {
+      "type": "object",
+      "required": [
+        "id",
+        "label",
+        "text"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "localization": {
+      "type": "object",
+      "required": [
+        "defaultUiLanguage",
+        "physicalCardLanguageDefault",
+        "narrativeLanguagesAvailable",
+        "cardNameLanguagesAvailable",
+        "fallbackRule"
+      ],
+      "properties": {
+        "defaultUiLanguage": {
+          "enum": [
+            "en",
+            "es"
+          ]
+        },
+        "physicalCardLanguageDefault": {
+          "enum": [
+            "en",
+            "es",
+            "both"
+          ]
+        },
+        "narrativeLanguagesAvailable": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "en",
+              "es"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "cardNameLanguagesAvailable": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "en",
+              "es"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "fallbackRule": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,21 @@
+﻿number,hero,villain,modular,mode
+1,Spider-Man,Rhino,Bomb Scare,expert
+2,Spider-Man,Klaw,Under Attack,standard
+3,Spider-Man,Klaw,Under Attack,expert
+4,Spider-Man,Ultron,Masters of Evil,standard
+5,Captain Marvel,Klaw,Masters of Evil,expert
+6,Captain Marvel,Ultron,Bomb Scare,standard
+7,Captain Marvel,Ultron,Bomb Scare,expert
+8,Captain Marvel,Rhino,Under Attack,standard
+9,She-Hulk,Ultron,Under Attack,expert
+10,She-Hulk,Rhino,Legions of Hydra,standard
+11,She-Hulk,Rhino,Legions of Hydra,expert
+12,She-Hulk,Klaw,The Doomsday Chair,standard
+13,Iron Man,Rhino,The Doomsday Chair,expert
+14,Iron Man,Klaw,Masters of Evil,standard
+15,Iron Man,Klaw,Masters of Evil,expert
+16,Iron Man,Ultron,Legions of Hydra,standard
+17,Black Panther,Klaw,Legions of Hydra,expert
+18,Black Panther,Ultron,The Doomsday Chair,standard
+19,Black Panther,Ultron,The Doomsday Chair,expert
+20,Black Panther,Rhino,Bomb Scare,standard

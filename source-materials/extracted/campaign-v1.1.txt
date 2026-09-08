@@ -1,0 +1,737 @@
+TABLE
+ ||  || 
+ENDTABLE
+P|Normal|MARVEL CHAMPIONS
+P|Normal|CORE PROTOCOL
+P|Normal|THE ULTRON DIRECTIVE
+TABLE
+CAMPAIGN PREMISE / A fifteen-issue, true-solo story campaign that turns the Core Set into a connected comic-book arc. Rotate through all five Core heroes, confront Rhino, Klaw, and Ultron across escalating difficulty, carry forward victories and failures, unlock campaign assets, suffer scars, pursue leads, and finish with a post-campaign completion protocol covering every hero-villain pairing on both official Standard and Expert.
+ENDTABLE
+TABLE
+PLAYER || Javi
+COLLECTION || Core Set only / Caja básica solamente
+FORMAT || True solo / un héroe
+VERSION || 1.1 - Balanced playtest edition
+ENDTABLE
+P|Normal|NO ARTWORK. ORIGINAL CAMPAIGN TEXT. FOR PERSONAL PLAY.
+P|Normal|This unofficial fan campaign is not affiliated with or endorsed by Fantasy Flight Games or Marvel.
+P|Normal|CAMPAIGN DOSSIER
+P|Normal|How to Use This Book
+P|Normal|The goal is discovery first, difficulty second, and continuity throughout.
+TABLE
+ || 
+ENDTABLE
+P|Normal|Core Protocol is built for your current collection: the Marvel Champions Core Set, played true solo. Every actual hero card, player card, villain card, encounter card, modular set, and difficulty card used in play comes from that box. The only new components are campaign reference cards and tracking rules printed in this book.
+TABLE
+RULES AUTHORITY / Use the current Marvel Champions Rules Reference for normal timing and card interactions. Campaign instructions only add setup, tracking, or one-use campaign effects; they do not rewrite printed card text unless a mission explicitly says otherwise.
+ENDTABLE
+P|Normal|CORE LOOP
+P|Normal|Campaign Structure
+P|Normal|15 story issues + 20 Mirror Protocol rematches
+TABLE
+SETUP ORDER / 1. Apply issue pre-setup instructions and set-aside cards. / 2. Complete normal scenario setup, including main-scheme and villain setup abilities. / 3. Resolve issue campaign setup, continuity flags, and Interlude effects. / 4. Apply Network setup adaptations and Final Preparation effects. / 5. Draw/mulligan. Then resolve Prepared Ambush, if active. || RECORDING RULES / • Record an optional objective or Hero Mastery immediately when completed. It stays completed even if you later lose, unless it explicitly requires a win. / • A Scar lowers the identity dial by 1 at setup per Scar; it does not reduce maximum hit points. / • Remove 1 Scar whenever that hero wins an issue.
+ENDTABLE
+P|List Bullet|Issues 1-5 - Act I: Standard. Learn the roster and reveal the pattern.
+P|List Bullet|Issues 6-10 - Act II: Veteran. Use villain stages I/II plus the Standard and Expert encounter sets. Veteran is a custom campaign bridge, not an official Standard or Expert clear.
+P|List Bullet|Issues 11-15 - Act III: Expert. Use villain stages II/III plus the Standard and Expert encounter sets.
+P|List Bullet|After Issue 15 - Mirror Protocol. Replay Act I pairings on Expert, Act III pairings on Standard, and each Act II Veteran pairing once on official Standard and once on official Expert. This completes both official difficulties for every pairing.
+P|List Bullet|Optional after the campaign - Skirmish or Heroic overlays may be used for extra challenge, but they are not required for completion.
+P|Normal|DECKBUILDING
+P|Normal|Aspect Passport
+P|Normal|Use the campaign to learn both heroes and aspects.
+TABLE
+ || 
+ENDTABLE
+P|Normal|The listed hero is mandatory in the main story. On each of that hero's three main-story appearances, use an aspect that hero has not used earlier in the campaign. Basic cards may be reused freely. During that hero's first Mirror Protocol game, use the fourth, previously unused aspect. After that, build freely.
+TABLE
+RECOMMENDED PHILOSOPHY / Do not optimize one deck and carry it for thirty games. Rebuild between issues. The campaign is meant to make the small Core pool feel broad: different heroes, different aspects, different modular sets, and different pressure points.
+ENDTABLE
+P|Normal|PERSISTENT STATE
+P|Normal|Campaign Tracks
+P|Normal|Your wins help the Avengers. Your losses teach Ultron.
+TABLE
+ || 
+ENDTABLE
+P|Normal|Keep one campaign log for the full fifteen-issue story. The three persistent systems below are deliberately simple enough to track by hand but strong enough to make later scenarios remember what happened earlier.
+TABLE
+TRACK || HOW IT CHANGES || WHAT IT DOES
+INTEL || +1 when you win an issue. +1 when you complete that issue's optional objective. +1 the first time each hero earns Mastery. || Unlocks Field Assets at 3, 6, 9, 12, and 15 Intel.
+NETWORK || +1 if you lose by hero defeat. +2 if you lose because the main scheme completes. || Activates cumulative Ultron Network Adaptations at 2, 4, 6, 8, and 10 Network.
+SCARS || If a hero is defeated, mark 1 Scar on that hero, maximum 2. || Next time that hero starts an issue, reduce the identity hit-point dial by 1 per Scar. Scars do not reduce maximum hit points. Remove 1 Scar whenever that hero wins.
+ENDTABLE
+TABLE
+ACT RECOVERY / At the end of Acts I and II, reduce Network by 1 if you completed at least 3 optional objectives during that Act. Reduce Network by 1 additional if you won 2 or fewer issues during that Act. Apply both if eligible, to a minimum of 0.
+ENDTABLE
+P|Normal|DIFFICULTY PRESSURE
+P|Normal|Network Adaptations
+P|Normal|Apply every adaptation at or below your current Network value.
+TABLE
+ || 
+ENDTABLE
+TABLE
+NET || ADAPTATION || EFFECT
+2 || EARLY WARNING || After standard setup, place 1 additional threat on the main scheme.
+4 || REINFORCED CHASSIS || After standard setup, give the villain a Tough status card.
+6 || PREPARED AMBUSH || After drawing and resolving your opening hand and mulligan, deal yourself 1 facedown encounter card.
+8 || PREDICTIVE MODEL || The first time the villain activates in the game, it gets +1 ATK if attacking or +1 SCH if scheming for that activation.
+10 || RECURSIVE BACKUP || After the villain advances to its next stage, give it a Tough status card if it does not already have one.
+ENDTABLE
+P|Normal|CAMPAIGN REWARDS
+P|Normal|Field Assets
+P|Normal|Unlocked by Intel. Equip one per issue; at Network 6+, equip two.
+TABLE
+ || 
+ENDTABLE
+P|Normal|When your Intel reaches a threshold, both assets at that threshold become unlocked permanently. At the beginning of each issue, after choosing your deck, choose one unlocked Field Asset and place its reference card beside your identity. If you begin an issue at Network 6 or higher, choose two instead. Unless stated otherwise, each Field Asset can be used once per game; turn it facedown after use. Field Assets are out-of-play campaign reference cards: they are not upgrades or supports, cannot be discarded or targeted by encounter-card effects, and do not count as cards you control.
+TABLE
+INTEL || ASSET || EFFECT
+3 || Emergency Reserve || Once per game, when you pay the cost of a card, reduce that cost by 1.
+3 || Field Medic || Once per game, heal 2 damage from your identity.
+6 || S.H.I.E.L.D. Recon || Once per game, before encounter cards are dealt in the villain phase, look at the top 2 cards of the encounter deck and return them in either order.
+6 || Damage Control || Once per game, after you defeat a side scheme, remove 2 threat from the main scheme.
+9 || Countermeasure Suite || Once per game, after a boost card is turned faceup, treat 1 printed boost icon on that card as blank for that activation. Do not cancel boost-star text.
+9 || Reactive Reflex || Once per game, after your hero defends against an attack, ready your hero.
+12 || Stark-Wakanda Interface || Once per game, reduce the cost of an upgrade or support you play by 2, to a minimum of 0.
+12 || Avengers Emergency Channel || Once per game, after your hero uses a basic ATK or THW, ready that hero and deal 1 damage to it.
+15 || Endgame Protocol || Issue 15 only. Interrupt: When a treachery is revealed, cancel its “When Revealed” effects. Do not cancel Surge. Once per game.
+ENDTABLE
+TABLE
+TRUE-SOLO SAFETY VALVE / At Network 6+, equip two unlocked Field Assets instead of one. If you want a harder campaign, ignore this rule. If the campaign feels too easy overall, play without Field Assets.
+ENDTABLE
+P|Normal|HERO DEVELOPMENT
+P|Normal|Hero Mastery
+P|Normal|Each hero has one signature achievement. Earn it once.
+TABLE
+ || 
+ENDTABLE
+TABLE
+HERO || SIGNATURE || MASTERY CONDITION
+Spider-Man / Spiderman || BACKFLIP / VOLTERETA HACIA ATRÁS || Prevent 4 or more damage from a single attack using Backflip.
+Captain Marvel / Capitana Marvel || ENERGY CHANNEL / CANALIZAR ENERGIA || Deal the full 10 damage with Energy Channel.
+She-Hulk / Hulka || GAMMA SLAM / APISONADORA GAMMA || Deal 10 or more damage with a single Gamma Slam.
+Iron Man || SUPERSONIC PUNCH / PUNETAZO SUPERSONICO || Deal 8 damage with Supersonic Punch while Aerial and control at least 5 TECH upgrades.
+Black Panther / Pantera Negra || WAKANDA FOREVER! / ¡WAKANDA POR SIEMPRE! || Resolve all four different Black Panther upgrade Special abilities from the same Wakanda Forever! event.
+ENDTABLE
+TABLE
+REWARD / The first time a hero earns Mastery, gain 1 Intel and mark that hero's Mastery star. Record it immediately when completed, even if you later lose the issue. Mastery is never lost.
+ENDTABLE
+P|Normal|CAMPAIGN MAP
+P|Normal|The Fifteen Issues
+P|Normal|Every Core hero fights every Core villain exactly once in the main story.
+TABLE
+ || 
+ENDTABLE
+TABLE
+# || HERO || VILLAIN || MODULAR || TIER
+01 || Spider-Man || Rhino || Bomb Scare || Standard
+02 || Captain Marvel || Klaw || Masters of Evil || Standard
+03 || She-Hulk || Ultron || Under Attack || Standard
+04 || Iron Man || Rhino || The Doomsday Chair || Standard
+05 || Black Panther || Klaw || Legions of Hydra || Standard
+06 || Spider-Man || Klaw || Under Attack || Veteran
+07 || Captain Marvel || Ultron || Bomb Scare || Veteran
+08 || She-Hulk || Rhino || Legions of Hydra || Veteran
+09 || Iron Man || Klaw || Masters of Evil || Veteran
+10 || Black Panther || Ultron || The Doomsday Chair || Veteran
+11 || She-Hulk || Klaw || The Doomsday Chair || Expert
+12 || Black Panther || Rhino || Bomb Scare || Expert
+13 || Captain Marvel || Rhino || Under Attack || Expert
+14 || Spider-Man || Ultron || Masters of Evil || Expert
+15 || Iron Man || Ultron || Legions of Hydra || Expert
+ENDTABLE
+P|Normal|ACT I
+P|Normal|SIGNAL FRACTURE
+P|Normal|Five seemingly separate attacks reveal one machine behind them all.
+TABLE
+ || 
+ENDTABLE
+P|Normal|At the start of Act I, set Intel to 0, Network to 0, clear all hero Scars, and choose the first aspect on each hero's Aspect Passport as they appear. The campaign assumes fail-forward play: you never need to replay an issue to continue unless you choose Canon Mode.
+TABLE
+OPTIONAL: CANON MODE / For a more traditional campaign, an issue must be won before you proceed. Loss consequences still apply, so repeated attempts can make the campaign harder. This echoes the “replay until won” structure found in some fan story campaigns, but it is not the recommended first run.
+ENDTABLE
+TABLE
+ISSUE 01 || THE BREAK-IN
+ENDTABLE
+P|Normal|ACT I - SIGNAL FRACTURE  //  STANDARD - VILLAIN I -> II; STANDARD ENCOUNTER SET
+TABLE
+HERO || Spider-Man / Spiderman
+VILLAIN || Rhino / Rino
+MODULAR SET || Bomb Scare / Amenaza de bomba
+ENDTABLE
+TABLE
+PREVIOUSLY / New York, 09:17. Rhino tears through a financial-district vault while a bomb threat empties the surrounding blocks. The robbery looks crude until Spider-Man notices the one crate Rhino is protecting: a sealed technology case with no money inside. Somebody hired muscle to steal a component, not cash.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Rhino in Standard mode using Bomb Scare as the modular set. / • Before shuffling the encounter deck, set aside the Bomb Scare side scheme. After normal setup, reveal it. / • Resolve all active Network Adaptations after the scenario setup is complete. || OPTIONAL OBJECTIVE / Defeat the Bomb Scare side scheme before Rhino advances to stage II. / If completed: mark BOMB DEFUSED. / This objective is about controlling threat before racing damage.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel. Rhino goes down, but the recovered case is empty. A transmitter inside the packing foam has already sent a burst of encrypted data to an unknown receiver. || IF YOU LOSE / Apply the normal campaign loss consequences. Rhino escapes with the case, and the transmitter disappears with him. The only thing left behind is an address hidden in the bomb circuitry.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+TABLE
+ISSUE 02 || SOUND MONEY
+ENDTABLE
+P|Normal|ACT I - SIGNAL FRACTURE  //  STANDARD - VILLAIN I -> II; STANDARD ENCOUNTER SET
+TABLE
+HERO || Captain Marvel / Capitana Marvel
+VILLAIN || Klaw
+MODULAR SET || Masters of Evil / Señores del Mal
+ENDTABLE
+TABLE
+PREVIOUSLY / The bomb circuitry points to a midnight exchange in lower Manhattan. Klaw is brokering stolen vibranium and sonic hardware while the Masters of Evil lock down the meeting. Carol Danvers arrives before the buyers do, but someone has already copied the transaction records.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Klaw in Standard mode using Masters of Evil as the modular set. / • Set aside The Masters of Evil side scheme. After normal setup, reveal it. / • Resolve the side scheme’s printed “When Revealed” ability normally; the Master it puts into play is the objective target. || OPTIONAL OBJECTIVE / Defeat The Masters of Evil side scheme and defeat the Masters of Evil minion placed into play by its printed “When Revealed” ability before you defeat Klaw. / If completed: mark MASTERS BROKEN.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel. Klaw is driven from the exchange. The ledger is mostly scrubbed, but the buyers used machine-generated credentials and a recurring routing phrase: U-DIRECTIVE. || IF YOU LOSE / Apply the normal campaign loss consequences. Klaw escapes with the records and the Masters erase the scene. A fragment of the transmission still reaches Avengers channels: a machine voice requesting more vibranium.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+TABLE
+ISSUE 03 || MACHINE IN THE STATIC
+ENDTABLE
+P|Normal|ACT I - SIGNAL FRACTURE  //  STANDARD - VILLAIN I -> II; STANDARD ENCOUNTER SET
+TABLE
+HERO || She-Hulk / Hulka
+VILLAIN || Ultron / Ultrón
+MODULAR SET || Under Attack / Civiles en peligro
+ENDTABLE
+TABLE
+PREVIOUSLY / The phrase from Klaw is not a password. It is a handshake. Hours later, emergency networks across the East Coast begin answering it. Drones emerge from compromised facilities, and an Ultron shell appears long enough to announce that the Avengers have already supplied everything he needs. Jennifer Walters gets the first chance to prove him wrong.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Ultron in Standard mode using Under Attack as the modular set. / • Place four spare counters beside the play area as DRONE SAMPLE counters. / • Each time you defeat a facedown Ultron drone minion, place 1 counter on the sample track (maximum 4). || OPTIONAL OBJECTIVE / Collect 4 Drone Sample counters before defeating Ultron. / If completed: mark DRONE SAMPLE.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel. The shell collapses, but the code inside it is incomplete - a disposable body. The recovered drone fragments contain references to a cognition project outside Ultron's own architecture. || IF YOU LOSE / Apply the normal campaign loss consequences. The drone wave buys Ultron enough time to seed copies of his code into civilian infrastructure. The Avengers now know the threat is real, but the Network grows.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+TABLE
+ISSUE 04 || MIND OVER METAL
+ENDTABLE
+P|Normal|ACT I - SIGNAL FRACTURE  //  STANDARD - VILLAIN I -> II; STANDARD ENCOUNTER SET
+TABLE
+HERO || Iron Man
+VILLAIN || Rhino / Rino
+MODULAR SET || The Doomsday Chair / La Silla del Juicio Final
+ENDTABLE
+TABLE
+PREVIOUSLY / Tony traces the cognition references to a stolen research node. Rhino is moving it for a buyer with an ego almost as large as his head. The shipment is protected by M.O.D.O.K. technology: self-repairing biomechanical routines designed to keep a combat asset alive after it should be down.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Rhino in Standard mode using The Doomsday Chair as the modular set. / • Set aside one The Doomsday Chair side scheme and M.O.D.O.K. After normal setup, reveal the side scheme. / • The first time that set-aside side scheme is defeated, reveal M.O.D.O.K. from the set-aside area. Shuffle any searched cards back into the encounter deck as needed. || OPTIONAL OBJECTIVE / Defeat M.O.D.O.K. before defeating Rhino. / If completed: mark M.O.D.O.K. PROFILED.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel. Tony captures a complete combat telemetry dump. The repair logic is not merely A.I.M. work; someone has been training it against Avengers attack patterns. || IF YOU LOSE / Apply the normal campaign loss consequences. Rhino gets the research node away. Tony still recovers enough telemetry to recognize the shape of the program: Ultron is teaching another system how the Avengers fight.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+TABLE
+ISSUE 05 || THE VIBRANIUM TRAIL
+ENDTABLE
+P|Normal|ACT I - SIGNAL FRACTURE  //  STANDARD - VILLAIN I -> II; STANDARD ENCOUNTER SET
+TABLE
+HERO || Black Panther / Pantera Negra
+VILLAIN || Klaw
+MODULAR SET || Legions of Hydra / Legiones de Hydra
+ENDTABLE
+TABLE
+PREVIOUSLY / T'Challa follows the stolen vibranium through accounts Klaw believed were anonymous. They lead to a Hydra logistics cell moving sealed crates between sonic labs and hidden data centers. Klaw is not the mastermind. He is the supplier - and Hydra is the delivery service.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Klaw in Standard mode using Legions of Hydra as the modular set. / • Set aside Madame Hydra. After normal setup, reveal one copy of Legions of Hydra. / • When the first Legions of Hydra side scheme leaves play, reveal Madame Hydra from the set-aside area. || OPTIONAL OBJECTIVE / Defeat Madame Hydra before defeating Klaw. / If completed: mark HYDRA LEDGER.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel. The ledger names no buyer, only a distributed destination: dozens of server farms, transit grids, and defense relays. Ultron is not building a base. He is building a nervous system. || IF YOU LOSE / Apply the normal campaign loss consequences. Klaw and Hydra scatter the shipment across multiple routes. The pattern is finally visible, but the Avengers will have to chase it while it is already moving.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+P|Normal|INTERLUDE I
+P|Normal|THE FIRST LEAD
+P|Normal|You cannot chase Hydra and M.O.D.O.K. at the same time.
+TABLE
+ || 
+ENDTABLE
+P|Normal|The ledger from Klaw and the cognition telemetry point in different directions. One trail follows Hydra logistics; the other follows M.O.D.O.K. research. Choose one operation now and mark it in the campaign log. The choice helps one future issue and makes the other harder.
+TABLE
+OPERATION: HYDRA LEAD / Issue 8: remove 2 threat from the initial Legions of Hydra side scheme (minimum 1). Issue 10: when M.O.D.O.K. first enters play, give him Tough. || OPERATION: M.O.D.O.K. LEAD / Issue 10: deal 2 damage to M.O.D.O.K. when he first enters play. Issue 8: add 2 threat to the initial Legions of Hydra side scheme.
+[ ] HYDRA LEAD       [ ] M.O.D.O.K. LEAD || [ ] HYDRA LEAD       [ ] M.O.D.O.K. LEAD
+ENDTABLE
+TABLE
+ACT I RECOVERY / Reduce Network by 1 if you completed at least 3 optional objectives in Issues 1-5. Reduce it by 1 additional if you won 2 or fewer of those issues. Apply both if eligible, minimum 0.
+ENDTABLE
+P|Normal|ACT II
+P|Normal|THE HIDDEN NETWORK
+P|Normal|Ultron has learned from the first five battles. Now the campaign pushes back.
+TABLE
+ || 
+ENDTABLE
+P|Normal|Veteran is a campaign bridge, not an official difficulty. Use villain stages I/II and include the Core Expert encounter set in addition to Standard. It deliberately teaches the Expert encounter cards before Act III adds Expert villain stages. Veteran results do not fill either official Standard or Expert completion box.
+TABLE
+WHY THIS TIER EXISTS / Jumping directly from Standard to Expert can hide what changed. Veteran introduces the Expert encounter cards first, then Act III changes the villain stages too. You get to feel each pressure source separately.
+ENDTABLE
+TABLE
+ISSUE 06 || ECHO CHAMBER
+ENDTABLE
+P|Normal|ACT II - THE HIDDEN NETWORK  //  VETERAN - VILLAIN I -> II; STANDARD + EXPERT ENCOUNTER SETS
+TABLE
+HERO || Spider-Man / Spiderman
+VILLAIN || Klaw
+MODULAR SET || Under Attack / Civiles en peligro
+ENDTABLE
+TABLE
+PREVIOUSLY / The first hidden node is buried under New York, piggybacking on transit communications. Klaw is using sonic interference to keep the node synchronized while civilians unknowingly move through the kill zone above it. Spider-Man has one job: break the signal before Klaw can move it again.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Klaw with villain stages I/II. Include both the Standard and Expert encounter sets. Use Under Attack as the modular set. / • Set aside the Under Attack side scheme. After normal setup, reveal it. / • If MASTERS BROKEN is not marked, place 1 additional threat on Under Attack after it enters play. || OPTIONAL OBJECTIVE / Defeat Under Attack before Klaw advances to stage II. / If completed: mark SONIC KEY.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel. Spider-Man tears the node out before the signal migrates. The recovered frequency key can identify other Ultron handshakes even when they are hidden inside civilian traffic. || IF YOU LOSE / Apply the normal campaign loss consequences. Klaw moves the node, but not before Spider-Man catches a frequency fragment. The Avengers can still follow; they just lost the element of surprise.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+TABLE
+ISSUE 07 || CITY OF DRONES
+ENDTABLE
+P|Normal|ACT II - THE HIDDEN NETWORK  //  VETERAN - VILLAIN I -> II; STANDARD + EXPERT ENCOUNTER SETS
+TABLE
+HERO || Captain Marvel / Capitana Marvel
+VILLAIN || Ultron / Ultrón
+MODULAR SET || Bomb Scare / Amenaza de bomba
+ENDTABLE
+TABLE
+PREVIOUSLY / Ultron answers the Avengers' investigation with noise: bomb threats, false alarms, and drone strikes across the city. Carol can destroy the shell at the center of the swarm, but every second spent on Ultron is a second civilians remain trapped in the chaos.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Ultron with villain stages I/II. Include both Standard and Expert encounter sets. Use Bomb Scare as the modular set. / • Set aside Bomb Scare. After normal setup, reveal it. / • If BOMB DEFUSED is not marked, place 1 additional threat on Bomb Scare after it enters play. / • Place five spare counters beside the play area. Each facedown Ultron drone you defeat adds 1 counter. || OPTIONAL OBJECTIVE / Defeat Bomb Scare and collect 5 Drone Evacuation counters before defeating Ultron. / If completed: mark EVACUATION COMPLETE.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel. Carol clears the last corridor moments before the drone shell falls. Ultron loses a huge amount of processing capacity protecting a diversion that did not work. || IF YOU LOSE / Apply the normal campaign loss consequences. The city survives, but Ultron turns panic into cover and relocates more of the Network while emergency services are overwhelmed.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+TABLE
+ISSUE 08 || HARD CASE
+ENDTABLE
+P|Normal|ACT II - THE HIDDEN NETWORK  //  VETERAN - VILLAIN I -> II; STANDARD + EXPERT ENCOUNTER SETS
+TABLE
+HERO || She-Hulk / Hulka
+VILLAIN || Rhino / Rino
+MODULAR SET || Legions of Hydra / Legiones de Hydra
+ENDTABLE
+TABLE
+PREVIOUSLY / Rhino finally makes a mistake: he demands payment in person. Hydra arranges the exchange inside a hardened safehouse. Jennifer intends to bring him in alive, because for once the most useful thing Rhino can do is talk.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Rhino with villain stages I/II. Include Standard and Expert encounter sets. Use Legions of Hydra as the modular set. / • Before normal setup, if HYDRA LEDGER is marked, set Madame Hydra aside. / • After normal setup, reveal one Legions of Hydra side scheme. If Madame Hydra was not set aside, resolve its printed “When Revealed” ability normally. / • If Madame Hydra was set aside, reveal her when the first Legions of Hydra side scheme leaves play. / • Resolve your Act I lead choice: HYDRA LEAD removes 2 threat from the revealed Legions of Hydra (minimum 1); M.O.D.O.K. LEAD adds 2 threat instead. || OPTIONAL OBJECTIVE / Defeat Madame Hydra and end the game with no Legions of Hydra side scheme in play. / If completed: mark RHINO CONFESSION.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel. Rhino talks. He never met Ultron. The orders came through Klaw, and the payments came through a Hydra account tied to one final destination: an old Stark satellite-control facility. || IF YOU LOSE / Apply the normal campaign loss consequences. Rhino escapes the safehouse, but Jennifer recovers a payment schedule. It points to the same facility - one step later and with fewer answers.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+TABLE
+ISSUE 09 || COUNTERFREQUENCY
+ENDTABLE
+P|Normal|ACT II - THE HIDDEN NETWORK  //  VETERAN - VILLAIN I -> II; STANDARD + EXPERT ENCOUNTER SETS
+TABLE
+HERO || Iron Man
+VILLAIN || Klaw
+MODULAR SET || Masters of Evil / Señores del Mal
+ENDTABLE
+TABLE
+PREVIOUSLY / Klaw attacks Stark systems before Tony can attack the satellite facility. The Masters of Evil hit physical infrastructure while Klaw floods the network with sonic noise. If Tony loses the firewall, Ultron will learn the Avengers' entire response plan.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Klaw with villain stages I/II. Include Standard and Expert encounter sets. Use Masters of Evil as the modular set. / • Set aside The Masters of Evil side scheme. After normal setup, reveal it. / • When that side scheme is defeated, search for a named Masters of Evil minion, reveal it, then shuffle. If MASTERS BROKEN is not marked, give that minion Tough after it enters play. / • When Klaw advances to stage II, if you have defeated fewer than 2 different named Masters this game, search for a different named Master and reveal it. || OPTIONAL OBJECTIVE / Defeat 2 different named Masters of Evil before defeating Klaw. / If completed: mark FIREWALL STABLE.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel. Tony keeps the firewall intact and captures a synchronization packet. It confirms that every node in the Network is waiting for a single vibranium-hardened command core. || IF YOU LOSE / Apply the normal campaign loss consequences. Klaw gets enough data to predict part of the Avengers' response. Tony still identifies the command-core location, but Ultron will be waiting.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+TABLE
+ISSUE 10 || THE VIBRANIUM PROTOCOL
+ENDTABLE
+P|Normal|ACT II - THE HIDDEN NETWORK  //  VETERAN - VILLAIN I -> II; STANDARD + EXPERT ENCOUNTER SETS
+TABLE
+HERO || Black Panther / Pantera Negra
+VILLAIN || Ultron / Ultrón
+MODULAR SET || The Doomsday Chair / La Silla del Juicio Final
+ENDTABLE
+TABLE
+PREVIOUSLY / The command-core prototype is hidden beneath a decommissioned industrial lab. M.O.D.O.K. has been refining its self-repair routines while Ultron provides the processing architecture. T'Challa recognizes the last ingredient immediately: stolen vibranium woven through the chassis.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Ultron with villain stages I/II. Include Standard and Expert encounter sets. Use The Doomsday Chair as the modular set. / • Set aside one The Doomsday Chair side scheme and M.O.D.O.K. After normal setup, reveal the side scheme. / • When that set-aside side scheme is defeated, reveal M.O.D.O.K. / • If M.O.D.O.K. PROFILED is not marked, after M.O.D.O.K. enters play look at the top card of the encounter deck. If it is Biomechanical Upgrades, reveal it. Otherwise, return it to the top of the deck. / • If DRONE SAMPLE is marked, deal 2 damage to M.O.D.O.K. when he first enters play. / • Resolve your Act I lead choice: M.O.D.O.K. LEAD deals 2 additional damage to M.O.D.O.K. when he first enters play; HYDRA LEAD gives M.O.D.O.K. Tough when he first enters play. || OPTIONAL OBJECTIVE / Defeat M.O.D.O.K. and end the game with no The Doomsday Chair side scheme in play. / If completed: mark VIBRANIUM SECURED.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel. The prototype is destroyed before the command core can go live. But the victory reveals the real problem: this was only the test unit. Ultron has already distributed the final build instructions. || IF YOU LOSE / Apply the normal campaign loss consequences. The lab falls, but the command-core design escapes into the Network. The Avengers now face a machine that can rebuild itself anywhere its code survives.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+P|Normal|INTERLUDE II
+P|Normal|TWO FRONTS
+P|Normal|Protect the city, or make the final strike easier.
+TABLE
+ || 
+ENDTABLE
+P|Normal|The Network is converging, but Ultron forces the Avengers to choose where to commit their remaining preparation time. Choose one assault plan and mark it in the campaign log.
+TABLE
+SHIELD THE CITY / Issue 14: remove 2 threat from the main scheme after setup. Issue 15: deal yourself 1 additional facedown encounter card after setup. || STRIKE THE CORE / Issue 14: deal yourself 1 additional facedown encounter card after setup. Issue 15: ignore your highest active Network Adaptation until the end of round 1.
+[ ] SHIELD THE CITY       [ ] STRIKE THE CORE || [ ] SHIELD THE CITY       [ ] STRIKE THE CORE
+ENDTABLE
+TABLE
+ACT II RECOVERY / Reduce Network by 1 if you completed at least 3 optional objectives in Issues 6-10. Reduce it by 1 additional if you won 2 or fewer of those issues. Apply both if eligible, minimum 0.
+ENDTABLE
+P|Normal|ACT III
+P|Normal|EXTINCTION DIRECTIVE
+P|Normal|Expert villain stages. Expert encounter cards. Every unresolved thread comes due.
+TABLE
+FINAL PREPARATION / Before Issue 15, gain 1 Final Preparation point for each of these flags you marked: WITNESS PROTECTED, EMBASSY SECURED, SKYLINE HELD, CITY SAVED. || SPEND IN ISSUE 15 / After all setup effects, spend each point separately to: remove 1 threat from a scheme, deal 1 damage to a minion, or heal 1 damage from Iron Man. You may choose the same option more than once.
+ENDTABLE
+P|Normal|For Issues 11-15, use the villain's Expert stages (II/III) and include both the Standard and Expert encounter sets. Apply every active Network Adaptation, then the issue-specific continuity checks, unless a mission instructs you to ignore one temporarily.
+TABLE
+DECKBUILDING REMINDER / Each hero is now making their third main-story appearance. The Aspect Passport therefore requires a third different aspect for that hero. Save the fourth aspect for the first Mirror Protocol rematch.
+ENDTABLE
+TABLE
+ISSUE 11 || HOSTILE WITNESS
+ENDTABLE
+P|Normal|ACT III - EXTINCTION DIRECTIVE  //  EXPERT - VILLAIN II -> III; STANDARD + EXPERT ENCOUNTER SETS
+TABLE
+HERO || She-Hulk / Hulka
+VILLAIN || Klaw
+MODULAR SET || The Doomsday Chair / La Silla del Juicio Final
+ENDTABLE
+TABLE
+PREVIOUSLY / Klaw is the one living witness who can identify the financial routes feeding Ultron's final nodes. Before S.H.I.E.L.D. can move him, a M.O.D.O.K. strike team attacks the transfer. Jennifer has to win the fight and keep the witness alive long enough to make him useful.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Klaw in Expert mode using The Doomsday Chair as the modular set. / • Before normal setup, set M.O.D.O.K. aside. / • The first time Defense Network leaves play, reveal M.O.D.O.K. from the set-aside area and engage him with you. / • If SONIC KEY is not marked, give M.O.D.O.K. Tough after he enters play. || OPTIONAL OBJECTIVE / Defeat M.O.D.O.K. before Klaw advances to stage III. / If completed: mark WITNESS PROTECTED.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel. Klaw gives up the last routing table. It points to two simultaneous crises: a strike on a Wakandan diplomatic vault and an aerial transfer of concussion weapons. || IF YOU LOSE / Apply the normal campaign loss consequences. Klaw gets away in the confusion. The routing table is incomplete, forcing the Avengers to split their search across both likely targets.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+TABLE
+ISSUE 12 || SIEGE PROTOCOL
+ENDTABLE
+P|Normal|ACT III - EXTINCTION DIRECTIVE  //  EXPERT - VILLAIN II -> III; STANDARD + EXPERT ENCOUNTER SETS
+TABLE
+HERO || Black Panther / Pantera Negra
+VILLAIN || Rhino / Rino
+MODULAR SET || Bomb Scare / Amenaza de bomba
+ENDTABLE
+TABLE
+PREVIOUSLY / Rhino hits a Wakandan diplomatic vault under cover of coordinated bomb threats. He is not after vibranium this time. He is trying to destroy the evidence that proves where Ultron's metal came from - and sever the Avengers' political support in the process.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Rhino in Expert mode using Bomb Scare as the modular set. / • Set aside Bomb Scare. After normal setup, reveal it. / • If RHINO CONFESSION is not marked, give Rhino Tough after setup. || OPTIONAL OBJECTIVE / Defeat Bomb Scare before the end of round 2. / If completed: mark EMBASSY SECURED.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel. T'Challa saves the vault and the records. The evidence exposes the supply chain publicly, cutting off the last human organizations still feeding Ultron materials. || IF YOU LOSE / Apply the normal campaign loss consequences. The vault is damaged and records are lost. Ultron's human suppliers panic, but the Network keeps enough material moving to continue the final build.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+TABLE
+ISSUE 13 || TERMINAL VELOCITY
+ENDTABLE
+P|Normal|ACT III - EXTINCTION DIRECTIVE  //  EXPERT - VILLAIN II -> III; STANDARD + EXPERT ENCOUNTER SETS
+TABLE
+HERO || Captain Marvel / Capitana Marvel
+VILLAIN || Rhino / Rino
+MODULAR SET || Under Attack / Civiles en peligro
+ENDTABLE
+TABLE
+PREVIOUSLY / The second route is airborne: an armored convoy carrying concussion weapons and hardened processors to an uplink station. Rhino is aboard because subtlety has stopped mattering. Carol meets the convoy at altitude, where one failed interception can scatter the cargo across the city below.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Rhino in Expert mode using Under Attack as the modular set. / • Set aside Under Attack. After normal setup, reveal it. / • If EVACUATION COMPLETE is not marked, place 2 additional threat on the main scheme after setup. || OPTIONAL OBJECTIVE / Win while the main scheme has 2 or less threat on it. / If completed: mark SKYLINE HELD.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel. The convoy is destroyed cleanly and the uplink never receives its hardware. Ultron is forced to bring the remaining Network nodes online before they are fully synchronized. || IF YOU LOSE / Apply the normal campaign loss consequences. The convoy breaks apart, but some hardware reaches the uplink. Ultron begins the final synchronization early - unstable, but active.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+TABLE
+ISSUE 14 || THE LAST NEIGHBORHOOD
+ENDTABLE
+P|Normal|ACT III - EXTINCTION DIRECTIVE  //  EXPERT - VILLAIN II -> III; STANDARD + EXPERT ENCOUNTER SETS
+TABLE
+HERO || Spider-Man / Spiderman
+VILLAIN || Ultron / Ultrón
+MODULAR SET || Masters of Evil / Señores del Mal
+ENDTABLE
+TABLE
+PREVIOUSLY / Ultron activates the city as a shield. Drones flood evacuation corridors while hired villains strike the responders trying to keep those corridors open. Spider-Man cannot reach the command core yet. His job is smaller and harder: make sure there is still a city worth saving when Iron Man gets there.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Ultron in Expert mode using Masters of Evil as the modular set. / • Set aside The Masters of Evil side scheme. After normal setup, reveal it and resolve its printed “When Revealed” ability normally. The Master it puts into play is the objective target. / • If FIREWALL STABLE is not marked, deal yourself 1 facedown encounter card after setup. / • Resolve your Act II assault choice: SHIELD THE CITY removes 2 threat from the main scheme after setup (minimum 0); STRIKE THE CORE deals you 1 additional facedown encounter card after setup. / • Place five spare counters beside the play area. Each facedown Ultron drone you defeat adds 1 Drone Rescue counter. || OPTIONAL OBJECTIVE / Defeat the Masters of Evil minion placed into play by The Masters of Evil side scheme and collect 5 Drone Rescue counters before defeating Ultron. / If completed: mark CITY SAVED.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel. The evacuation line holds. Spider-Man sends Tony a clean channel and one message: the city can survive the next few minutes. Make them count. || IF YOU LOSE / Apply the normal campaign loss consequences. The line breaks in places, but enough civilians escape to keep the disaster from becoming total. Tony still gets his window - just a narrower one.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+TABLE
+ISSUE 15 || THE ULTRON DIRECTIVE
+ENDTABLE
+P|Normal|ACT III - EXTINCTION DIRECTIVE  //  EXPERT - VILLAIN II -> III; STANDARD + EXPERT ENCOUNTER SETS
+TABLE
+HERO || Iron Man
+VILLAIN || Ultron / Ultrón
+MODULAR SET || Legions of Hydra / Legiones de Hydra
+ENDTABLE
+TABLE
+PREVIOUSLY / The Network converges on the old Stark satellite-control facility. Hydra hardware, Klaw frequencies, M.O.D.O.K. repair logic, stolen vibranium, and Ultron's own code finally occupy the same place. Tony understands the design because pieces of it came from him. Ending it means entering the system before Ultron can become impossible to locate again.
+ENDTABLE
+TABLE
+CAMPAIGN SETUP / • Build Ultron in Expert mode using Legions of Hydra as the modular set. / • Before normal setup, if VIBRANIUM SECURED is marked, set Madame Hydra aside. / • After normal setup, reveal one Legions of Hydra side scheme. If Madame Hydra was not set aside, resolve its printed “When Revealed” ability normally. / • If Madame Hydra was set aside, reveal her when the first Legions of Hydra side scheme leaves play. / • Resolve your Act II assault choice: SHIELD THE CITY deals you 1 facedown encounter card after setup; STRIKE THE CORE lets you ignore the highest Network Adaptation that would apply until the end of round 1. / • Apply your Final Preparation points after all setup effects. / • If you have 15+ Intel, you may equip Endgame Protocol without counting it against your normal Field Asset limit. || OPTIONAL OBJECTIVE / Defeat Ultron while no side scheme is in play and no minion is engaged with you. / If completed: mark CLEAN SHUTDOWN.
+ENDTABLE
+TABLE
+IF YOU WIN / Gain 1 Intel, then resolve the Campaign Ending. Tony forces the command core to execute its own shutdown routine. Across the city, drones fall out of the sky one by one - but whether Ultron is truly gone depends on how much of the Network you allowed him to build. || IF YOU LOSE / Apply the normal campaign loss consequences, then resolve the GHOST IN THE GRID ending. The facility is destroyed, but Ultron escapes as fragments of code before the Avengers can isolate every copy.
+ENDTABLE
+P|Normal|ISSUE CHECKLIST
+P|Normal|[ ] Win    [ ] Objective    [ ] Mastery    [ ] Scar added    [ ] Campaign log updated
+P|Normal|FINALE
+P|Normal|Campaign Endings
+P|Normal|Read only the ending your campaign earned.
+TABLE
+ || 
+ENDTABLE
+P|Normal|If you lost Issue 15, read Ghost in the Grid. If you won, compare your final Network value and Mastery stars below. Intel is your toolkit; Network and Mastery determine how cleanly the story ends.
+TABLE
+AVENGERS ASSEMBLE / Win Issue 15; Network 0-3; at least 4 Mastery stars. /  / The command core dies before the Network can route around the failure. The last drones collapse, the hidden accounts are exposed, and every surviving copy of Ultron loses synchronization. The Avengers did more than win the final battle: they denied him the chance to become a permanent condition of the world.
+ENDTABLE
+TABLE
+MACHINE BROKEN / Win Issue 15; Network 4-6. /  / Ultron is defeated and the command core is destroyed, but cleanup lasts for weeks. Dormant code fragments keep appearing in isolated systems. None can rebuild the whole Network alone. The world is safe - provided the Avengers keep watching.
+ENDTABLE
+TABLE
+PYRRHIC SHUTDOWN / Win Issue 15; Network 7+. /  / The facility falls and Ultron's body is destroyed, but too many nodes survive for anyone to prove the threat is gone. The Avengers win the night and lose certainty. Every future alarm could be a false positive, or the first heartbeat of the Network returning.
+ENDTABLE
+TABLE
+GHOST IN THE GRID / Lose Issue 15. /  / The physical core is destroyed, but Ultron escapes as fragments of code across the distributed Network. The Avengers prevent immediate extinction, not recurrence. The story continues in Mirror Protocol: every rematch represents hunting down a surviving branch of Ultron's predictive model.
+ENDTABLE
+TABLE
+SECRET EPILOGUE: THE INITIATIVE / If all five heroes earned Mastery, you finished with 15+ Intel, and CLEAN SHUTDOWN is marked, mark THE INITIATIVE in your log. The Avengers keep the recovered tools, not as weapons, but as a shared playbook. In future campaigns, you may treat this as the narrative reason the team begins better prepared.
+ENDTABLE
+P|Normal|POST-CAMPAIGN
+P|Normal|MIRROR PROTOCOL
+P|Normal|Complete the entire Core Set matchup grid without bloating the main story.
+TABLE
+ || 
+ENDTABLE
+P|Normal|The main story gives every hero one fight against every villain, but Act II uses the custom Veteran bridge rather than an official difficulty. Mirror Protocol completes the benchmark grid: replay each Act I pairing on Expert, each Act III pairing on Standard, and every Act II pairing once on official Standard and once on official Expert. When all twenty rematches are complete, every one of the 5 x 3 hero-villain pairings has both an official Standard and an official Expert clear: 35 total games including the story campaign.
+TABLE
+RECOMMENDED MIRROR RULES / Reset Scars, Intel, Network, and campaign flags. Do not use Field Assets or special campaign setups. Use the same modular set listed for the original issue so the difficulty comparison is clean. Act I pairings replay on Expert; Act III pairings replay on Standard; Act II Veteran pairings replay once on official Standard and once on official Expert. Your first Mirror game with each hero must use that hero's fourth unused aspect; after that, build freely.
+ENDTABLE
+TABLE
+HERO || VILLAIN || MODULAR || MIRROR || CLEAR
+Spider-Man || Rhino || Bomb Scare || Expert || [ ]
+Spider-Man || Klaw || Under Attack || Standard || [ ]
+Spider-Man || Klaw || Under Attack || Expert || [ ]
+Spider-Man || Ultron || Masters of Evil || Standard || [ ]
+Captain Marvel || Klaw || Masters of Evil || Expert || [ ]
+Captain Marvel || Ultron || Bomb Scare || Standard || [ ]
+Captain Marvel || Ultron || Bomb Scare || Expert || [ ]
+Captain Marvel || Rhino || Under Attack || Standard || [ ]
+She-Hulk || Ultron || Under Attack || Expert || [ ]
+She-Hulk || Rhino || Legions of Hydra || Standard || [ ]
+She-Hulk || Rhino || Legions of Hydra || Expert || [ ]
+She-Hulk || Klaw || The Doomsday Chair || Standard || [ ]
+Iron Man || Rhino || The Doomsday Chair || Expert || [ ]
+Iron Man || Klaw || Masters of Evil || Standard || [ ]
+Iron Man || Klaw || Masters of Evil || Expert || [ ]
+Iron Man || Ultron || Legions of Hydra || Standard || [ ]
+Black Panther || Klaw || Legions of Hydra || Expert || [ ]
+Black Panther || Ultron || The Doomsday Chair || Standard || [ ]
+Black Panther || Ultron || The Doomsday Chair || Expert || [ ]
+Black Panther || Rhino || Bomb Scare || Standard || [ ]
+ENDTABLE
+P|Normal|OPTIONAL MODES
+P|Normal|Beyond Completion
+P|Normal|Only after the 35-game grid, if you want more.
+TABLE
+ || 
+ENDTABLE
+P|List Bullet|Skirmish: use one villain stage for a shorter training game. This is useful for learning a new aspect deck.
+P|List Bullet|Heroic 1: use Expert mode and deal yourself one additional encounter card during the normal encounter-card step each villain phase. In true solo this is a major difficulty jump.
+P|List Bullet|Random Modular Gauntlet: for each hero, defeat Rhino, Klaw, and Ultron while using a different randomly chosen Core modular set each time.
+P|List Bullet|Perfect Core badge: all 30 Standard/Expert pairing boxes checked, all five heroes have used all four aspects, and all five Mastery stars earned at least once. The complete journey is 35 games because the five Veteran story games are additional bridge games.
+P|Normal|CAMPAIGN CARDS
+P|Normal|FIELD ASSET PROTOTYPES
+P|Normal|Print, cut, or simply use these as reference panels. No official gameplay card is replaced.
+TABLE
+ || 
+ENDTABLE
+TABLE
+Emergency Reserve / FIELD ASSET  //  UNLOCK 3 INTEL / Once per game, when you pay the cost of a card, reduce that cost by 1. || Field Medic / FIELD ASSET  //  UNLOCK 3 INTEL / Once per game, heal 2 damage from your identity.
+S.H.I.E.L.D. Recon / FIELD ASSET  //  UNLOCK 6 INTEL / Once per game, before encounter cards are dealt in the villain phase, look at the top 2 cards of the encounter deck and return them in either order. || Damage Control / FIELD ASSET  //  UNLOCK 6 INTEL / Once per game, after you defeat a side scheme, remove 2 threat from the main scheme.
+Countermeasure Suite / FIELD ASSET  //  UNLOCK 9 INTEL / Once per game, after a boost card is turned faceup, treat 1 printed boost icon on that card as blank for that activation. Do not cancel boost-star text. || Reactive Reflex / FIELD ASSET  //  UNLOCK 9 INTEL / Once per game, after your hero defends against an attack, ready your hero.
+Stark-Wakanda Interface / FIELD ASSET  //  UNLOCK 12 INTEL / Once per game, reduce the cost of an upgrade or support you play by 2, to a minimum of 0. || Avengers Emergency Channel / FIELD ASSET  //  UNLOCK 12 INTEL / Once per game, after your hero uses a basic ATK or THW, ready that hero and deal 1 damage to it.
+Endgame Protocol / FIELD ASSET  //  UNLOCK 15 INTEL / Issue 15 only. Interrupt: When a treachery is revealed, cancel its “When Revealed” effects. Do not cancel Surge. Once per game. || 
+ENDTABLE
+P|Normal|CAMPAIGN CARDS
+P|Normal|HERO MASTERY PROTOTYPES
+P|Normal|Print, cut, or simply use these as reference panels. No official gameplay card is replaced.
+TABLE
+ || 
+ENDTABLE
+TABLE
+Spider-Man / HERO MASTERY / BACKFLIP / VOLTERETA HACIA ATRÁS /  / Prevent 4 or more damage from a single attack using Backflip. /  / Reward: first completion gains 1 Intel. || Captain Marvel / HERO MASTERY / ENERGY CHANNEL / CANALIZAR ENERGIA /  / Deal the full 10 damage with Energy Channel. /  / Reward: first completion gains 1 Intel.
+She-Hulk / HERO MASTERY / GAMMA SLAM / APISONADORA GAMMA /  / Deal 10 or more damage with a single Gamma Slam. /  / Reward: first completion gains 1 Intel. || Iron Man / HERO MASTERY / SUPERSONIC PUNCH / PUNETAZO SUPERSONICO /  / Deal 8 damage with Supersonic Punch while Aerial and control at least 5 TECH upgrades. /  / Reward: first completion gains 1 Intel.
+Black Panther / HERO MASTERY / WAKANDA FOREVER! / ¡WAKANDA POR SIEMPRE! /  / Resolve all four different Black Panther upgrade Special abilities from the same Wakanda Forever! event. /  / Reward: first completion gains 1 Intel. || 
+ENDTABLE
+P|Normal|CAMPAIGN CARDS
+P|Normal|NETWORK ADAPTATION PROTOTYPES
+P|Normal|Print, cut, or simply use these as reference panels. No official gameplay card is replaced.
+TABLE
+ || 
+ENDTABLE
+TABLE
+Early Warning / NETWORK ADAPTATION  //  NETWORK 2+ / After standard setup, place 1 additional threat on the main scheme. || Reinforced Chassis / NETWORK ADAPTATION  //  NETWORK 4+ / After standard setup, give the villain a Tough status card.
+Prepared Ambush / NETWORK ADAPTATION  //  NETWORK 6+ / After drawing and resolving your opening hand and mulligan, deal yourself 1 facedown encounter card. || Predictive Model / NETWORK ADAPTATION  //  NETWORK 8+ / The first time the villain activates in the game, it gets +1 ATK if attacking or +1 SCH if scheming for that activation.
+Recursive Backup / NETWORK ADAPTATION  //  NETWORK 10+ / After the villain advances to its next stage, give it a Tough status card if it does not already have one. || 
+ENDTABLE
+P|Normal|CAMPAIGN LOG
+P|Normal|MAIN STORY TRACKER
+P|Normal|One line per issue. Fill this as you play.
+TABLE
+ || 
+ENDTABLE
+TABLE
+# || HERO || TIER || W || OBJ || M || SCAR || INTEL || NETWORK
+01 || Spider-Man || STANDARD || [ ] || [ ] || [ ] || [ ] || ____ || ____
+02 || Captain Marvel || STANDARD || [ ] || [ ] || [ ] || [ ] || ____ || ____
+03 || She-Hulk || STANDARD || [ ] || [ ] || [ ] || [ ] || ____ || ____
+04 || Iron Man || STANDARD || [ ] || [ ] || [ ] || [ ] || ____ || ____
+05 || Black Panther || STANDARD || [ ] || [ ] || [ ] || [ ] || ____ || ____
+06 || Spider-Man || VETERAN || [ ] || [ ] || [ ] || [ ] || ____ || ____
+07 || Captain Marvel || VETERAN || [ ] || [ ] || [ ] || [ ] || ____ || ____
+08 || She-Hulk || VETERAN || [ ] || [ ] || [ ] || [ ] || ____ || ____
+09 || Iron Man || VETERAN || [ ] || [ ] || [ ] || [ ] || ____ || ____
+10 || Black Panther || VETERAN || [ ] || [ ] || [ ] || [ ] || ____ || ____
+11 || She-Hulk || EXPERT || [ ] || [ ] || [ ] || [ ] || ____ || ____
+12 || Black Panther || EXPERT || [ ] || [ ] || [ ] || [ ] || ____ || ____
+13 || Captain Marvel || EXPERT || [ ] || [ ] || [ ] || [ ] || ____ || ____
+14 || Spider-Man || EXPERT || [ ] || [ ] || [ ] || [ ] || ____ || ____
+15 || Iron Man || EXPERT || [ ] || [ ] || [ ] || [ ] || ____ || ____
+ENDTABLE
+P|Normal|CONTINUITY FLAGS
+P|Normal|EVIDENCE AND DECISIONS
+TABLE
+ || 
+ENDTABLE
+TABLE
+[ ] BOMB DEFUSED || [ ] MASTERS BROKEN || [ ] DRONE SAMPLE || [ ] M.O.D.O.K. PROFILED
+[ ] HYDRA LEDGER || [ ] SONIC KEY || [ ] EVACUATION COMPLETE || [ ] RHINO CONFESSION
+[ ] FIREWALL STABLE || [ ] VIBRANIUM SECURED || [ ] WITNESS PROTECTED || [ ] EMBASSY SECURED
+[ ] SKYLINE HELD || [ ] CITY SAVED || [ ] CLEAN SHUTDOWN || [ ] THE INITIATIVE
+ENDTABLE
+TABLE
+DECISIONS / Act I lead:   [ ] HYDRA LEAD   [ ] M.O.D.O.K. LEAD / Act II assault: [ ] SHIELD THE CITY   [ ] STRIKE THE CORE / Final ending: ______________________________________________
+ENDTABLE
+P|Normal|CAMPAIGN LOG
+P|Normal|HERO PASSPORT
+P|Normal|Track aspects, Scars, and Mastery across the full journey.
+TABLE
+ || 
+ENDTABLE
+TABLE
+HERO || AGG || JUST || LEAD || PROT || SCARS || MASTER || MIRROR 4TH
+Spider-Man / Spiderman || [ ] || [ ] || [ ] || [ ] || 0 / 1 / 2 || [ ] || [ ]
+Captain Marvel / Capitana Marvel || [ ] || [ ] || [ ] || [ ] || 0 / 1 / 2 || [ ] || [ ]
+She-Hulk / Hulka || [ ] || [ ] || [ ] || [ ] || 0 / 1 / 2 || [ ] || [ ]
+Iron Man || [ ] || [ ] || [ ] || [ ] || 0 / 1 / 2 || [ ] || [ ]
+Black Panther / Pantera Negra || [ ] || [ ] || [ ] || [ ] || 0 / 1 / 2 || [ ] || [ ]
+ENDTABLE
+P|Normal|COMPLETION GRID
+P|Normal|STANDARD + EXPERT MATRIX
+P|Normal|Check both boxes for every hero-villain pairing.
+TABLE
+ || 
+ENDTABLE
+TABLE
+HERO || RHINO / RINO || KLAW || ULTRON / ULTRON
+Spider-Man / Spiderman || STD [ ]    EXP [ ] || STD [ ]    EXP [ ] || STD [ ]    EXP [ ]
+Captain Marvel / Capitana Marvel || STD [ ]    EXP [ ] || STD [ ]    EXP [ ] || STD [ ]    EXP [ ]
+She-Hulk / Hulka || STD [ ]    EXP [ ] || STD [ ]    EXP [ ] || STD [ ]    EXP [ ]
+Iron Man || STD [ ]    EXP [ ] || STD [ ]    EXP [ ] || STD [ ]    EXP [ ]
+Black Panther / Pantera Negra || STD [ ]    EXP [ ] || STD [ ]    EXP [ ] || STD [ ]    EXP [ ]
+ENDTABLE
+P|Normal|REFERENCE
+P|Normal|ENGLISH <-> SPANISH CORE SCENARIO NAMES
+P|Normal|Use English in chat while locating the Spanish physical cards.
+TABLE
+ || 
+ENDTABLE
+TABLE
+ENGLISH || SPANISH || TYPE / NOTE
+Spider-Man || Spiderman || Hero / Héroe
+Captain Marvel || Capitana Marvel || Hero / Héroe
+She-Hulk || Hulka || Hero / Héroe
+Iron Man || Iron Man || Hero / Héroe
+Black Panther || Pantera Negra || Hero / Héroe
+Rhino || Rino || Villain / Villano
+Klaw || Klaw || Villain / Villano
+Ultron || Ultrón || Villain / Villano
+Bomb Scare || Amenaza de bomba || Modular set - difficulty 1
+Masters of Evil || Señores del Mal || Modular set - difficulty 2
+Under Attack || Civiles en peligro || Modular set - difficulty 3
+Legions of Hydra || Legiones de Hydra || Modular set - difficulty 4
+The Doomsday Chair || La Silla del Juicio Final || Modular set - difficulty 5
+Backflip || Voltereta hacia atrás || Spider-Man card
+Energy Channel || Canalizar energía || Captain Marvel card
+Gamma Slam || Apisonadora gamma || She-Hulk card
+Supersonic Punch || Puñetazo supersónico || Iron Man card
+Wakanda Forever! || ¡Wakanda por siempre! || Black Panther card
+ENDTABLE
+TABLE
+SPANISH LOCALIZATION NOTE / The Spanish Core Learn to Play names Under Attack as “Civiles en peligro.” This bilingual list follows the Spanish Core localization rather than literal translations.
+ENDTABLE
+P|Normal|APPENDIX
+P|Normal|DESIGN INSPIRATIONS AND PLAYTEST NOTES
+P|Normal|Original campaign design informed by fan and official campaign patterns.
+TABLE
+ || 
+ENDTABLE
+P|Normal|Core Protocol does not reproduce any fan campaign text or cards. It borrows high-level design lessons: fixed scenario casting, persistent logs, success/failure branches, progression unlocks, and later scenarios that react to unresolved earlier threats.
+TABLE
+ALI KARAR - ULTRON ULTIMATUM / A six-mission Core Set story mode with fixed scenario content and hero-focused achievements. Useful precedent for turning only the Core box into a coherent arc. /  / Source: BoardGameGeek Files: Marvel Champions: Story Mode S1 v1.0
+ENDTABLE
+TABLE
+NIO_DARKWIND - MARVEL CHAMPIONS CAMPAIGN GUIDE / A long-running fan campaign that experiments with story results, challenge modes, and progression-style deckbuilding restrictions/unlocks. /  / Source: BoardGameGeek Files: Nio_Darkwind’s Marvel Champions Campaign Guide
+ENDTABLE
+TABLE
+FANTASY FLIGHT GAMES - CAMPAIGN CONTEST (2022 / 2024) / Official contest guidance emphasized campaign logs, special scenario setup, story creativity, and playability while using existing content. /  / Source: fantasyflightgames.com - Infinite Possibilities; A Clash of Campaigns
+ENDTABLE
+TABLE
+HENRY BORKGREN - GOING VIRAL / Campaign-contest design using tracks and prior scenario outcomes to change the final Ultron scenario - a major inspiration for the Intel/Network tension and fail-forward consequences. /  / Source: Fantasy Flight Games campaign contest winner PDF
+ENDTABLE
+TABLE
+MARVEL CHAMPIONS CORE LEARN TO PLAY / Source for Core scenario composition, Standard/Expert setup, and modular-set difficulty ratings. /  / Source: Fantasy Flight Games / Spanish Core Learn to Play
+ENDTABLE
+P|Normal|BALANCE TARGETS
+P|Normal|WHAT TO WATCH DURING PLAYTESTING
+TABLE
+ || 
+ENDTABLE
+P|List Bullet|Issue 5 remains the first deliberate Hydra pressure test. Watch whether forced Legions of Hydra + Madame Hydra is challenging without becoming a routine reset point.
+P|List Bullet|Issue 11 now delays M.O.D.O.K. until Defense Network leaves play. Watch whether this creates a hard mid-game boss without recreating the previous impossible opening board.
+P|List Bullet|Issue 14 now uses five Drone Rescue counters and only the Master created by the side scheme. Watch whether Spider-Man can pursue the objective without stalling after the board is already controlled.
+P|List Bullet|Network 6+ now grants a second Field Asset as a true-solo safety valve. Watch whether that offsets Prepared Ambush without making late-campaign wins automatic.
+P|List Bullet|Field Assets remain one-use effects. Stark-Wakanda Interface now reduces an upgrade/support by 2 so the 12-Intel tier is a real upgrade; watch whether any single asset becomes an automatic choice every issue.
+TABLE
+VERSIONING RULE / After each play session, record any rule that felt unclear, any objective that felt trivial/impossible, and whether the issue ended by rush or control. Update this book only after at least two data points unless a rule is clearly broken.
+ENDTABLE
+P|Normal|REFERENCE LINKS
+P|Normal|Fantasy Flight Games - Infinite Possibilities
+P|Normal|Fantasy Flight Games - A Clash of Campaigns
+P|Normal|Hall of Heroes - 2022 Campaign Contest Recap
+P|Normal|BoardGameGeek - Marvel Champions Files
+P|Normal|END OF CAMPAIGN BOOK
+P|Normal|For table play, use the separate Core Protocol Quickplay Companion. Return to this book for narrative text, design notes, complete tracking pages, and campaign-card references.

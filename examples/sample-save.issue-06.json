@@ -1,0 +1,310 @@
+{
+  "schemaVersion": "1.0.0",
+  "saveId": "bce7ad52-f277-4fbf-b53a-4fb5676ec307",
+  "campaignId": "core-protocol",
+  "definitionVersion": "1.1.0",
+  "playMode": "fail-forward",
+  "createdAt": "2026-09-01T20:00:00-06:00",
+  "updatedAt": "2026-09-07T22:30:00-06:00",
+  "deviceId": "sample-device",
+  "sequence": 15,
+  "snapshot": {
+    "phase": "preparing",
+    "currentIssueNumber": 6,
+    "intel": 12,
+    "network": 2,
+    "scars": {
+      "spider-man": 0,
+      "captain-marvel": 0,
+      "she-hulk": 1,
+      "iron-man": 0,
+      "black-panther": 0
+    },
+    "flags": [
+      "BOMB DEFUSED",
+      "DRONE SAMPLE",
+      "M.O.D.O.K. PROFILED",
+      "HYDRA LEDGER"
+    ],
+    "masteries": [
+      "spider-man",
+      "captain-marvel",
+      "she-hulk",
+      "iron-man",
+      "black-panther"
+    ],
+    "usedAspects": {
+      "spider-man": [
+        "protection"
+      ],
+      "captain-marvel": [
+        "leadership"
+      ],
+      "she-hulk": [
+        "aggression"
+      ],
+      "iron-man": [
+        "justice"
+      ],
+      "black-panther": [
+        "justice"
+      ]
+    },
+    "interludeChoices": {
+      "act-1-lead": "hydra-lead"
+    },
+    "activeSession": null,
+    "issueResults": [
+      {
+        "attemptId": "attempt-01",
+        "issueNumber": 1,
+        "result": "win",
+        "completedAt": "2026-09-01T21:00:00-06:00",
+        "objectiveCompleted": true,
+        "masteryEarned": true,
+        "intelAfter": 3,
+        "networkAfter": 0,
+        "heroScarsAfter": 0
+      },
+      {
+        "attemptId": "attempt-02",
+        "issueNumber": 2,
+        "result": "win",
+        "completedAt": "2026-09-02T21:00:00-06:00",
+        "objectiveCompleted": false,
+        "masteryEarned": true,
+        "intelAfter": 5,
+        "networkAfter": 0,
+        "heroScarsAfter": 0
+      },
+      {
+        "attemptId": "attempt-03",
+        "issueNumber": 3,
+        "result": "hero_defeat",
+        "completedAt": "2026-09-03T21:00:00-06:00",
+        "objectiveCompleted": true,
+        "masteryEarned": true,
+        "intelAfter": 7,
+        "networkAfter": 1,
+        "heroScarsAfter": 1
+      },
+      {
+        "attemptId": "attempt-04",
+        "issueNumber": 4,
+        "result": "win",
+        "completedAt": "2026-09-04T21:00:00-06:00",
+        "objectiveCompleted": true,
+        "masteryEarned": true,
+        "intelAfter": 10,
+        "networkAfter": 1,
+        "heroScarsAfter": 0
+      },
+      {
+        "attemptId": "attempt-05",
+        "issueNumber": 5,
+        "result": "main_scheme_loss",
+        "completedAt": "2026-09-05T21:00:00-06:00",
+        "objectiveCompleted": true,
+        "masteryEarned": true,
+        "intelAfter": 12,
+        "networkAfter": 3,
+        "heroScarsAfter": 0
+      }
+    ],
+    "mirrorResults": [],
+    "finalEndingId": null,
+    "secretEpilogueEarned": false
+  },
+  "events": [
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a101",
+      "sequence": 1,
+      "type": "CAMPAIGN_CREATED",
+      "occurredAt": "2026-09-01T20:00:00-06:00",
+      "payload": {
+        "playMode": "fail-forward"
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-1"
+    },
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a102",
+      "sequence": 2,
+      "type": "ISSUE_COMPLETED",
+      "occurredAt": "2026-09-01T21:00:00-06:00",
+      "payload": {
+        "issueNumber": 1,
+        "result": "win",
+        "objectiveCompleted": true,
+        "newMasteryHeroId": "spider-man"
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-2"
+    },
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a103",
+      "sequence": 3,
+      "type": "ISSUE_COMPLETED",
+      "occurredAt": "2026-09-02T21:00:00-06:00",
+      "payload": {
+        "issueNumber": 2,
+        "result": "win",
+        "objectiveCompleted": false,
+        "newMasteryHeroId": "captain-marvel"
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-3"
+    },
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a104",
+      "sequence": 4,
+      "type": "OBJECTIVE_COMPLETED",
+      "occurredAt": "2026-09-03T20:30:00-06:00",
+      "payload": {
+        "issueNumber": 3,
+        "flag": "DRONE SAMPLE"
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-4"
+    },
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a105",
+      "sequence": 5,
+      "type": "MASTERY_EARNED",
+      "occurredAt": "2026-09-03T20:35:00-06:00",
+      "payload": {
+        "heroId": "she-hulk"
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-5"
+    },
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a106",
+      "sequence": 6,
+      "type": "ISSUE_COMPLETED",
+      "occurredAt": "2026-09-03T21:00:00-06:00",
+      "payload": {
+        "issueNumber": 3,
+        "result": "hero_defeat",
+        "objectiveCompleted": true,
+        "newMasteryHeroId": "she-hulk"
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-6"
+    },
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a107",
+      "sequence": 7,
+      "type": "ISSUE_COMPLETED",
+      "occurredAt": "2026-09-04T21:00:00-06:00",
+      "payload": {
+        "issueNumber": 4,
+        "result": "win",
+        "objectiveCompleted": true,
+        "newMasteryHeroId": "iron-man"
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-7"
+    },
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a108",
+      "sequence": 8,
+      "type": "OBJECTIVE_COMPLETED",
+      "occurredAt": "2026-09-05T20:30:00-06:00",
+      "payload": {
+        "issueNumber": 5,
+        "flag": "HYDRA LEDGER"
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-8"
+    },
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a109",
+      "sequence": 9,
+      "type": "MASTERY_EARNED",
+      "occurredAt": "2026-09-05T20:35:00-06:00",
+      "payload": {
+        "heroId": "black-panther"
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-9"
+    },
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a110",
+      "sequence": 10,
+      "type": "ISSUE_COMPLETED",
+      "occurredAt": "2026-09-05T21:00:00-06:00",
+      "payload": {
+        "issueNumber": 5,
+        "result": "main_scheme_loss",
+        "objectiveCompleted": true,
+        "newMasteryHeroId": "black-panther"
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-10"
+    },
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a111",
+      "sequence": 11,
+      "type": "INTERLUDE_CHOICE_MADE",
+      "occurredAt": "2026-09-05T21:05:00-06:00",
+      "payload": {
+        "interludeId": "act-1-lead",
+        "choiceId": "hydra-lead"
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-11"
+    },
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a112",
+      "sequence": 12,
+      "type": "ACT_RECOVERY_APPLIED",
+      "occurredAt": "2026-09-05T21:06:00-06:00",
+      "payload": {
+        "actId": "act-1",
+        "objectiveReduction": 1,
+        "lowWinReduction": 0,
+        "networkBefore": 3,
+        "networkAfter": 2
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-12"
+    },
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a113",
+      "sequence": 13,
+      "type": "ISSUE_PREPARATION_STARTED",
+      "occurredAt": "2026-09-07T22:20:00-06:00",
+      "payload": {
+        "issueNumber": 6
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-13"
+    },
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a114",
+      "sequence": 14,
+      "type": "ASPECT_SELECTED",
+      "occurredAt": "2026-09-07T22:25:00-06:00",
+      "payload": {
+        "issueNumber": 6,
+        "heroId": "spider-man",
+        "aspect": "justice"
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-14"
+    },
+    {
+      "eventId": "47280761-1572-4d97-a57b-90399826a115",
+      "sequence": 15,
+      "type": "FIELD_ASSET_EQUIPPED",
+      "occurredAt": "2026-09-07T22:30:00-06:00",
+      "payload": {
+        "issueNumber": 6,
+        "assetId": "countermeasure-suite"
+      },
+      "deviceId": "sample-device",
+      "clientMutationId": "sample-15"
+    }
+  ]
+}

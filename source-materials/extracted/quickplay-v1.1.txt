@@ -1,0 +1,291 @@
+P|Normal|MARVEL CHAMPIONS
+P|Normal|CORE PROTOCOL
+P|Normal|QUICKPLAY COMPANION
+P|Normal|The table-side version of The Ultron Directive. Full campaign book for story; this guide for play.
+TABLE
+ || 
+ENDTABLE
+TABLE
+CURRENT CAMPAIGN STATE / Issue ____   •   Intel ____   •   Network ____   •   Hero/Aspect ____________________   •   Field Asset(s) ____________________
+ENDTABLE
+P|Normal|Before Every Issue
+TABLE
+1 || Use the required hero, villain, modular set, and tier. Pick an aspect that hero has not used earlier in the main story.
+2 || Apply issue pre-setup/set-aside instructions, then complete normal scenario setup.
+3 || Resolve campaign setup, continuity flags, Interlude choice, Network setup effects, and Final Preparation if Issue 15.
+4 || Choose Field Assets: normally 1; if Network 6+, choose 2. At 15+ Intel, Endgame Protocol does not count against the limit in Issue 15.
+5 || Draw and mulligan. If Network 6+, then deal yourself the Prepared Ambush facedown encounter card.
+ENDTABLE
+P|Normal|After the Game
+TABLE
+RECORD IT NOW / Win: +1 Intel. Objective: +1 Intel. First-time Hero Mastery: +1 Intel. Hero defeat: +1 Network and 1 Scar. Main-scheme loss: +2 Network. Objectives and Mastery remain recorded even if you later lose. A Scar lowers only the starting hit-point dial by 1; it does not lower maximum HP. Remove 1 Scar when that hero wins.
+ENDTABLE
+P|Normal|Recommended First-Run Aspect Route
+TABLE
+Hero || 1st || 2nd || 3rd || First Mirror
+Spider-Man || Protection || Justice || Leadership || Aggression
+Captain Marvel || Leadership || Aggression || Justice || Protection
+She-Hulk || Aggression || Leadership || Justice || Protection
+Iron Man || Justice || Aggression || Leadership || Protection
+Black Panther || Justice || Aggression || Protection || Leadership
+ENDTABLE
+P|Normal|ACT I
+P|Normal|SIGNAL FRACTURE
+P|Normal|STANDARD • villain I → II • Standard encounter set
+TABLE
+ISSUE 01 || THE BREAK-IN
+ENDTABLE
+TABLE
+Spider-Man / Spiderman || Rhino / Rino || Bomb Scare / Amenaza de bomba || STANDARD
+ENDTABLE
+TABLE
+SETUP  Set Bomb Scare aside before shuffling; reveal it after normal setup. Apply active Network Adaptations. || OBJECTIVE  Defeat Bomb Scare before Rhino advances to stage II. / Flag: BOMB DEFUSED
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+TABLE
+ISSUE 02 || SOUND MONEY
+ENDTABLE
+TABLE
+Captain Marvel / Capitana Marvel || Klaw || Masters of Evil / Señores del Mal || STANDARD
+ENDTABLE
+TABLE
+SETUP  Set The Masters of Evil side scheme aside; reveal it after normal setup. Resolve its printed When Revealed ability normally; that Master is the objective target. || OBJECTIVE  Defeat the side scheme and that Master before Klaw. / Flag: MASTERS BROKEN
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+TABLE
+ISSUE 03 || MACHINE IN THE STATIC
+ENDTABLE
+TABLE
+She-Hulk / Hulka || Ultron / Ultrón || Under Attack / Civiles en peligro || STANDARD
+ENDTABLE
+TABLE
+SETUP  Place 4 Drone Sample counters beside play. Each facedown Ultron drone you defeat adds 1. || OBJECTIVE  Collect 4 Drone Sample counters before defeating Ultron. / Flag: DRONE SAMPLE
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+TABLE
+ISSUE 04 || MIND OVER METAL
+ENDTABLE
+TABLE
+Iron Man || Rhino / Rino || The Doomsday Chair / La Silla del Juicio Final || STANDARD
+ENDTABLE
+TABLE
+SETUP  Set one Doomsday Chair side scheme and M.O.D.O.K. aside. Reveal the side scheme after setup; when it is defeated, reveal M.O.D.O.K. || OBJECTIVE  Defeat M.O.D.O.K. before Rhino. / Flag: M.O.D.O.K. PROFILED
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+TABLE
+ISSUE 05 || THE VIBRANIUM TRAIL
+ENDTABLE
+TABLE
+Black Panther / Pantera Negra || Klaw || Legions of Hydra / Legiones de Hydra || STANDARD
+ENDTABLE
+TABLE
+SETUP  Set Madame Hydra aside. After setup, reveal Legions of Hydra; when the first such side scheme leaves play, reveal Madame Hydra. || OBJECTIVE  Defeat Madame Hydra before Klaw. / Flag: HYDRA LEDGER
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+TABLE
+INTERLUDE I — CHOOSE ONE / HYDRA LEAD: Issue 8 remove 2 threat from initial Legions (min 1); Issue 10 M.O.D.O.K. gets Tough.   •   M.O.D.O.K. LEAD: Issue 10 deal 2 extra damage to M.O.D.O.K.; Issue 8 add 2 threat to initial Legions.
+ENDTABLE
+TABLE
+ACT I RECOVERY / Reduce Network by 1 if you completed 3+ objectives in Issues 1–5. Reduce it by 1 additional if you won 2 or fewer. Apply both if eligible, minimum 0.
+ENDTABLE
+P|Normal|ACT II
+P|Normal|THE HIDDEN NETWORK
+P|Normal|VETERAN • villain I → II • Standard + Expert encounter sets • custom bridge, not an official clear
+TABLE
+ISSUE 06 || ECHO CHAMBER
+ENDTABLE
+TABLE
+Spider-Man / Spiderman || Klaw || Under Attack / Civiles en peligro || VETERAN
+ENDTABLE
+TABLE
+SETUP  Set Under Attack aside; reveal after setup. If MASTERS BROKEN is not marked, add 1 threat to it. || OBJECTIVE  Defeat Under Attack before Klaw advances to stage II. / Flag: SONIC KEY
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+TABLE
+ISSUE 07 || CITY OF DRONES
+ENDTABLE
+TABLE
+Captain Marvel / Capitana Marvel || Ultron / Ultrón || Bomb Scare / Amenaza de bomba || VETERAN
+ENDTABLE
+TABLE
+SETUP  Set Bomb Scare aside; reveal after setup. If BOMB DEFUSED is not marked, add 1 threat. Track 5 defeated drones. || OBJECTIVE  Defeat Bomb Scare and collect 5 Drone Evacuation counters. / Flag: EVACUATION COMPLETE
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+TABLE
+ISSUE 08 || HARD CASE
+ENDTABLE
+TABLE
+She-Hulk / Hulka || Rhino / Rino || Legions of Hydra / Legiones de Hydra || VETERAN
+ENDTABLE
+TABLE
+SETUP  If HYDRA LEDGER is marked, set Madame Hydra aside before normal setup. After setup reveal Legions; if she was not set aside, resolve its printed When Revealed normally. If set aside, reveal her when first Legions leaves play. Apply Act I lead. || OBJECTIVE  Defeat Madame Hydra and end with no Legions side scheme in play. / Flag: RHINO CONFESSION
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+TABLE
+ISSUE 09 || COUNTERFREQUENCY
+ENDTABLE
+TABLE
+Iron Man || Klaw || Masters of Evil / Señores del Mal || VETERAN
+ENDTABLE
+TABLE
+SETUP  Set Masters side scheme aside; reveal after setup. When defeated, reveal a named Master; if MASTERS BROKEN is unmarked, give it Tough. On Klaw II, if fewer than 2 different named Masters were defeated, reveal a different one. || OBJECTIVE  Defeat 2 different named Masters before Klaw. / Flag: FIREWALL STABLE
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+TABLE
+ISSUE 10 || THE VIBRANIUM PROTOCOL
+ENDTABLE
+TABLE
+Black Panther / Pantera Negra || Ultron / Ultrón || The Doomsday Chair / La Silla del Juicio Final || VETERAN
+ENDTABLE
+TABLE
+SETUP  Set one Doomsday Chair side scheme + M.O.D.O.K. aside; reveal scheme after setup, then M.O.D.O.K. when it is defeated. If not PROFILED, look at top encounter card: reveal it only if Biomechanical Upgrades. DRONE SAMPLE deals 2 damage. Apply Act I lead. || OBJECTIVE  Defeat M.O.D.O.K. and finish with no Doomsday Chair side scheme. / Flag: VIBRANIUM SECURED
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+TABLE
+INTERLUDE II — CHOOSE ONE / SHIELD THE CITY: Issue 14 remove 2 threat from main after setup; Issue 15 deal 1 extra facedown encounter card.   •   STRIKE THE CORE: Issue 14 deal 1 extra facedown encounter card; Issue 15 ignore highest Network Adaptation through round 1.
+ENDTABLE
+TABLE
+ACT II RECOVERY / Reduce Network by 1 if you completed 3+ objectives in Issues 6–10. Reduce it by 1 additional if you won 2 or fewer. Apply both if eligible, minimum 0.
+ENDTABLE
+P|Normal|ACT III
+P|Normal|EXTINCTION DIRECTIVE
+P|Normal|EXPERT • villain II → III • Standard + Expert encounter sets
+TABLE
+FINAL PREPARATION / Before Issue 15, gain 1 point for each marked flag: WITNESS PROTECTED, EMBASSY SECURED, SKYLINE HELD, CITY SAVED. In Issue 15 after setup, spend each point to remove 1 threat from a scheme, deal 1 damage to a minion, or heal 1 damage from Iron Man. Options may repeat.
+ENDTABLE
+TABLE
+ISSUE 11 || HOSTILE WITNESS
+ENDTABLE
+TABLE
+She-Hulk / Hulka || Klaw || The Doomsday Chair / La Silla del Juicio Final || EXPERT
+ENDTABLE
+TABLE
+SETUP  Set M.O.D.O.K. aside before normal setup. The first time Defense Network leaves play, reveal M.O.D.O.K. and engage him. If SONIC KEY is not marked, give him Tough. || OBJECTIVE  Defeat M.O.D.O.K. before Klaw advances to stage III. / Flag: WITNESS PROTECTED
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+TABLE
+ISSUE 12 || SIEGE PROTOCOL
+ENDTABLE
+TABLE
+Black Panther / Pantera Negra || Rhino / Rino || Bomb Scare / Amenaza de bomba || EXPERT
+ENDTABLE
+TABLE
+SETUP  Set Bomb Scare aside; reveal after setup. If RHINO CONFESSION is not marked, give Rhino Tough. || OBJECTIVE  Defeat Bomb Scare before the end of round 2. / Flag: EMBASSY SECURED
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+TABLE
+ISSUE 13 || TERMINAL VELOCITY
+ENDTABLE
+TABLE
+Captain Marvel / Capitana Marvel || Rhino / Rino || Under Attack / Civiles en peligro || EXPERT
+ENDTABLE
+TABLE
+SETUP  Set Under Attack aside; reveal after setup. If EVACUATION COMPLETE is not marked, add 2 threat to the main scheme. || OBJECTIVE  Win while the main scheme has 2 or less threat. / Flag: SKYLINE HELD
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+P|Normal|Network Adaptations
+TABLE
+NET || ADAPTATION || EFFECT
+2 || Early Warning || +1 threat on main after setup.
+4 || Reinforced Chassis || Villain gets Tough after setup.
+6 || Prepared Ambush || After mulligan, deal yourself 1 facedown encounter card.
+8 || Predictive Model || First villain activation gets +1 ATK or +1 SCH.
+10 || Recursive Backup || After villain advances, give Tough if it has none.
+ENDTABLE
+P|Normal|ACT III — FINALE
+P|Normal|THE LAST LINE
+TABLE
+ISSUE 14 || THE LAST NEIGHBORHOOD
+ENDTABLE
+TABLE
+Spider-Man / Spiderman || Ultron / Ultrón || Masters of Evil / Señores del Mal || EXPERT
+ENDTABLE
+TABLE
+SETUP  Set Masters side scheme aside; reveal after setup and resolve its printed When Revealed normally. That Master is the target. If FIREWALL STABLE is unmarked, deal 1 facedown encounter card. Apply Act II assault. Track 5 defeated drones. || OBJECTIVE  Defeat the side-scheme Master and collect 5 Drone Rescue counters. / Flag: CITY SAVED
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+TABLE
+ISSUE 15 || THE ULTRON DIRECTIVE
+ENDTABLE
+TABLE
+Iron Man || Ultron / Ultrón || Legions of Hydra / Legiones de Hydra || EXPERT
+ENDTABLE
+TABLE
+SETUP  If VIBRANIUM SECURED is marked, set Madame Hydra aside before normal setup. After setup reveal Legions; if she was not set aside, resolve printed When Revealed normally. If set aside, reveal her when first Legions leaves play. Apply Act II assault + Final Preparation. At 15+ Intel, Endgame Protocol is extra. || OBJECTIVE  Defeat Ultron with no side scheme in play and no minion engaged with you. / Flag: CLEAN SHUTDOWN
+ENDTABLE
+P|Normal|☐ Win   ☐ Objective   ☐ Mastery   ☐ Scar added   Intel after: ____   Network after: ____
+P|Normal|Campaign Ending
+TABLE
+RESULT || ENDING
+Win + Network 0–3 + 4+ Masteries || AVENGERS ASSEMBLE
+Win + Network 4–6 || MACHINE BROKEN
+Win + Network 7+ || PYRRHIC SHUTDOWN
+ENDTABLE
+TABLE
+IF YOU LOSE ISSUE 15 / GHOST IN THE GRID.
+ENDTABLE
+TABLE
+SECRET EPILOGUE — THE INITIATIVE / Mark THE INITIATIVE only if all five heroes earned Mastery, you finish with 15+ Intel, and CLEAN SHUTDOWN is marked.
+ENDTABLE
+P|Normal|REFERENCE
+P|Normal|FIELD ASSETS & MASTERIES
+P|Normal|Field Assets are out-of-play campaign references. They are not upgrades/supports and cannot be targeted by encounter effects.
+TABLE
+INTEL || ASSET || ONCE-PER-GAME EFFECT
+3 || Emergency Reserve || Reduce the cost of any card by 1.
+3 || Field Medic || Heal 2 damage from your identity.
+6 || S.H.I.E.L.D. Recon || Before encounter cards are dealt, look at the top 2 encounter cards; return them in either order.
+6 || Damage Control || After you defeat a side scheme, remove 2 threat from the main scheme.
+9 || Countermeasure Suite || After a boost card flips, blank 1 printed boost icon for that activation; not boost-star text.
+9 || Reactive Reflex || After your hero defends against an attack, ready your hero.
+12 || Stark-Wakanda Interface || Reduce an upgrade or support cost by 2, minimum 0.
+12 || Avengers Emergency Channel || After a basic ATK or THW, ready that hero and deal 1 damage to it.
+15 || Endgame Protocol || Issue 15 only. Interrupt: when a treachery is revealed, cancel its When Revealed effects; not Surge.
+ENDTABLE
+TABLE
+ASSET LIMIT / Normally equip 1 unlocked Asset. At Network 6+, equip 2. Endgame Protocol does not count against this limit in Issue 15 if you have 15+ Intel.
+ENDTABLE
+P|Normal|Hero Masteries
+TABLE
+HERO || SIGNATURE || MASTERY
+Spider-Man || Backflip / Voltereta hacia atrás || Prevent 4+ damage from one attack using Backflip.
+Captain Marvel || Energy Channel / Canalizar energía || Deal the full 10 damage with Energy Channel.
+She-Hulk || Gamma Slam / Apisonadora gamma || Deal 10+ damage with one Gamma Slam.
+Iron Man || Supersonic Punch / Puñetazo supersónico || Deal 8 with Supersonic Punch while Aerial and controlling 5+ TECH upgrades.
+Black Panther || Wakanda Forever! / ¡Wakanda por siempre! || Resolve all 4 different Black Panther upgrade Specials from the same Wakanda Forever! event.
+ENDTABLE
+P|Normal|POST-CAMPAIGN
+P|Normal|MIRROR PROTOCOL
+P|Normal|20 rematches. Reset Scars, Intel, Network, flags, special campaign setup, and Field Assets. Keep the listed modular set.
+TABLE
+WHY 20? / Act I story games were official Standard → replay on Expert. Act III story games were official Expert → replay on Standard. Act II used Veteran, a custom bridge → replay each of those five pairings once on official Standard and once on official Expert. Story 15 + Mirror 20 = 35 total games.
+ENDTABLE
+TABLE
+HERO || VILLAIN || MODULAR || MODE || CLEAR
+Spider-Man || Rhino || Bomb Scare || Expert || ☐
+Spider-Man || Klaw || Under Attack || Standard || ☐
+Spider-Man || Klaw || Under Attack || Expert || ☐
+Spider-Man || Ultron || Masters of Evil || Standard || ☐
+Captain Marvel || Klaw || Masters of Evil || Expert || ☐
+Captain Marvel || Ultron || Bomb Scare || Standard || ☐
+Captain Marvel || Ultron || Bomb Scare || Expert || ☐
+Captain Marvel || Rhino || Under Attack || Standard || ☐
+She-Hulk || Ultron || Under Attack || Expert || ☐
+She-Hulk || Rhino || Legions of Hydra || Standard || ☐
+She-Hulk || Rhino || Legions of Hydra || Expert || ☐
+She-Hulk || Klaw || The Doomsday Chair || Standard || ☐
+Iron Man || Rhino || The Doomsday Chair || Expert || ☐
+Iron Man || Klaw || Masters of Evil || Standard || ☐
+Iron Man || Klaw || Masters of Evil || Expert || ☐
+Iron Man || Ultron || Legions of Hydra || Standard || ☐
+Black Panther || Klaw || Legions of Hydra || Expert || ☐
+Black Panther || Ultron || The Doomsday Chair || Standard || ☐
+Black Panther || Ultron || The Doomsday Chair || Expert || ☐
+Black Panther || Rhino || Bomb Scare || Standard || ☐
+ENDTABLE
+TABLE
+FIRST MIRROR GAME FOR EACH HERO / Use that hero’s fourth, previously unused aspect. After that, build freely.
+ENDTABLE
+TABLE
+PERFECT CORE / All 30 official Standard/Expert matchup boxes checked + all five heroes used all four aspects + all five Mastery stars earned. The Veteran story games are five additional bridge games, so the full journey is 35 games.
+ENDTABLE

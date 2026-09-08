@@ -1,0 +1,16 @@
+﻿number,act,title,hero_en,hero_es,villain_en,villain_es,modular_en,modular_es,tier,recommended_aspect,objective_flag
+1,act-1,THE BREAK-IN,Spider-Man,Spiderman,Rhino,Rino,Bomb Scare,Amenaza de bomba,standard,protection,BOMB DEFUSED
+2,act-1,SOUND MONEY,Captain Marvel,Capitana Marvel,Klaw,Klaw,Masters of Evil,Señores del Mal,standard,leadership,MASTERS BROKEN
+3,act-1,MACHINE IN THE STATIC,She-Hulk,Hulka,Ultron,Ultrón,Under Attack,Civiles en peligro,standard,aggression,DRONE SAMPLE
+4,act-1,MIND OVER METAL,Iron Man,Iron Man,Rhino,Rino,The Doomsday Chair,La Silla del Juicio Final,standard,justice,M.O.D.O.K. PROFILED
+5,act-1,THE VIBRANIUM TRAIL,Black Panther,Pantera Negra,Klaw,Klaw,Legions of Hydra,Legiones de Hydra,standard,justice,HYDRA LEDGER
+6,act-2,ECHO CHAMBER,Spider-Man,Spiderman,Klaw,Klaw,Under Attack,Civiles en peligro,veteran,justice,SONIC KEY
+7,act-2,CITY OF DRONES,Captain Marvel,Capitana Marvel,Ultron,Ultrón,Bomb Scare,Amenaza de bomba,veteran,aggression,EVACUATION COMPLETE
+8,act-2,HARD CASE,She-Hulk,Hulka,Rhino,Rino,Legions of Hydra,Legiones de Hydra,veteran,leadership,RHINO CONFESSION
+9,act-2,COUNTERFREQUENCY,Iron Man,Iron Man,Klaw,Klaw,Masters of Evil,Señores del Mal,veteran,aggression,FIREWALL STABLE
+10,act-2,THE VIBRANIUM PROTOCOL,Black Panther,Pantera Negra,Ultron,Ultrón,The Doomsday Chair,La Silla del Juicio Final,veteran,aggression,VIBRANIUM SECURED
+11,act-3,HOSTILE WITNESS,She-Hulk,Hulka,Klaw,Klaw,The Doomsday Chair,La Silla del Juicio Final,expert,justice,WITNESS PROTECTED
+12,act-3,SIEGE PROTOCOL,Black Panther,Pantera Negra,Rhino,Rino,Bomb Scare,Amenaza de bomba,expert,protection,EMBASSY SECURED
+13,act-3,TERMINAL VELOCITY,Captain Marvel,Capitana Marvel,Rhino,Rino,Under Attack,Civiles en peligro,expert,justice,SKYLINE HELD
+14,act-3,THE LAST NEIGHBORHOOD,Spider-Man,Spiderman,Ultron,Ultrón,Masters of Evil,Señores del Mal,expert,leadership,CITY SAVED
+15,act-3,THE ULTRON DIRECTIVE,Iron Man,Iron Man,Ultron,Ultrón,Legions of Hydra,Legiones de Hydra,expert,leadership,CLEAN SHUTDOWN

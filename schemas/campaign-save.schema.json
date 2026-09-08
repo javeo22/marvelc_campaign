@@ -1,0 +1,483 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://core-protocol.example/schemas/campaign-save.schema.json",
+  "title": "Core Protocol Campaign Save",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "saveId",
+    "campaignId",
+    "definitionVersion",
+    "playMode",
+    "createdAt",
+    "updatedAt",
+    "deviceId",
+    "sequence",
+    "snapshot",
+    "events"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "saveId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "campaignId": {
+      "const": "core-protocol"
+    },
+    "definitionVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "playMode": {
+      "enum": [
+        "fail-forward",
+        "canon"
+      ]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "deviceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "snapshot": {
+      "$ref": "#/$defs/snapshot"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/event"
+      }
+    }
+  },
+  "$defs": {
+    "event": {
+      "type": "object",
+      "required": [
+        "eventId",
+        "sequence",
+        "type",
+        "occurredAt",
+        "payload"
+      ],
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "type": {
+          "enum": [
+            "CAMPAIGN_CREATED",
+            "ISSUE_PREPARATION_STARTED",
+            "ASPECT_SELECTED",
+            "FIELD_ASSET_EQUIPPED",
+            "ISSUE_STARTED",
+            "ROUND_CHANGED",
+            "COUNTER_CHANGED",
+            "CHECKLIST_CHANGED",
+            "FIELD_ASSET_USED",
+            "OBJECTIVE_COMPLETED",
+            "MASTERY_EARNED",
+            "NOTE_ADDED",
+            "ISSUE_COMPLETED",
+            "INTERLUDE_CHOICE_MADE",
+            "ACT_RECOVERY_APPLIED",
+            "FINAL_PREP_SPENT",
+            "MIRROR_STARTED",
+            "MIRROR_COMPLETED",
+            "SAVE_IMPORTED",
+            "MANUAL_CORRECTION"
+          ]
+        },
+        "occurredAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "payload": {
+          "type": "object"
+        },
+        "deviceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "clientMutationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "snapshot": {
+      "type": "object",
+      "required": [
+        "phase",
+        "currentIssueNumber",
+        "intel",
+        "network",
+        "scars",
+        "flags",
+        "masteries",
+        "usedAspects",
+        "interludeChoices",
+        "activeSession",
+        "issueResults",
+        "mirrorResults",
+        "finalEndingId",
+        "secretEpilogueEarned"
+      ],
+      "properties": {
+        "phase": {
+          "enum": [
+            "new",
+            "preparing",
+            "in-progress",
+            "debrief",
+            "interlude",
+            "complete",
+            "mirror"
+          ]
+        },
+        "currentIssueNumber": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 15
+        },
+        "intel": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "network": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "scars": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "spider-man",
+              "captain-marvel",
+              "she-hulk",
+              "iron-man",
+              "black-panther"
+            ]
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
+          }
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "masteries": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "spider-man",
+              "captain-marvel",
+              "she-hulk",
+              "iron-man",
+              "black-panther"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "usedAspects": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "spider-man",
+              "captain-marvel",
+              "she-hulk",
+              "iron-man",
+              "black-panther"
+            ]
+          },
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "aggression",
+                "justice",
+                "leadership",
+                "protection"
+              ]
+            },
+            "uniqueItems": true
+          }
+        },
+        "interludeChoices": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "act-1-lead",
+              "act-2-assault"
+            ]
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "activeSession": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "required": [
+                "issueNumber",
+                "startedAt",
+                "aspect",
+                "selectedFieldAssetIds",
+                "usedFieldAssetIds",
+                "round",
+                "objectiveCounters",
+                "objectiveChecks",
+                "objectiveCompleted",
+                "masteryEarnedThisSession",
+                "notes",
+                "undoCursor"
+              ],
+              "properties": {
+                "issueNumber": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 15
+                },
+                "startedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "aspect": {
+                  "enum": [
+                    "aggression",
+                    "justice",
+                    "leadership",
+                    "protection"
+                  ]
+                },
+                "selectedFieldAssetIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "uniqueItems": true
+                },
+                "usedFieldAssetIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "uniqueItems": true
+                },
+                "round": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "heroHp": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "villainStage": {
+                  "enum": [
+                    "I",
+                    "II",
+                    "III"
+                  ]
+                },
+                "villainHp": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "mainSchemeThreat": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "objectiveCounters": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "objectiveChecks": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "boolean"
+                  }
+                },
+                "objectiveCompleted": {
+                  "type": "boolean"
+                },
+                "masteryEarnedThisSession": {
+                  "type": "boolean"
+                },
+                "notes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "undoCursor": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "issueResults": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "attemptId",
+              "issueNumber",
+              "result",
+              "completedAt",
+              "objectiveCompleted",
+              "masteryEarned",
+              "intelAfter",
+              "networkAfter",
+              "heroScarsAfter"
+            ],
+            "properties": {
+              "attemptId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "issueNumber": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 15
+              },
+              "result": {
+                "enum": [
+                  "win",
+                  "hero_defeat",
+                  "main_scheme_loss",
+                  "other_loss",
+                  "abandoned"
+                ]
+              },
+              "completedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "objectiveCompleted": {
+                "type": "boolean"
+              },
+              "masteryEarned": {
+                "type": "boolean"
+              },
+              "intelAfter": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "networkAfter": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "heroScarsAfter": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2
+              },
+              "notes": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "mirrorResults": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "mirrorNumber",
+              "result",
+              "aspect",
+              "completedAt"
+            ],
+            "properties": {
+              "mirrorNumber": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 20
+              },
+              "result": {
+                "enum": [
+                  "win",
+                  "hero_defeat",
+                  "main_scheme_loss",
+                  "other_loss",
+                  "abandoned"
+                ]
+              },
+              "aspect": {
+                "enum": [
+                  "aggression",
+                  "justice",
+                  "leadership",
+                  "protection"
+                ]
+              },
+              "completedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "notes": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "finalEndingId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "secretEpilogueEarned": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,426 @@
+{
+  "schemaVersion": "1.0.0",
+  "source": "marvel_champions_journey_tracker_v2_core_protocol(1).xlsx",
+  "anchors": [
+    {
+      "requestedName": "Backflip",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-3-backflip",
+          "nameEn": "Backflip",
+          "nameEs": "Voltereta hacia atrás",
+          "packEn": "Core Set",
+          "collectorNumber": "3",
+          "marvelcdbCode": "01003",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Biomechanical Upgrades",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-185-biomechanical-upgrades",
+          "nameEn": "Biomechanical Upgrades",
+          "nameEs": "Mejoras biomecánicas",
+          "packEn": "Core Set",
+          "collectorNumber": "185",
+          "marvelcdbCode": "01185",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Black Panther",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-40-black-panther",
+          "nameEn": "Black Panther",
+          "nameEs": "Pantera Negra",
+          "packEn": "Core Set",
+          "collectorNumber": "40",
+          "marvelcdbCode": "01040a",
+          "matchStatus": "verified-upstream-json-2026-09-07",
+          "alternateMarvelcdbCodes": [
+            "01040b"
+          ]
+        }
+      ]
+    },
+    {
+      "requestedName": "Bomb Scare",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-109-bomb-scare",
+          "nameEn": "Bomb Scare",
+          "nameEs": "Amenaza de bomba",
+          "packEn": "Core Set",
+          "collectorNumber": "109",
+          "marvelcdbCode": "01109",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Captain Marvel",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-10-captain-marvel",
+          "nameEn": "Captain Marvel",
+          "nameEs": "Capitana Marvel",
+          "packEn": "Core Set",
+          "collectorNumber": "10",
+          "marvelcdbCode": "01010a",
+          "matchStatus": "verified-upstream-json-2026-09-07",
+          "alternateMarvelcdbCodes": [
+            "01010b"
+          ]
+        }
+      ]
+    },
+    {
+      "requestedName": "Defense Network",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-125-defense-network",
+          "nameEn": "Defense Network",
+          "nameEs": "Red de defensa",
+          "packEn": "Core Set",
+          "collectorNumber": "125",
+          "marvelcdbCode": "01125",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Energy Channel",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-18-energy-channel",
+          "nameEn": "Energy Channel",
+          "nameEs": "Canalizar energía",
+          "packEn": "Core Set",
+          "collectorNumber": "18",
+          "marvelcdbCode": "01018",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Gamma Slam",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-21-gamma-slam",
+          "nameEn": "Gamma Slam",
+          "nameEs": "Apisonadora gamma",
+          "packEn": "Core Set",
+          "collectorNumber": "21",
+          "marvelcdbCode": "01021",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Iron Man",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-29-iron-man",
+          "nameEn": "Iron Man",
+          "nameEs": "Iron Man",
+          "packEn": "Core Set",
+          "collectorNumber": "29",
+          "marvelcdbCode": "01029a",
+          "matchStatus": "verified-upstream-json-2026-09-07",
+          "alternateMarvelcdbCodes": [
+            "01029b"
+          ]
+        }
+      ]
+    },
+    {
+      "requestedName": "Klaw (I)",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-113-klaw-i",
+          "nameEn": "Klaw (I)",
+          "nameEs": "Klaw (I)",
+          "packEn": "Core Set",
+          "collectorNumber": "113",
+          "marvelcdbCode": "01113",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Klaw (II)",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-114-klaw-ii",
+          "nameEn": "Klaw (II)",
+          "nameEs": "Klaw (II)",
+          "packEn": "Core Set",
+          "collectorNumber": "114",
+          "marvelcdbCode": "01114",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Legions of Hydra",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-180-legions-of-hydra",
+          "nameEn": "Legions of Hydra",
+          "nameEs": "Legiones de Hydra",
+          "packEn": "Core Set",
+          "collectorNumber": "180",
+          "marvelcdbCode": "01180",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "M.O.D.O.K.",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-184-m-o-d-o-k",
+          "nameEn": "M.O.D.O.K.",
+          "nameEs": "MODOK",
+          "packEn": "Core Set",
+          "collectorNumber": "184",
+          "marvelcdbCode": "01184",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Madame Hydra",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-181-madame-hydra",
+          "nameEn": "Madame Hydra",
+          "nameEs": "Madame Hydra",
+          "packEn": "Core Set",
+          "collectorNumber": "181",
+          "marvelcdbCode": "01181",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Rhino (I)",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-94-rhino-i",
+          "nameEn": "Rhino (I)",
+          "nameEs": "Rino (I)",
+          "packEn": "Core Set",
+          "collectorNumber": "94",
+          "marvelcdbCode": "01094",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Rhino (II)",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-95-rhino-ii",
+          "nameEn": "Rhino (II)",
+          "nameEs": "Rino (II)",
+          "packEn": "Core Set",
+          "collectorNumber": "95",
+          "marvelcdbCode": "01095",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "She-Hulk",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-19-she-hulk",
+          "nameEn": "She-Hulk",
+          "nameEs": "Hulka",
+          "packEn": "Core Set",
+          "collectorNumber": "19",
+          "marvelcdbCode": "01019a",
+          "matchStatus": "verified-upstream-json-2026-09-07",
+          "alternateMarvelcdbCodes": [
+            "01019b"
+          ]
+        }
+      ]
+    },
+    {
+      "requestedName": "Spider-Man",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-1-spider-man",
+          "nameEn": "Spider-Man",
+          "nameEs": "Spiderman",
+          "packEn": "Core Set",
+          "collectorNumber": "1",
+          "marvelcdbCode": "01001a",
+          "matchStatus": "verified-upstream-json-2026-09-07",
+          "alternateMarvelcdbCodes": [
+            "01001b"
+          ]
+        }
+      ]
+    },
+    {
+      "requestedName": "Supersonic Punch",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-32-supersonic-punch",
+          "nameEn": "Supersonic Punch",
+          "nameEs": "Puñetazo supersónico",
+          "packEn": "Core Set",
+          "collectorNumber": "32",
+          "marvelcdbCode": "01032",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "The Doomsday Chair",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-183-the-doomsday-chair",
+          "nameEn": "The Doomsday Chair",
+          "nameEs": "La Silla del Juicio Final",
+          "packEn": "Core Set",
+          "collectorNumber": "183",
+          "marvelcdbCode": "01183",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "The Masters of Evil",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-128-the-masters-of-evil",
+          "nameEn": "The Masters of Evil",
+          "nameEs": "Los Señores del Mal",
+          "packEn": "Core Set",
+          "collectorNumber": "128",
+          "marvelcdbCode": "01128",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Ultron (I)",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-134-ultron-i",
+          "nameEn": "Ultron (I)",
+          "nameEs": "Ultrón (I)",
+          "packEn": "Core Set",
+          "collectorNumber": "134",
+          "marvelcdbCode": "01134",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Ultron (II)",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-135-ultron-ii",
+          "nameEn": "Ultron (II)",
+          "nameEs": "Ultrón (II)",
+          "packEn": "Core Set",
+          "collectorNumber": "135",
+          "marvelcdbCode": "01135",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Under Attack",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-151-under-attack",
+          "nameEn": "Under Attack",
+          "nameEs": "Civiles en peligro",
+          "packEn": "Core Set",
+          "collectorNumber": "151",
+          "marvelcdbCode": "01151",
+          "matchStatus": "derived-core-code-requires-api-fixture-check",
+          "alternateMarvelcdbCodes": []
+        }
+      ]
+    },
+    {
+      "requestedName": "Wakanda Forever!",
+      "status": "matched",
+      "matches": [
+        {
+          "recordId": "core-set-43-wakanda-forever",
+          "nameEn": "Wakanda Forever!",
+          "nameEs": "¡Wakanda por siempre!",
+          "packEn": "Core Set",
+          "collectorNumber": "43",
+          "marvelcdbCode": "01043a",
+          "matchStatus": "verified-upstream-json-2026-09-07",
+          "alternateMarvelcdbCodes": [
+            "01043b",
+            "01043c",
+            "01043d"
+          ]
+        }
+      ]
+    }
+  ],
+  "launchGate": "All campaign anchors must be matched to captured MarvelCDB API fixtures before card images are enabled.",
+  "verificationNotes": [
+    "Identity front/back suffixes and the four Wakanda Forever! resource variants were checked against the official MarvelSDB JSON repository on 2026-09-07.",
+    "All remaining Core codes are deterministic collector-number candidates and must be verified against API fixtures before remote images are enabled.",
+    "A verified card code does not grant permission to reproduce or hotlink its image."
+  ]
+}
