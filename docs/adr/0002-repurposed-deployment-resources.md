@@ -11,6 +11,7 @@ The deployment should use the existing `therapy` Vercel project and the existing
 - GitHub remote: `https://github.com/javeo22/marvelc_campaign.git`.
 - Vercel project: repurpose the former `therapy` project, renamed to `marvelc-campaign`, for the Next.js production deployment.
 - Vercel SSO deployment protection is disabled for this public noncommercial PWA; Git fork protection remains enabled.
+- The stale `therapy-snowy.vercel.app` alias was removed; the production alias is `https://marvelc-campaign.vercel.app`.
 - Supabase project: repurpose `pokecomp` (`sutslbmqsjczlfnsmgxt`) with namespaced `core_protocol_*` tables only.
 - Cloud sync remains disabled unless `NEXT_PUBLIC_CLOUD_SYNC_ENABLED=true`.
 - Public card-image mode remains `off` until `legal/CARD_IMAGE_LAUNCH_CHECKLIST.md` is completed and signed.
