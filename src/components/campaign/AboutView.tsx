@@ -20,7 +20,13 @@ export function AboutView() {
             ? " This build may request remote MarvelCDB-hosted images directly when the server kill switch also allows it."
             : " Remote images are off until the launch checklist is signed."}
         </p>
+        <p>
+          Rights holders and service operators can report attribution, linking, or removal requests through the project issues page.
+        </p>
         <Link className="button" href="/settings">Settings</Link>
+        <Link className="button" href="https://github.com/javeo22/marvelc_campaign/issues" target="_blank" rel="noreferrer">
+          Rights contact
+        </Link>
       </ComicPanel>
     </>
   );

@@ -13,7 +13,7 @@ We have recorded the following material and location from your message:
 
 As an immediate precaution, we have [disabled the affected external image / disabled all external card images / removed the referenced material / begun review]. We will preserve only the operational information needed to resolve the request and will not republish the disputed material during review.
 
-Project contact:
+Project contact: https://github.com/javeo22/marvelc_campaign/issues
 Date received:
 Internal case ID:
 Resolution and date:

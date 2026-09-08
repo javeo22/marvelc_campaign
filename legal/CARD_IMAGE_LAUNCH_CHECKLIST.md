@@ -39,9 +39,19 @@ Complete and sign every applicable item before setting `CARD_IMAGES_ENABLED=true
 
 ### Approval record
 
-- Decision: [ ] Keep off  [ ] Enable within recorded scope
-- Reviewer/owner:
-- Date:
-- Approved domains:
+- Decision: [ ] Keep off  [x] Enable within recorded scope
+- Reviewer/owner: Javier Vega, project owner, via Codex session signoff
+- Date: 2026-09-08
+- Approved domains: `https://marvelc-campaign.vercel.app`
 - Conditions/expiry:
+  - Production image mode is a project-owner risk acceptance, not a claim of permission, authorization, endorsement, or settled fair use.
+  - Card images must load only as direct, unoptimized, remote MarvelCDB-hosted URLs.
+  - Do not store, proxy, optimize, transform, service-worker-cache, bundle, export, print, or bulk-download official card-image binaries.
+  - Keep metadata-only fallback available at every image location.
+  - Disable globally by setting `NEXT_PUBLIC_CARD_IMAGE_MODE=off` and `CARD_IMAGES_ENABLED=false`, followed by a production redeploy.
+  - Re-review before changing domains, audience, monetization, image behavior, or cache behavior.
 - Evidence links:
+  - MarvelCDB public API and caching terms reviewed 2026-09-08: `https://marvelcdb.com/api/`
+  - MarvelCDB about page reviewed 2026-09-08: `https://marvelcdb.com/about`
+  - FFG/Asmodee legal information and IP policy reviewed 2026-09-08: `https://www.fantasyflightgames.com/en/more/legal-information/`
+  - Disney licensing/permissions information reviewed 2026-09-08: `https://www.disneystudiolicensing.com/`
