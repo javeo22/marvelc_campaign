@@ -9,7 +9,7 @@ The deployment should use the existing `therapy` Vercel project and the existing
 ## Decision
 
 - GitHub remote: `https://github.com/javeo22/marvelc_campaign.git`.
-- Vercel project: repurpose `therapy` for the Next.js production deployment.
+- Vercel project: repurpose the former `therapy` project, renamed to `marvelc-campaign`, for the Next.js production deployment.
 - Supabase project: repurpose `pokecomp` (`sutslbmqsjczlfnsmgxt`) with namespaced `core_protocol_*` tables only.
 - Cloud sync remains disabled unless `NEXT_PUBLIC_CLOUD_SYNC_ENABLED=true`.
 - Public card-image mode remains `off` until `legal/CARD_IMAGE_LAUNCH_CHECKLIST.md` is completed and signed.
