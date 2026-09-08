@@ -17,6 +17,7 @@ import {
 } from "@/domain/selectors";
 import type { Aspect } from "@/domain/types";
 import { AdaptationStack, FieldAssetSummary, IssueCover, ScarChip } from "./CampaignBits";
+import { formatAspectLabel } from "./display-labels";
 import { useCampaignSave } from "./useCampaignSave";
 
 export function IssuePreparation({ saveId, issueNumber }: { saveId: string; issueNumber: number }) {
@@ -108,8 +109,8 @@ export function IssuePreparation({ saveId, issueNumber }: { saveId: string; issu
                         disabled={!legal.ok}
                         onChange={() => setAspect(candidate)}
                       />
-                      {candidate}
-                      {candidate === issue.recommendedAspect ? " · recommended" : ""}
+                      {formatAspectLabel(candidate)}
+                      {candidate === issue.recommendedAspect ? " · Recommended" : ""}
                     </label>
                   );
                 })}

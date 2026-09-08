@@ -5,7 +5,8 @@ import { ArrowRight, BookOpen, CheckCircle2, FileJson, RotateCcw } from "lucide-
 import { ComicHeader, ComicPanel, EmptyState, ErrorPanel } from "@/components/comic/ComicPrimitives";
 import { campaignDefinition } from "@/domain/content";
 import { getIssue, selectNextTransition } from "@/domain/selectors";
-import { AdaptationStack, CampaignMeters, FieldAssetSummary, IssueCover, ScarChip } from "./CampaignBits";
+import { AdaptationStack, CampaignMeters, FieldAssetSummary, HeroScarTile, IssueCover } from "./CampaignBits";
+import { formatIdLabel } from "./display-labels";
 import { useCampaignSave } from "./useCampaignSave";
 
 export function CampaignDashboard({ saveId }: { saveId: string }) {
@@ -77,11 +78,14 @@ export function CampaignDashboard({ saveId }: { saveId: string }) {
           </ComicPanel>
           <ComicPanel>
             <span className="caption-box">Hero scars</span>
-            <div className="chip-row" style={{ marginTop: "0.75rem" }}>
+            <div className="scar-tile-grid" style={{ marginTop: "0.25rem" }}>
               {campaignDefinition.heroes.map((hero) => (
-                <span className="chip" key={hero.id}>
-                  {hero.name.en}: <ScarChip count={snapshot.scars[hero.id] ?? 0} />
-                </span>
+                <HeroScarTile
+                  count={snapshot.scars[hero.id] ?? 0}
+                  heroName={hero.name.en}
+                  key={hero.id}
+                  maximum={hero.scarMaximum}
+                />
               ))}
             </div>
           </ComicPanel>
@@ -103,7 +107,7 @@ export function CampaignDashboard({ saveId }: { saveId: string }) {
             <ol>
               {lastResults.map((event) => (
                 <li key={`${event.sequence}-${event.eventId}`}>
-                  <strong>{event.type.replaceAll("_", " ")}</strong>
+                  <strong>{formatIdLabel(event.type)}</strong>
                   <br />
                   <span className="small">Sequence {event.sequence}</span>
                 </li>

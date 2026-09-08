@@ -72,6 +72,7 @@ textarea {
 
 button,
 .button {
+  max-width: 100%;
   min-height: var(--touch-min);
   border: var(--panel-border) solid var(--ink);
   border-radius: var(--radius-sm);
@@ -87,6 +88,9 @@ button,
   text-decoration: none;
   cursor: pointer;
   text-align: center;
+  line-height: 1.15;
+  white-space: normal;
+  overflow-wrap: anywhere;
   transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -222,8 +226,10 @@ textarea {
 .comic-header__eyebrow,
 .caption-box {
   display: inline-flex;
+  max-width: 100%;
   width: fit-content;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.4rem;
   border: var(--panel-border) solid var(--ink);
   background: var(--gold);
@@ -231,7 +237,9 @@ textarea {
   padding: 0.18rem 0.45rem;
   font-size: 0.78rem;
   font-weight: 900;
+  line-height: 1.1;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .comic-header h1 {
@@ -266,6 +274,14 @@ textarea {
   align-content: start;
   gap: 0.75rem;
   padding: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.comic-panel > *,
+.issue-cover > *,
+.empty-state > *,
+.error-panel > * {
+  min-width: 0;
 }
 
 .comic-panel h2,
@@ -322,12 +338,11 @@ textarea {
 .issue-cover::before {
   content: "";
   position: absolute;
-  inset: -30% -10% auto auto;
-  width: 55%;
-  height: 75%;
-  transform: rotate(18deg);
+  inset: 0 0 auto auto;
+  width: min(54%, 16rem);
+  height: 100%;
   border-left: 8px solid rgba(16, 19, 24, 0.16);
-  background: repeating-linear-gradient(90deg, transparent 0 12px, rgba(16, 19, 24, 0.12) 12px 16px);
+  background: repeating-linear-gradient(105deg, transparent 0 12px, rgba(16, 19, 24, 0.12) 12px 16px);
   pointer-events: none;
 }
 
@@ -366,19 +381,82 @@ textarea {
 .scar-chip {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
+  max-width: 100%;
+  min-width: 0;
   min-height: 2rem;
   border: 2px solid var(--ink);
   background: var(--sky);
   color: var(--ink);
   padding: 0.25rem 0.55rem;
   font-weight: 800;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
 }
 
 .scar-chip {
   gap: 0.35rem;
   background: var(--crimson);
   color: white;
-  clip-path: polygon(0 0, 100% 0, 94% 50%, 100% 100%, 0 100%, 6% 50%);
+  border-radius: var(--radius-sm);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.scar-chip small {
+  color: inherit;
+  font-size: 0.78rem;
+  font-weight: 900;
+  opacity: 0.92;
+  text-transform: uppercase;
+}
+
+.scar-tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 0.65rem;
+}
+
+.scar-tile {
+  min-width: 0;
+  min-height: 4.75rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.55rem 0.7rem;
+  align-items: center;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  padding: 0.7rem;
+}
+
+.scar-tile__copy {
+  min-width: 0;
+  display: grid;
+  gap: 0.05rem;
+}
+
+.scar-tile__copy strong {
+  line-height: 1.1;
+}
+
+.scar-tile__copy small,
+.scar-tile__dial {
+  color: var(--muted-ink);
+  font-size: 0.84rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.scar-tile__dial {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-sm);
+  background: var(--paper-elevated);
+  color: var(--ink);
+  padding: 0.2rem 0.45rem;
 }
 
 .icon-badge,
@@ -473,6 +551,10 @@ textarea {
   align-items: center;
 }
 
+.passport-card__header > * {
+  min-width: 0;
+}
+
 .passport-card__header h2 {
   font-size: clamp(1.25rem, 4vw, 1.8rem);
 }
@@ -533,7 +615,6 @@ textarea {
 
 .passport-stamp strong {
   color: var(--ink);
-  text-transform: capitalize;
 }
 
 .passport-stamp small {
@@ -633,20 +714,30 @@ textarea {
 
 .clear-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
   gap: 0.65rem;
 }
 
 .clear-row {
   min-height: 5rem;
   display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 0.5rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.65rem;
   align-items: center;
   border: 2px solid var(--ink);
   border-radius: var(--radius-sm);
   background: var(--paper);
   padding: 0.65rem;
+}
+
+.clear-row strong {
+  line-height: 1.1;
+}
+
+.clear-row__checks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
 }
 
 .clear-row span {
@@ -661,6 +752,8 @@ textarea {
   padding: 0.25rem 0.45rem;
   font-size: 0.85rem;
   font-weight: 900;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
 }
 
 .clear-row span[data-clear="true"] {
@@ -675,7 +768,7 @@ textarea {
 
 .track-meter__bar {
   display: grid;
-  grid-template-columns: repeat(var(--segments), 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(1.25rem, 1fr));
   gap: 0.25rem;
 }
 
@@ -835,6 +928,22 @@ textarea {
 
   .clear-row span {
     justify-content: flex-start;
+  }
+
+  .clear-row__checks {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .passport-card__header {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .passport-card__header .scar-chip,
+  .passport-card__header .mastery-badge {
+    grid-column: 1 / -1;
+    justify-self: stretch;
   }
 }
 

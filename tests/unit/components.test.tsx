@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { campaignDefinition } from "@/domain/content";
 import { createInitialSnapshot } from "@/domain/reducer";
-import { CampaignMeters, IssueCover, ScarChip, TrackMeter } from "@/components/campaign/CampaignBits";
+import { CampaignMeters, HeroScarTile, IssueCover, ScarChip, TrackMeter } from "@/components/campaign/CampaignBits";
 
 describe("comic campaign components", () => {
   it("exposes TrackMeter numeric state and threshold text accessibly", () => {
@@ -20,7 +20,14 @@ describe("comic campaign components", () => {
 
   it("shows Scar count and starting dial adjustment as text", () => {
     render(<ScarChip count={2} />);
-    expect(screen.getByText(/Scar 2\/2/i)).toHaveTextContent("dial -2");
+    expect(screen.getByText(/Scars 2\/2/i)).toBeInTheDocument();
+    expect(screen.getByText(/Recovery -2/i)).toBeInTheDocument();
+  });
+
+  it("renders dashboard scar tiles with hero names and recovery state", () => {
+    render(<HeroScarTile count={0} heroName="Captain Marvel" maximum={2} />);
+    expect(screen.getByLabelText(/Captain Marvel: 0 of 2 scars/i)).toBeInTheDocument();
+    expect(screen.getByText("Recovery Same")).toBeInTheDocument();
   });
 
   it("renders an issue cover without requiring card images", () => {

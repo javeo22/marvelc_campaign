@@ -6,6 +6,7 @@ import { campaignDefinition } from "@/domain/content";
 import { selectAspectPassport } from "@/domain/selectors";
 import { ASPECTS, type Aspect } from "@/domain/types";
 import { ScarChip } from "./CampaignBits";
+import { formatAspectLabel } from "./display-labels";
 import { useCampaignSave } from "./useCampaignSave";
 
 const aspectIcons = {
@@ -38,7 +39,7 @@ export function PassportView({ saveId }: { saveId: string }) {
               </div>
               <div>
                 <h2>{row.hero.name.en}</h2>
-                <p className="small">Story route: {row.appearances.map((issue) => `Issue ${issue.number} ${issue.recommendedAspect}`).join(" · ")}</p>
+                <p className="small">Story route: {row.appearances.map((issue) => `Issue ${issue.number} ${formatAspectLabel(issue.recommendedAspect)}`).join(" · ")}</p>
               </div>
               <ScarChip count={row.scars} />
               <span className="mastery-badge" data-earned={row.masteryEarned}>
@@ -57,10 +58,10 @@ export function PassportView({ saveId }: { saveId: string }) {
                     data-aspect={aspect}
                     data-status={stamped ? "stamped" : firstMirror ? "mirror" : "open"}
                     key={aspect}
-                    aria-label={`${aspect}: ${stamped ? "stamped" : firstMirror ? "first Mirror required" : "open"}`}
+                    aria-label={`${formatAspectLabel(aspect)}: ${stamped ? "stamped" : firstMirror ? "first Mirror required" : "open"}`}
                   >
                     <Icon aria-hidden="true" />
-                    <strong>{aspect}</strong>
+                    <strong>{formatAspectLabel(aspect)}</strong>
                     <small>{stamped ? "Stamped" : firstMirror ? "Mirror" : "Open"}</small>
                   </span>
                 );

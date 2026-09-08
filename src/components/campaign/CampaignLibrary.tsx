@@ -5,11 +5,16 @@ import { useEffect, useState } from "react";
 import { Copy, Download, Play, Plus, Trash2 } from "lucide-react";
 import { EmptyState, ErrorPanel, ComicHeader, ComicPanel } from "@/components/comic/ComicPrimitives";
 import { deleteCampaignSave, duplicateCampaignSave, listCampaignSaves, type SaveSummary } from "@/storage/indexeddb";
+import { formatPhaseLabel } from "./display-labels";
 
 export function CampaignLibrary() {
   const [saves, setSaves] = useState<SaveSummary[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const imageModeCopy =
+    process.env.NEXT_PUBLIC_CARD_IMAGE_MODE === "remote"
+      ? "Remote card previews are enabled."
+      : "Metadata-only mode is active.";
 
   const load = async () => {
     setLoading(true);
@@ -52,7 +57,7 @@ export function CampaignLibrary() {
       <ComicHeader
         eyebrow="Fan companion"
         title="Core Protocol"
-        subtitle="A local-first campaign journal for physical table play. Metadata-only mode is active."
+        subtitle={`A local-first campaign journal for physical table play. ${imageModeCopy}`}
         actions={<Link className="button" href="/campaigns/new"><Plus aria-hidden="true" /> New Campaign</Link>}
       />
       {error ? <ErrorPanel title="Local storage unavailable"><p>{error}</p><button type="button" onClick={load}>Retry</button></ErrorPanel> : null}
@@ -66,10 +71,10 @@ export function CampaignLibrary() {
       <div className="panel-grid">
         {saves.map((save) => (
           <article className="comic-panel" key={save.saveId}>
-            <span className="caption-box">{save.phase}</span>
+            <span className="caption-box">{formatPhaseLabel(save.phase)}</span>
             <h2>{save.name}</h2>
             <p className="meta">
-              Issue {save.currentIssueNumber ?? "complete"} · Intel {save.intel} · Network {save.network} · {save.completionPercent}%
+              Issue {save.currentIssueNumber ?? "Complete"} · Intel {save.intel} · Network {save.network} · {save.completionPercent}%
             </p>
             <div className="chip-row">
               <Link className="button" href={`/campaigns/${save.saveId}`}><Play aria-hidden="true" /> Open</Link>

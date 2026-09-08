@@ -7,6 +7,7 @@ import { campaignDefinition } from "@/domain/content";
 import { canSelectMirrorAspect, selectFirstMirrorAspect } from "@/domain/selectors";
 import type { Aspect, IssueResult } from "@/domain/types";
 import { ASPECTS, ISSUE_RESULTS } from "@/domain/types";
+import { formatAspectLabel, formatIdLabel, formatResultLabel } from "./display-labels";
 import { useCampaignSave } from "./useCampaignSave";
 
 export function MirrorView({ saveId }: { saveId: string }) {
@@ -64,21 +65,21 @@ export function MirrorView({ saveId }: { saveId: string }) {
             <ComicPanel key={row.id}>
               <span className="caption-box">Mirror {row.number}</span>
               <h2>{row.heroName.en} vs {row.villainName.en}</h2>
-              <p>{row.mode} · {row.modularSetName.en}</p>
+              <p>{formatIdLabel(row.mode)} · {row.modularSetName.en}</p>
               {completed ? (
-                <p><CheckCircle2 aria-hidden="true" /> Completed as {completed.aspect} with {completed.result}</p>
+                <p><CheckCircle2 aria-hidden="true" /> Completed as {formatAspectLabel(completed.aspect)} with {formatResultLabel(completed.result)}</p>
               ) : (
                 <div className="dense-grid">
                   <label>
                     Aspect
                     <select value={selectedAspect} disabled={save.snapshot.phase !== "mirror"} onChange={(event) => setAspectByRow((current) => ({ ...current, [row.number]: event.target.value as Aspect }))}>
-                      {ASPECTS.map((aspect) => <option value={aspect} key={aspect}>{aspect}{aspect === required ? " · first mirror" : ""}</option>)}
+                      {ASPECTS.map((aspect) => <option value={aspect} key={aspect}>{formatAspectLabel(aspect)}{aspect === required ? " · First Mirror" : ""}</option>)}
                     </select>
                   </label>
                   <label>
                     Result
                     <select value={resultByRow[row.number] ?? "win"} disabled={save.snapshot.phase !== "mirror"} onChange={(event) => setResultByRow((current) => ({ ...current, [row.number]: event.target.value as IssueResult }))}>
-                      {ISSUE_RESULTS.map((result) => <option value={result} key={result}>{result.replaceAll("_", " ")}</option>)}
+                      {ISSUE_RESULTS.map((result) => <option value={result} key={result}>{formatResultLabel(result)}</option>)}
                     </select>
                   </label>
                   <button type="button" disabled={save.snapshot.phase !== "mirror"} onClick={() => void completeMirror(row.number)}>Record mirror</button>

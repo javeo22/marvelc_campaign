@@ -2,6 +2,7 @@ import type { CampaignDefinition, CampaignSnapshot, IssueDefinition } from "@/do
 import type { CSSProperties } from "react";
 import { Boxes, RadioTower, Shield, Zap } from "lucide-react";
 import { selectActiveNetworkAdaptations, selectNormalFieldAssetLimit, selectUnlockedAssets } from "@/domain/selectors";
+import { formatAspectLabel, formatIdLabel } from "./display-labels";
 
 export function TrackMeter({
   label,
@@ -37,7 +38,39 @@ export function TrackMeter({
 }
 
 export function ScarChip({ count }: { count: number }) {
-  return <span className="scar-chip"><Shield aria-hidden="true" /> Scar {count}/2 · dial {count > 0 ? `-${count}` : "same"}</span>;
+  return (
+    <span className="scar-chip">
+      <Shield aria-hidden="true" />
+      <span>Scars {count}/2</span>
+      <small>Recovery {count > 0 ? `-${count}` : "Same"}</small>
+    </span>
+  );
+}
+
+export function HeroScarTile({
+  heroName,
+  count,
+  maximum = 2
+}: {
+  heroName: string;
+  count: number;
+  maximum?: number;
+}) {
+  return (
+    <article
+      className="scar-tile"
+      aria-label={`${heroName}: ${count} of ${maximum} scars. Recovery dial ${count > 0 ? `minus ${count}` : "same"}.`}
+    >
+      <span className="icon-badge" data-tone={count > 0 ? "network" : "intel"} aria-hidden="true">
+        <Shield />
+      </span>
+      <span className="scar-tile__copy">
+        <strong>{heroName}</strong>
+        <small>Scars {count}/{maximum}</small>
+      </span>
+      <span className="scar-tile__dial">Recovery {count > 0 ? `-${count}` : "Same"}</span>
+    </article>
+  );
 }
 
 export function IssueCover({ issue, action }: { issue: IssueDefinition; action?: React.ReactNode }) {
@@ -51,8 +84,8 @@ export function IssueCover({ issue, action }: { issue: IssueDefinition; action?:
         <span><strong>Hero</strong><br />{issue.heroName.en}{issue.heroName.es ? ` · ${issue.heroName.es}` : ""}</span>
         <span><strong>Villain</strong><br />{issue.villainName.en}{issue.villainName.es ? ` · ${issue.villainName.es}` : ""}</span>
         <span><strong>Modular</strong><br />{issue.modularSetName.en}{issue.modularSetName.es ? ` · ${issue.modularSetName.es}` : ""}</span>
-        <span><strong>Tier</strong><br />{issue.tierId} · stages {issue.villainStages.join("/")}</span>
-        <span><strong>Aspect</strong><br />{issue.recommendedAspect}</span>
+        <span><strong>Tier</strong><br />{formatIdLabel(issue.tierId)} · Stages {issue.villainStages.join("/")}</span>
+        <span><strong>Aspect</strong><br />{formatAspectLabel(issue.recommendedAspect)}</span>
       </div>
       {action ? <div>{action}</div> : null}
     </article>
@@ -85,7 +118,7 @@ export function AdaptationStack({ definition, snapshot, issueNumber }: { definit
       {selected.active.map((adaptation) => (
         <div className="chip" key={adaptation.id}>
           {adaptation.name.en} · Network {adaptation.threshold}
-          {selected.suppressed?.id === adaptation.id ? " · suppressed through round 1" : ""}
+          {selected.suppressed?.id === adaptation.id ? " · Suppressed through Round 1" : ""}
         </div>
       ))}
     </div>

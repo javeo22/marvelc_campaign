@@ -6,6 +6,19 @@ import { ComicHeader, ComicPanel, EmptyState, ErrorPanel } from "@/components/co
 import { campaignDefinition } from "@/domain/content";
 import { selectCompletionGrid, selectPerfectCore } from "@/domain/selectors";
 import { useCampaignSave } from "./useCampaignSave";
+import { formatIdLabel } from "./display-labels";
+
+function buildDisplayNameMaps() {
+  const heroNames = new Map(campaignDefinition.heroes.map((hero) => [hero.id, hero.name.en]));
+  const villainNames = new Map<string, string>();
+  for (const issue of campaignDefinition.issues) {
+    villainNames.set(issue.villainId, issue.villainName.en);
+  }
+  for (const row of campaignDefinition.mirrorProtocol.rows) {
+    villainNames.set(row.villainId, row.villainName.en);
+  }
+  return { heroNames, villainNames };
+}
 
 export function JourneyView({ saveId }: { saveId: string }) {
   const { save, loading, error, reload } = useCampaignSave(saveId);
@@ -15,6 +28,7 @@ export function JourneyView({ saveId }: { saveId: string }) {
 
   const grid = selectCompletionGrid(campaignDefinition, save.snapshot);
   const advanced = new Set(save.snapshot.issueResults.filter((record) => record.advancedCampaign).map((record) => record.issueNumber));
+  const { heroNames, villainNames } = buildDisplayNameMaps();
 
   return (
     <>
@@ -46,9 +60,13 @@ export function JourneyView({ saveId }: { saveId: string }) {
         <div className="clear-grid" style={{ marginTop: "1rem" }}>
           {grid.map((row) => (
             <div className="clear-row" key={`${row.heroId}-${row.villainId}`}>
-              <strong>{row.heroId} vs {row.villainId}</strong>
-              <span data-clear={row.standard}>{row.standard ? <CheckCircle2 aria-hidden="true" /> : <Circle aria-hidden="true" />} Standard</span>
-              <span data-clear={row.expert}>{row.expert ? <CheckCircle2 aria-hidden="true" /> : <Circle aria-hidden="true" />} Expert</span>
+              <strong>
+                {heroNames.get(row.heroId) ?? formatIdLabel(row.heroId)} vs {villainNames.get(row.villainId) ?? formatIdLabel(row.villainId)}
+              </strong>
+              <div className="clear-row__checks">
+                <span data-clear={row.standard}>{row.standard ? <CheckCircle2 aria-hidden="true" /> : <Circle aria-hidden="true" />} Standard</span>
+                <span data-clear={row.expert}>{row.expert ? <CheckCircle2 aria-hidden="true" /> : <Circle aria-hidden="true" />} Expert</span>
+              </div>
             </div>
           ))}
         </div>
