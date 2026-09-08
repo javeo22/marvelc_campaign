@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { CloudOff, FileJson, ImageOff, Info } from "lucide-react";
+import { CloudOff, FileJson, Image as ImageIcon, ImageOff, Info } from "lucide-react";
 import { ComicHeader, ComicPanel, ErrorPanel } from "@/components/comic/ComicPrimitives";
 import type { UiSettings } from "@/domain/types";
 import { getSupabaseSyncStatus } from "@/integrations/supabase/sync";
@@ -12,6 +12,7 @@ export function SettingsView() {
   const [settings, setSettings] = useState<UiSettings | null>(null);
   const [status, setStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const cardImagesRequested = process.env.NEXT_PUBLIC_CARD_IMAGE_MODE === "remote";
 
   useEffect(() => {
     getSettings().then(setSettings).catch((err) => setError(err instanceof Error ? err.message : String(err)));
@@ -29,13 +30,25 @@ export function SettingsView() {
   const update = async (next: UiSettings) => {
     const saved = await saveSettings(next);
     setSettings(saved);
-    setStatus("Preferences saved locally. Card images remain off.");
+    setStatus(
+      cardImagesRequested
+        ? "Preferences saved locally. Remote image previews remain controlled by the launch gates."
+        : "Preferences saved locally. Card images remain off."
+    );
   };
   const syncStatus = getSupabaseSyncStatus();
 
   return (
     <>
-      <ComicHeader eyebrow="Settings" title="Local preferences" subtitle="No account, analytics, sync, or card-image requests are enabled by default." />
+      <ComicHeader
+        eyebrow="Settings"
+        title="Local preferences"
+        subtitle={
+          cardImagesRequested
+            ? "This build can request remote card previews; no account, analytics, or sync is enabled by default."
+            : "No account, analytics, sync, or card-image requests are enabled by default."
+        }
+      />
       {status ? <div className="status-banner" role="status">{status}</div> : null}
       <div className="split-grid">
         <ComicPanel>
@@ -50,9 +63,16 @@ export function SettingsView() {
         </ComicPanel>
         <aside className="form-stack">
           <ComicPanel>
-            <span className="caption-box"><ImageOff aria-hidden="true" /> Rights gate</span>
-            <h2>Card images off</h2>
-            <p>Remote card imagery requires both kill switches and the signed launch checklist. Production configuration stays metadata-only.</p>
+            <span className="caption-box">
+              {cardImagesRequested ? <ImageIcon aria-hidden="true" /> : <ImageOff aria-hidden="true" />}
+              Rights gate
+            </span>
+            <h2>{cardImagesRequested ? "Remote preview requested" : "Card images off"}</h2>
+            <p>
+              {cardImagesRequested
+                ? "This build may display remote MarvelCDB-hosted images when the server kill switch also allows it. It does not bundle, proxy, optimize, cache, or export card binaries."
+                : "Remote card imagery requires both kill switches and the signed launch checklist. Production configuration stays metadata-only."}
+            </p>
           </ComicPanel>
           <ComicPanel>
             <span className="caption-box"><CloudOff aria-hidden="true" /> Cloud sync</span>

@@ -10,6 +10,10 @@ import { useCampaignSave } from "./useCampaignSave";
 
 export function CampaignDashboard({ saveId }: { saveId: string }) {
   const { save, loading, error, reload, append } = useCampaignSave(saveId);
+  const cardImageNotice =
+    process.env.NEXT_PUBLIC_CARD_IMAGE_MODE === "remote"
+      ? "Remote card previews are enabled for this build."
+      : "External metadata is optional and card images are off.";
 
   if (loading) return <ComicPanel><p>Loading campaign save...</p></ComicPanel>;
   if (error) return <ErrorPanel title="Could not open save"><p>{error}</p><button type="button" onClick={() => void reload()}>Retry</button></ErrorPanel>;
@@ -46,7 +50,7 @@ export function CampaignDashboard({ saveId }: { saveId: string }) {
       <ComicHeader
         eyebrow={save.playMode === "canon" ? "Canon Mode beta" : "Fail-forward"}
         title={save.name}
-        subtitle="Local event journal is authoritative. External metadata is optional and card images are off."
+        subtitle={`Local event journal is authoritative. ${cardImageNotice}`}
         actions={<Link className="button" href={primaryHref}><ArrowRight aria-hidden="true" /> Continue</Link>}
       />
 

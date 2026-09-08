@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { ExternalCardImage } from "./ExternalCardImage";
 
 type PreviewState = {
+  code: string | null;
   imageUrl: string | null;
-  status: "off" | "loading" | "ready" | "unavailable";
+  status: "ready" | "unavailable";
 };
 
 const publicImageMode = process.env.NEXT_PUBLIC_CARD_IMAGE_MODE === "remote" ? "remote" : "off";
@@ -21,7 +22,7 @@ export function RemoteCardPreview({
   pack: string;
   collectorNumber: string;
 }) {
-  const [state, setState] = useState<PreviewState>({ imageUrl: null, status: publicImageMode === "remote" ? "loading" : "off" });
+  const [state, setState] = useState<PreviewState>({ code: null, imageUrl: null, status: "unavailable" });
 
   useEffect(() => {
     let active = true;
@@ -33,14 +34,14 @@ export function RemoteCardPreview({
       try {
         const response = await fetch(`/api/cards/${code}?locale=en`, { cache: "no-store" });
         if (!response.ok) {
-          if (active) setState({ imageUrl: null, status: "unavailable" });
+          if (active) setState({ code, imageUrl: null, status: "unavailable" });
           return;
         }
         const detail = (await response.json()) as { imageUrl?: unknown };
         const imageUrl = typeof detail.imageUrl === "string" ? detail.imageUrl : null;
-        if (active) setState({ imageUrl, status: imageUrl ? "ready" : "unavailable" });
+        if (active) setState({ code, imageUrl, status: imageUrl ? "ready" : "unavailable" });
       } catch {
-        if (active) setState({ imageUrl: null, status: "unavailable" });
+        if (active) setState({ code, imageUrl: null, status: "unavailable" });
       }
     };
 
@@ -50,17 +51,26 @@ export function RemoteCardPreview({
     };
   }, [code]);
 
+  const status =
+    publicImageMode !== "remote"
+      ? "off"
+      : !code
+        ? "unavailable"
+        : state.code === code
+          ? state.status
+          : "loading";
+  const imageUrl = status === "ready" ? state.imageUrl : null;
   const reason =
-    state.status === "loading"
+    status === "loading"
       ? "Checking remote image gate."
-      : state.status === "unavailable"
+      : status === "unavailable"
         ? "Remote image gate is closed or metadata is unavailable."
         : "Card images are disabled by the global launch gate.";
 
   return (
     <ExternalCardImage
       mode={publicImageMode}
-      src={state.imageUrl}
+      src={imageUrl}
       alt={`${name}, ${pack} ${collectorNumber}`}
       label={name}
       meta={`${pack} #${collectorNumber}`}

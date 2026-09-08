@@ -22,6 +22,7 @@ function getServerOnlineStatus() {
 export function PwaController() {
   const online = useSyncExternalStore(subscribeToOnlineStatus, getOnlineStatus, getServerOnlineStatus);
   const [ready, setReady] = useState(false);
+  const cardImageLabel = process.env.NEXT_PUBLIC_CARD_IMAGE_MODE === "remote" ? "remote card images" : "card images off";
 
   useEffect(() => {
     if ("serviceWorker" in navigator) {
@@ -35,7 +36,7 @@ export function PwaController() {
   return (
     <div className="status-banner" role="status" aria-live="polite">
       <strong>{online ? "Online" : "Offline"}</strong> · Campaign content and local saves stay available.
-      <span className="small"> PWA {ready ? "ready" : "initializing"} · card images off</span>
+      <span className="small"> PWA {ready ? "ready" : "initializing"} · {cardImageLabel}</span>
     </div>
   );
 }

@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ComicHeader, ComicPanel } from "@/components/comic/ComicPrimitives";
 
 export function AboutView() {
+  const cardImagesRequested = process.env.NEXT_PUBLIC_CARD_IMAGE_MODE === "remote";
+
   return (
     <>
       <ComicHeader eyebrow="About" title="Fan project notice" subtitle="This companion supports physical play and does not replace the game." />
@@ -13,7 +15,10 @@ export function AboutView() {
           Marvel Champions, Marvel characters, names, logos, card artwork, card text, and related marks and creative material belong to their respective owners. Campaign text and original application interface elements are fan-created unless otherwise identified.
         </p>
         <p>
-          Card metadata or externally hosted images may be unavailable or disabled at any time. Remote images are off until the launch checklist is signed.
+          Card metadata or externally hosted images may be unavailable or disabled at any time.
+          {cardImagesRequested
+            ? " This build may request remote MarvelCDB-hosted images directly when the server kill switch also allows it."
+            : " Remote images are off until the launch checklist is signed."}
         </p>
         <Link className="button" href="/settings">Settings</Link>
       </ComicPanel>

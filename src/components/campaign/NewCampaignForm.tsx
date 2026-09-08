@@ -15,6 +15,7 @@ export function NewCampaignForm({ onboarding = false }: { onboarding?: boolean }
   const [physicalCardLanguage, setPhysicalCardLanguage] = useState<"en" | "es" | "both">("both");
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const cardImagesRequested = process.env.NEXT_PUBLIC_CARD_IMAGE_MODE === "remote";
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
@@ -70,7 +71,9 @@ export function NewCampaignForm({ onboarding = false }: { onboarding?: boolean }
             </div>
           </fieldset>
           <div className="status-banner">
-            Card images are off. Remote image mode is blocked until the legal launch checklist is complete.
+            {cardImagesRequested
+              ? "Remote card previews are requested for this build and remain controlled by the server kill switch."
+              : "Card images are off. Remote image mode is blocked until the legal launch checklist is complete."}
           </div>
           <button type="submit" disabled={busy}><Play aria-hidden="true" /> {busy ? "Creating..." : "Create local campaign"}</button>
         </form>
