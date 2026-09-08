@@ -4,7 +4,7 @@ This project uses exact npm versions in `package.json` and `package-lock.json`.
 
 Runtime baseline:
 
-- Node.js 22 or newer; CI currently uses Node 22.
+- Node.js 22 or newer; CI and Vercel currently use Node 24.
 - Next.js App Router with default Node.js route-handler runtime.
 - React with Server Components by default and small client islands for IndexedDB-backed UI.
 
