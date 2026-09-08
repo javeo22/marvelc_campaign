@@ -59,6 +59,8 @@ export const envSchema = z.object({
   NEXT_PUBLIC_BETA_NOINDEX: z.enum(["true", "false"]).default("true"),
   NEXT_PUBLIC_SUPABASE_URL: z.string().url().optional(),
   NEXT_PUBLIC_SUPABASE_PROJECT_REF: z.string().regex(/^[a-z0-9]{20}$/).optional(),
+  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY: z.string().min(1).optional(),
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1).optional(),
   MARVELCDB_USER_AGENT: z.string().min(1).default("Core Protocol Companion metadata-only fan project"),
   MARVELCDB_CONTACT: z.string().optional().default(""),
   MARVELCDB_EN_BASE_URL: z.string().url().default("https://marvelcdb.com"),

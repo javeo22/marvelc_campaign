@@ -12,6 +12,7 @@ import type {
   PlayMode,
   UiSettings
 } from "@/domain/types";
+import { enqueueCampaignSavePush } from "@/integrations/supabase/sync";
 import { checksumSync } from "./checksum";
 import { CURRENT_SAVE_SCHEMA_VERSION } from "./migrations";
 
@@ -224,6 +225,7 @@ export async function createLocalSave(options: { name: string; playMode: PlayMod
   await tx.objectStore("campaign_saves").put(saveRecord);
   await tx.objectStore("campaign_events").put({ saveId, event });
   await tx.done;
+  enqueueCampaignSavePush(save);
   return save;
 }
 
@@ -308,14 +310,18 @@ export async function appendCampaignEvents(
   }
   await tx.objectStore("campaign_saves").put(nextSaveRecord);
   await tx.done;
-  return { ...nextSaveRecord, events: allEvents };
+  const nextSave = { ...nextSaveRecord, events: allEvents };
+  enqueueCampaignSavePush(nextSave);
+  return nextSave;
 }
 
 export async function renameCampaignSave(saveId: string, name: string) {
   const db = await openCoreDb();
   const save = await db.get("campaign_saves", saveId);
   if (!save) throw new Error("Save not found.");
-  await db.put("campaign_saves", { ...save, name: name.trim() || save.name, updatedAt: new Date().toISOString() });
+  const nextSave = { ...save, name: name.trim() || save.name, updatedAt: new Date().toISOString() };
+  await db.put("campaign_saves", nextSave);
+  enqueueCampaignSavePush({ ...nextSave, events: await eventsForSave(db, saveId) });
 }
 
 export async function deleteCampaignSave(saveId: string) {
@@ -368,7 +374,35 @@ export async function duplicateCampaignSave(saveId: string): Promise<CampaignSav
     await tx.objectStore("campaign_events").put({ saveId: newSaveId, event });
   }
   await tx.done;
+  enqueueCampaignSavePush(duplicate);
   return duplicate;
+}
+
+export async function replaceCampaignSaveFromCloud(save: CampaignSave): Promise<CampaignSave> {
+  const db = await openCoreDb();
+  const existingEvents = await eventsForSave(db, save.saveId);
+  const digest = checksumSync({ snapshot: save.snapshot, events: save.events });
+  const nextSave: CampaignSave = { ...save, checksum: digest };
+  const saveRecord = toSaveRecord(nextSave);
+  const tx = db.transaction(["campaign_saves", "campaign_events", "migration_backups"], "readwrite");
+  const existingSave = await tx.objectStore("campaign_saves").get(save.saveId);
+  if (existingSave) {
+    await tx.objectStore("migration_backups").put({
+      id: `cloud-replace-${save.saveId}-${Date.now()}`,
+      createdAt: new Date().toISOString(),
+      payload: { ...existingSave, events: existingEvents }
+    });
+  }
+  await tx.objectStore("campaign_saves").put(saveRecord);
+  const rows = await tx.objectStore("campaign_events").index("bySaveId").getAll(save.saveId);
+  for (const row of rows) {
+    await tx.objectStore("campaign_events").delete([save.saveId, row.event.sequence]);
+  }
+  for (const event of save.events) {
+    await tx.objectStore("campaign_events").put({ saveId: save.saveId, event });
+  }
+  await tx.done;
+  return nextSave;
 }
 
 export async function upsertDeckLog(record: Omit<DeckLogRecord, "id" | "updatedAt"> & { id?: string }) {

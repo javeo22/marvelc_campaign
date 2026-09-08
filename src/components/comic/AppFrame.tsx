@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { BookOpen, ClipboardList, Cog, Library, Map } from "lucide-react";
+import { BookOpen, ClipboardList, Cog, Library, Map, UserRound } from "lucide-react";
 import { PwaController } from "./PwaController";
 
 const navItems = [
@@ -8,6 +8,7 @@ const navItems = [
   { href: "/cards", label: "Cards", icon: Library },
   { href: "/decks", label: "Decks", icon: ClipboardList },
   { href: "/rules", label: "Rules", icon: Map },
+  { href: "/account", label: "Account", icon: UserRound },
   { href: "/settings", label: "Settings", icon: Cog }
 ];
 

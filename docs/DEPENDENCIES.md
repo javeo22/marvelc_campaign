@@ -11,6 +11,7 @@ Runtime baseline:
 Selected dependency roles:
 
 - `next@16.3.4`, `react@19.2.8`, `react-dom@19.2.8`: App Router PWA runtime.
+- `@supabase/supabase-js@2.116.0`: optional username/password auth and Supabase row-level-security sync adapter.
 - `idb@8.0.3`: small IndexedDB wrapper for local event/snapshot transactions.
 - `ajv@8.20.0`, `ajv-formats@3.0.1`: Draft 2020-12 JSON Schema validation.
 - `zod@4.5.4`: runtime validation for environment and import envelopes.

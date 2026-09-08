@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { CloudOff, FileJson, Image as ImageIcon, ImageOff, Info } from "lucide-react";
+import { Cloud, CloudOff, FileJson, Image as ImageIcon, ImageOff, Info, UserRound } from "lucide-react";
 import { ComicHeader, ComicPanel, ErrorPanel } from "@/components/comic/ComicPrimitives";
 import type { UiSettings } from "@/domain/types";
 import { getSupabaseSyncStatus } from "@/integrations/supabase/sync";
@@ -75,12 +75,17 @@ export function SettingsView() {
             </p>
           </ComicPanel>
           <ComicPanel>
-            <span className="caption-box"><CloudOff aria-hidden="true" /> Cloud sync</span>
-            <h2>{syncStatus.enabled ? "Flag enabled" : "Disabled"}</h2>
+            <span className="caption-box">{syncStatus.enabled ? <Cloud aria-hidden="true" /> : <CloudOff aria-hidden="true" />} Cloud sync</span>
+            <h2>{syncStatus.enabled && syncStatus.configured ? "Account sync ready" : syncStatus.enabled ? "Configuration needed" : "Disabled"}</h2>
             <p>
               Supabase is linked for deployment, but local IndexedDB remains authoritative.
-              {syncStatus.enabled ? " Auth configuration is still required before cloud writes are exposed." : " Turn on the feature flag only after auth and conflict handling are verified."}
+              {syncStatus.enabled && syncStatus.configured
+                ? " Sign in to upload and download saves across devices."
+                : syncStatus.enabled
+                  ? " Add a Supabase public browser key before cloud writes are exposed."
+                  : " Turn on the feature flag only after auth and conflict handling are verified."}
             </p>
+            <Link className="button" href="/account"><UserRound aria-hidden="true" /> Account</Link>
           </ComicPanel>
           <ComicPanel>
             <span className="caption-box"><FileJson aria-hidden="true" /> Data</span>

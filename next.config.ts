@@ -11,6 +11,14 @@ const scriptSrc =
   process.env.NODE_ENV === "production"
     ? "'self' 'unsafe-inline' 'wasm-unsafe-eval'"
     : "'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval'";
+const connectSrc = ["'self'"];
+if (process.env.NEXT_PUBLIC_CLOUD_SYNC_ENABLED === "true" && process.env.NEXT_PUBLIC_SUPABASE_URL) {
+  try {
+    connectSrc.push(new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).origin);
+  } catch {
+    // Runtime env validation reports malformed optional URLs.
+  }
+}
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -41,7 +49,7 @@ const nextConfig: NextConfig = {
       `script-src ${scriptSrc}`,
       "style-src 'self' 'unsafe-inline'",
       `img-src ${imgSrc}`,
-      "connect-src 'self'",
+      `connect-src ${connectSrc.join(" ")}`,
       "worker-src 'self'",
       "manifest-src 'self'"
     ].join("; ");

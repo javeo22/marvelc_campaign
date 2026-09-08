@@ -8,6 +8,7 @@ The app uses a compact bottom navigation on phones and a rail on larger screens.
 - **Play** — active session; hidden/disabled when no game is active.
 - **Reference** — cards, deck log, rules log.
 - **Journey** — hero passport, flags, completion grid, Mirror Protocol.
+- **Account** — optional username/password sign-in, cloud upload/download, sync status.
 - **Settings** — language, display, backups, image mode, legal notice.
 
 ## Route map
@@ -29,6 +30,7 @@ The app uses a compact bottom navigation on phones and a rail on larger screens.
 /reference/cards
 /reference/decks
 /reference/rules
+/account
 /settings
 /settings/backup
 /settings/about

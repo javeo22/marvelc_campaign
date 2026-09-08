@@ -19,6 +19,7 @@ This document defines the UI handoff at a level suitable for direct implementati
 | `/cards` | Server shell + client search | Bundled bilingual index, optional API adapter | Find a physical card | Upstream offline, ambiguous match, metadata-only fallback |
 | `/decks` | Client log | Local deck records | Add/edit deck log | Invalid external URL, storage failure |
 | `/rules` | Client log | Local rules notes | Add/edit note | Personal note not verified, source unavailable |
+| `/account` | Server shell + client auth/sync island | Supabase public config, local saves, optional cloud rows | Sign in, upload local save, download account save | Sync flag off, missing public key, signed out, cloud conflict, network failure |
 | `/settings` | Server shell + client preferences | UI settings schema | Save preferences / export data | Unsupported setting migration, export failure |
 
 Dynamic route parameters use the modern asynchronous App Router conventions. Route pages must validate identifiers before loading user state and use `notFound()` only for genuinely absent resources, not for storage or migration failures.
