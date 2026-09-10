@@ -24,6 +24,13 @@ test("new local campaign through Issue 1 debrief advances to Issue 2", async ({ 
   await expect(page.getByText("Visual setup")).toBeVisible();
   await expect(page.getByText(/Standard · Normal/)).toBeVisible();
   await expect(page.getByText(/Any campaign aspect is legal/)).toBeVisible();
+  const mainSchemeFrame = page
+    .locator(".visual-card", { hasText: "The Break-In!" })
+    .locator('.card-art-slot[data-orientation="landscape"]');
+  await expect(mainSchemeFrame).toBeVisible();
+  const mainSchemeBox = await mainSchemeFrame.boundingBox();
+  expect(mainSchemeBox).not.toBeNull();
+  expect(mainSchemeBox!.width).toBeGreaterThan(mainSchemeBox!.height);
   await page.getByRole("radio", { name: "Aggression" }).check();
   const setupChecks = page.getByRole("checkbox", { name: /Confirm / });
   const checkCount = await setupChecks.count();

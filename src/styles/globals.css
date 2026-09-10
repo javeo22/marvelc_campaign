@@ -749,6 +749,11 @@ textarea {
   box-shadow: 3px 3px 0 var(--ink);
 }
 
+.card-art-slot[data-orientation="landscape"] {
+  width: min(100%, 17.5rem);
+  aspect-ratio: 7 / 5;
+}
+
 .card-art-slot__fallback {
   display: grid;
   place-items: center;
@@ -1166,6 +1171,10 @@ textarea {
   width: 100%;
   max-width: 9.5rem;
   min-width: 0;
+}
+
+.visual-card .card-art-slot[data-orientation="landscape"] {
+  max-width: 13.5rem;
 }
 
 .visual-card .card-art-slot__fallback {

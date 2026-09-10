@@ -31,7 +31,15 @@ function setCards(setName: string): CardReferenceRecord[] {
   return cardReference.records.filter((record) => record.category === "Encounter" && record.set_en === setName);
 }
 
-function VisualCard({ record, fallbackName }: { record: CardReferenceRecord | null; fallbackName: string }) {
+function VisualCard({
+  record,
+  fallbackName,
+  orientation
+}: {
+  record: CardReferenceRecord | null;
+  fallbackName: string;
+  orientation?: "portrait" | "landscape";
+}) {
   if (!record) {
     return (
       <div className="visual-card visual-card--missing">
@@ -48,6 +56,7 @@ function VisualCard({ record, fallbackName }: { record: CardReferenceRecord | nu
         name={`${record.name_en} · ${record.name_es}`}
         pack={record.pack_en}
         collectorNumber={record.collector_number}
+        orientation={orientation}
       />
       <div className="visual-card__label">
         <strong>{record.name_en}</strong>
@@ -110,7 +119,7 @@ function VisualSetup({ issue }: { issue: IssueDefinition }) {
             {villains.map((card, index) => (
               <VisualCard key={issue.villainStages[index]} record={card} fallbackName={`${issue.villainName.en} (${issue.villainStages[index]})`} />
             ))}
-            <VisualCard record={mainScheme} fallbackName={`${issue.villainName.en} main scheme`} />
+            <VisualCard record={mainScheme} fallbackName={`${issue.villainName.en} main scheme`} orientation="landscape" />
           </div>
         </section>
         <span className="setup-flow-arrow" aria-hidden="true"><ArrowRight /></span>

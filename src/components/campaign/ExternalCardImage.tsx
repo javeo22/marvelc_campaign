@@ -7,7 +7,8 @@ export function ExternalCardImage({
   alt,
   unavailableReason,
   label,
-  meta
+  meta,
+  orientation = "portrait"
 }: {
   mode: "off" | "remote";
   src: string | null;
@@ -15,10 +16,11 @@ export function ExternalCardImage({
   unavailableReason?: string | null;
   label?: string;
   meta?: string;
+  orientation?: "portrait" | "landscape";
 }) {
   if (mode === "off" || !src) {
     return (
-      <div className="card-art-slot" aria-label={alt}>
+      <div className="card-art-slot" data-orientation={orientation} aria-label={alt}>
         <div className="card-art-slot__fallback">
           <ImageOff aria-hidden="true" />
           <strong>{label ?? "Metadata only"}</strong>
@@ -29,15 +31,15 @@ export function ExternalCardImage({
     );
   }
   return (
-    <div className="card-art-slot">
+    <div className="card-art-slot" data-orientation={orientation}>
       <Image
         src={src}
         alt={alt}
-        width={240}
-        height={336}
+        width={orientation === "landscape" ? 336 : 240}
+        height={orientation === "landscape" ? 240 : 336}
         unoptimized
         loading="lazy"
-        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        style={{ width: "100%", height: "100%", objectFit: "contain" }}
       />
     </div>
   );
