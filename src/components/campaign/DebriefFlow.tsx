@@ -1,12 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
-import { CheckCircle2, ShieldAlert } from "lucide-react";
+import { ArrowRight, CheckCircle2, RadioTower, Shield, ShieldAlert } from "lucide-react";
 import { ComicHeader, ComicPanel, EmptyState, ErrorPanel } from "@/components/comic/ComicPrimitives";
 import { campaignDefinition } from "@/domain/content";
 import { selectDebriefPreview } from "@/domain/selectors";
-import type { IssueResult } from "@/domain/types";
+import type { CampaignSnapshot, IssueDefinition, IssueResult } from "@/domain/types";
 import { useCampaignSave } from "./useCampaignSave";
 
 const resultLabels: Array<{ value: IssueResult; label: string }> = [
@@ -17,8 +17,133 @@ const resultLabels: Array<{ value: IssueResult; label: string }> = [
   { value: "abandoned", label: "Abandoned" }
 ];
 
+function NetworkConsequence({
+  snapshotBefore,
+  networkAfter,
+  scarAfter,
+  issue,
+  result
+}: {
+  snapshotBefore: CampaignSnapshot;
+  networkAfter: number;
+  scarAfter: number;
+  issue: IssueDefinition;
+  result: IssueResult;
+}) {
+  const active = campaignDefinition.networkAdaptations.filter((adaptation) => adaptation.threshold <= networkAfter);
+  const newlyActive = active.filter((adaptation) => adaptation.threshold > snapshotBefore.network);
+  const next = campaignDefinition.networkAdaptations.find((adaptation) => adaptation.threshold > networkAfter);
+
+  return (
+    <div className="consequence-explanation">
+      <div className="consequence-explanation__lead">
+        <RadioTower aria-hidden="true" />
+        <span>
+          <strong>Network {snapshotBefore.network} → {networkAfter}</strong>
+          <small>Ultron learns from every Avengers failure. Reached penalties are cumulative.</small>
+        </span>
+      </div>
+      {result === "hero_defeat" ? <p><strong>Why +1?</strong> The hero was defeated.</p> : null}
+      {result === "main_scheme_loss" ? <p><strong>Why +2?</strong> The main scheme completed.</p> : null}
+      {newlyActive.map((adaptation) => (
+        <div className="adaptation-reveal" key={adaptation.id} role="status">
+          <span>New adaptation unlocked</span>
+          <strong>{adaptation.name.en}</strong>
+          <p>{adaptation.effect.en}</p>
+        </div>
+      ))}
+      <div>
+        <strong>Current Network effects</strong>
+        {active.length === 0 ? <p>None.</p> : (
+          <ul>
+            {active.map((adaptation) => <li key={adaptation.id}><strong>{adaptation.name.en}:</strong> {adaptation.effect.en}</li>)}
+          </ul>
+        )}
+      </div>
+      {next ? (
+        <p><strong>Next at Network {next.threshold}: {next.name.en}.</strong> {next.effect.en}</p>
+      ) : <p><strong>All Network adaptations are active.</strong></p>}
+      {result === "hero_defeat" ? (
+        <div className="consequence-explanation__lead consequence-explanation__lead--scar">
+          <Shield aria-hidden="true" />
+          <span>
+            <strong>{issue.heroName.en} Scar {snapshotBefore.scars[issue.heroId] ?? 0} → {scarAfter}</strong>
+            <small>Next time this hero begins an issue, lower the starting HP dial by {scarAfter}. Maximum HP is unchanged. A win with this hero removes 1 Scar.</small>
+          </span>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function RecordedResult({
+  saveId,
+  issue,
+  result,
+  before,
+  after
+}: {
+  saveId: string;
+  issue: IssueDefinition;
+  result: IssueResult;
+  before: CampaignSnapshot;
+  after: CampaignSnapshot;
+}) {
+  const loss = result !== "win";
+  const nextIssue = after.currentIssueNumber;
+  const nextHref = after.phase === "interlude"
+    ? `/campaigns/${saveId}`
+    : after.phase === "complete"
+      ? `/campaigns/${saveId}/finale`
+      : nextIssue
+        ? `/campaigns/${saveId}/issue/${nextIssue}/prepare`
+        : `/campaigns/${saveId}`;
+  const nextLabel = after.playMode === "canon" && loss && nextIssue === issue.number
+    ? "Replay issue"
+    : after.phase === "complete"
+      ? "View finale"
+      : nextIssue
+        ? `Prepare Issue ${String(nextIssue).padStart(2, "0")}`
+        : "Continue campaign";
+
+  return (
+    <>
+      <ComicHeader
+        eyebrow="Result recorded"
+        title={result === "win" ? "Victory" : "Defeat"}
+        subtitle={result === "win" ? issue.outcomes.win.en : issue.outcomes.loss.en}
+      />
+      <div className="result-review-grid">
+        <ComicPanel className="result-review" data-result={loss ? "loss" : "win"}>
+          <span className="caption-box">{result === "hero_defeat" ? "Hero defeated" : result === "main_scheme_loss" ? "Scheme complete" : result === "win" ? "Issue won" : "Issue ended"}</span>
+          <h2>{issue.title.en}</h2>
+          <div className="dense-grid">
+            <span><strong>Intel</strong><br />{before.intel} → {after.intel}</span>
+            <span><strong>Network</strong><br />{before.network} → {after.network}</span>
+            <span><strong>{issue.heroName.en} Scars</strong><br />{before.scars[issue.heroId] ?? 0} → {after.scars[issue.heroId] ?? 0}</span>
+          </div>
+        </ComicPanel>
+        {loss ? (
+          <ComicPanel>
+            <NetworkConsequence
+              snapshotBefore={before}
+              networkAfter={after.network}
+              scarAfter={after.scars[issue.heroId] ?? 0}
+              issue={issue}
+              result={result}
+            />
+          </ComicPanel>
+        ) : null}
+      </div>
+      <div className="result-actions">
+        <Link className="button" href={nextHref}><ArrowRight aria-hidden="true" /> {nextLabel}</Link>
+        <Link className="button button--secondary" href={`/campaigns/${saveId}`}>Return to campaign</Link>
+      </div>
+    </>
+  );
+}
+
 export function DebriefFlow({ saveId }: { saveId: string }) {
-  const router = useRouter();
   const { save, loading, error, reload, append } = useCampaignSave(saveId);
   const [result, setResult] = useState<IssueResult>("win");
   const [objectiveCompleted, setObjectiveCompleted] = useState(false);
@@ -27,6 +152,12 @@ export function DebriefFlow({ saveId }: { saveId: string }) {
   const [notes, setNotes] = useState("");
   const [busy, setBusy] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
+  const [committed, setCommitted] = useState<{
+    issue: IssueDefinition;
+    result: IssueResult;
+    before: CampaignSnapshot;
+    after: CampaignSnapshot;
+  } | null>(null);
 
   const preview = useMemo(() => {
     if (!save?.snapshot.activeSession) return null;
@@ -35,6 +166,9 @@ export function DebriefFlow({ saveId }: { saveId: string }) {
 
   if (loading) return <ComicPanel><p>Loading debrief...</p></ComicPanel>;
   if (error) return <ErrorPanel title="Could not load debrief"><p>{error}</p><button type="button" onClick={() => void reload()}>Retry</button></ErrorPanel>;
+  if (committed) {
+    return <RecordedResult saveId={saveId} issue={committed.issue} result={committed.result} before={committed.before} after={committed.after} />;
+  }
   if (!save?.snapshot.activeSession || !preview) {
     return <EmptyState title="No active debrief"><p>Start or resume an issue before recording a result.</p></EmptyState>;
   }
@@ -43,11 +177,14 @@ export function DebriefFlow({ saveId }: { saveId: string }) {
   const objectiveAlready = preview.priorObjective;
   const masteryAlready = preview.priorMastery;
   const commitDisabled = busy || (result === "other_loss" && !ackOtherLoss);
+  const previewIsLoss = result === "hero_defeat" || result === "main_scheme_loss";
 
   const commit = async () => {
     setBusy(true);
     setActionError(null);
     try {
+      const snapshotBefore = save.snapshot;
+      const committedResult = result;
       const descriptors = [
         ...(!issue.objective.winGated && objectiveCompleted && !objectiveAlready
           ? [{ type: "OBJECTIVE_COMPLETED" as const, payload: { issueNumber: issue.number, flagId: issue.objective.flagId } }]
@@ -67,14 +204,8 @@ export function DebriefFlow({ saveId }: { saveId: string }) {
         }
       ];
       const next = await append(descriptors);
-      if (next.snapshot.phase === "interlude") {
-        const interlude = campaignDefinition.interludes.find((item) => !next.snapshot.interludeChoices[item.id]);
-        router.push(interlude ? `/campaigns/${saveId}/interlude/${interlude.id}` : `/campaigns/${saveId}`);
-      } else if (next.snapshot.phase === "complete") {
-        router.push(`/campaigns/${saveId}/finale`);
-      } else {
-        router.push(`/campaigns/${saveId}`);
-      }
+      setCommitted({ issue, result: committedResult, before: snapshotBefore, after: next.snapshot });
+      setBusy(false);
     } catch (err) {
       setActionError(err instanceof Error ? err.message : String(err));
       setBusy(false);
@@ -93,7 +224,7 @@ export function DebriefFlow({ saveId }: { saveId: string }) {
         <ComicPanel>
           <form className="form-stack">
             <fieldset className="form-stack">
-              <legend>Result</legend>
+              <legend>How did the issue end?</legend>
               <div className="segmented">
                 {resultLabels.map((option) => (
                   <label key={option.value}>
@@ -153,6 +284,15 @@ export function DebriefFlow({ saveId }: { saveId: string }) {
               <li>Mastery Intel: +{preview.masteryAward}{preview.priorMastery ? " (prior event)" : ""}</li>
               <li>Network delta: +{preview.networkDelta}</li>
             </ul>
+            {previewIsLoss ? (
+              <NetworkConsequence
+                snapshotBefore={save.snapshot}
+                networkAfter={preview.networkAfter}
+                scarAfter={preview.scarAfter}
+                issue={issue}
+                result={result}
+              />
+            ) : null}
           </ComicPanel>
           <ComicPanel>
             <span className="caption-box">Narrative</span>

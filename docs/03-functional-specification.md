@@ -28,11 +28,13 @@ The dashboard is derived from state through selectors rather than stored duplica
 
 Rules:
 
-- Each hero appears exactly three times in the story and must use three distinct aspects.
-- The first Mirror game with that hero must use the fourth unused aspect.
+- Each hero appears exactly three times in the story, but the player may use any campaign aspect on every appearance.
+- Recommended routes are teaching suggestions, not deckbuilding restrictions.
+- A hero/aspect combination is stamped only when that hero wins an issue using that aspect.
+- The optional passport never blocks story progression.
+- When three distinct story aspects have been stamped, the first Mirror game with that hero uses the fourth unused aspect.
 - Basic cards may be reused freely and are not an aspect choice.
-- Recommended routes are suggestions, not additional rules.
-- Canon Mode retries do not consume another aspect; they reuse or may change the aspect for that same issue, but only the final committed clear/attempt record should determine the story appearance. The UI must warn before changing aspects between retries because the source does not explicitly discuss this edge case.
+- Canon Mode retries may freely change aspect; only a winning result adds a passport stamp.
 
 The passport screen shows four aspect stamps per hero, Scars, Mastery, main-story appearances, and first-Mirror completion.
 
@@ -146,7 +148,7 @@ Then evaluate THE INITIATIVE independently.
 
 Starting Mirror Protocol creates a reset event or a new linked mode state that clears campaign-only tracks as authored: Scars, Intel, Network, flags, campaign setup, and Field Assets. The story history remains visible but no longer affects mirror games.
 
-Each mirror row records result, aspect, date, notes, and official clear. The first game for each hero enforces the missing fourth aspect. Later mirrors permit any legal deck. A Perfect Core badge requires all 30 official Standard/Expert pairing clears, all heroes with all four aspects, and all five Masteries.
+Each mirror row records result, aspect, date, notes, and official clear. When a hero has three distinct story stamps, the first game for that hero enforces the missing fourth aspect. Later mirrors permit any legal deck. A Perfect Core badge requires all 30 official Standard/Expert pairing clears, all heroes with all four aspects, and all five Masteries.
 
 ## 3.15 Card reference
 

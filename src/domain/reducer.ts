@@ -347,7 +347,7 @@ export function reduceCampaign(
       }
 
       const advancedCampaign = result === "win" || state.playMode === "fail-forward";
-      if (advancedCampaign) {
+      if (result === "win") {
         commitStoryAspect(state, issue.heroId, state.activeSession.aspect);
       }
 

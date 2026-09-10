@@ -28,7 +28,7 @@ export function PassportView({ saveId }: { saveId: string }) {
       <ComicHeader
         eyebrow="Hero passport"
         title="Aspect stamps"
-        subtitle="Each story hero appearance uses a distinct aspect. The first Mirror game uses the fourth unused aspect."
+        subtitle="Win with different aspects to fill this optional passport. Recommended routes teach variety without restricting your deck."
       />
       <div className="form-stack">
         {rows.map((row) => (
@@ -39,7 +39,7 @@ export function PassportView({ saveId }: { saveId: string }) {
               </div>
               <div>
                 <h2>{row.hero.name.en}</h2>
-                <p className="small">Story route: {row.appearances.map((issue) => `Issue ${issue.number} ${formatAspectLabel(issue.recommendedAspect)}`).join(" · ")}</p>
+                <p className="small">Recommended route: {row.appearances.map((issue) => `Issue ${issue.number} ${formatAspectLabel(issue.recommendedAspect)}`).join(" · ")}</p>
               </div>
               <ScarChip count={row.scars} />
               <span className="mastery-badge" data-earned={row.masteryEarned}>

@@ -83,6 +83,10 @@ The authored text says “The first time Defense Network leaves play.” The com
 
 The tracker includes Core Set and The Rise of Red Skull, but Core Protocol itself requires only the Core Set. The architecture supports more packs and campaigns; the MVP must not invent Rise of Red Skull campaign content.
 
+## Approved revision AR-001 — Optional Aspect Passport
+
+Playtest Feedback 001 is the approved amendment for campaign content version 1.2.0. Main-story heroes remain mandatory, but any campaign aspect is legal. The recommended route remains a teaching suggestion. A hero/aspect stamp is recorded only when that hero wins an issue with that aspect; stamps are optional progression and never block story advancement. The existing first-Mirror rule remains unchanged when a fourth unused aspect is determinable.
+
 ## Content change protocol
 
 Every source-level change requires:

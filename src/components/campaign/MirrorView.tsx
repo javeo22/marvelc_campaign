@@ -33,7 +33,8 @@ export function MirrorView({ saveId }: { saveId: string }) {
     setActionError(null);
     const row = campaignDefinition.mirrorProtocol.rows.find((candidate) => candidate.number === mirrorNumber);
     if (!row) return;
-    const aspect = aspectByRow[mirrorNumber] ?? selectFirstMirrorAspect(campaignDefinition, save.snapshot, row.heroId);
+    const suggested = campaignDefinition.heroes.find((hero) => hero.id === row.heroId)?.recommendedAspectRoute.firstMirror ?? "aggression";
+    const aspect = aspectByRow[mirrorNumber] ?? selectFirstMirrorAspect(campaignDefinition, save.snapshot, row.heroId) ?? suggested;
     const result = resultByRow[mirrorNumber] ?? "win";
     const legal = canSelectMirrorAspect(campaignDefinition, save.snapshot, mirrorNumber, aspect);
     if (!legal.ok) {
@@ -52,7 +53,7 @@ export function MirrorView({ saveId }: { saveId: string }) {
       <ComicHeader
         eyebrow="Mirror Protocol"
         title="Post-campaign rows"
-        subtitle="Starting Mirror Protocol resets campaign-only tracks but keeps story history and aspect records for first-mirror enforcement."
+        subtitle="Story passport stamps remain visible. A fourth aspect is required only when three distinct story aspects were stamped."
         actions={save.snapshot.phase !== "mirror" ? <button type="button" onClick={() => void startMirror()}><Play aria-hidden="true" /> Start mirrors</button> : null}
       />
       {actionError ? <ErrorPanel title="Mirror action blocked"><p>{actionError}</p></ErrorPanel> : null}
@@ -60,7 +61,8 @@ export function MirrorView({ saveId }: { saveId: string }) {
         {campaignDefinition.mirrorProtocol.rows.map((row) => {
           const completed = save.snapshot.mirrorResults.find((record) => record.mirrorNumber === row.number);
           const required = selectFirstMirrorAspect(campaignDefinition, save.snapshot, row.heroId);
-          const selectedAspect = aspectByRow[row.number] ?? required;
+          const suggested = campaignDefinition.heroes.find((hero) => hero.id === row.heroId)?.recommendedAspectRoute.firstMirror ?? "aggression";
+          const selectedAspect = aspectByRow[row.number] ?? required ?? suggested;
           return (
             <ComicPanel key={row.id}>
               <span className="caption-box">Mirror {row.number}</span>

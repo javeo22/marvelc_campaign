@@ -218,7 +218,7 @@
         "minLength": 1
       },
       "minItems": 4,
-      "maxItems": 4,
+      "maxItems": 5,
       "uniqueItems": true
     }
   },

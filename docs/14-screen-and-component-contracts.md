@@ -92,7 +92,7 @@ The meter must expose the numeric value and threshold text to assistive technolo
 
 ### `AspectPassportGrid`
 
-Inputs are derived passport rows. The component never decides legality. Each hero row shows the four aspects, three story appearances, first-Mirror requirement, Scars, and Mastery. Illegal selections return a reducer error and are announced in a live region.
+Inputs are derived passport rows. The component never decides legality. Each hero row shows the four optional win stamps, the recommended three-issue route, any applicable first-Mirror requirement, Scars, and Mastery. All campaign aspects remain legal during main-story preparation.
 
 ### `FieldAssetSelector`
 

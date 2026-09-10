@@ -2,7 +2,7 @@
   "$schema": "../schemas/campaign-definition.schema.json",
   "schemaVersion": "1.0.0",
   "id": "core-protocol",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "title": {
     "en": "Core Protocol",
     "es": null
@@ -144,8 +144,8 @@
     "protection"
   ],
   "aspectPassport": {
-    "mainStoryRule": "Each hero must use three distinct aspects across that hero’s three main-story appearances.",
-    "firstMirrorRule": "The first Mirror Protocol game with each hero uses the fourth previously unused aspect.",
+    "mainStoryRule": "The listed hero is mandatory, but the player may use any legal aspect. An aspect is stamped in the optional Aspect Passport when that hero wins an issue using it.",
+    "firstMirrorRule": "When a hero has three distinct story win stamps, the first Mirror Protocol game with that hero uses the fourth previously unused aspect.",
     "basicCardsReusable": true,
     "recommendedRoutesAreDefaultsNotRules": true
   },
@@ -3856,6 +3856,7 @@
     "Marvel_Champions_Core_Protocol_Campaign_v1.1_Balanced(1).docx",
     "Core_Protocol_v1.1_Quickplay_Companion(1).docx",
     "Core_Protocol_v1.1_Quickplay_Companion(1).pdf",
-    "marvel_champions_journey_tracker_v2_core_protocol(1).xlsx"
+    "marvel_champions_journey_tracker_v2_core_protocol(1).xlsx",
+    "docs/Core_Protocol_Playtest_Feedback_001.md"
   ]
 }

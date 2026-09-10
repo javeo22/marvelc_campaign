@@ -113,17 +113,13 @@ export function selectActiveNetworkAdaptations(
 
 export function canSelectStoryAspect(
   definition: CampaignDefinition,
-  snapshot: CampaignSnapshot,
+  _snapshot: CampaignSnapshot,
   issueNumber: number,
   aspect: Aspect
 ): Result<true> {
-  const issue = getIssue(definition, issueNumber);
+  getIssue(definition, issueNumber);
   if (!definition.aspects.includes(aspect)) {
     return err("ILLEGAL_ASPECT", `${aspect} is not a campaign aspect.`);
-  }
-  const used = snapshot.usedAspects[issue.heroId] ?? [];
-  if (used.includes(aspect)) {
-    return err("ILLEGAL_ASPECT", `${issue.heroName.en} already used ${aspect} in the main story.`);
   }
   return ok(true);
 }
@@ -132,10 +128,11 @@ export function selectFirstMirrorAspect(
   definition: CampaignDefinition,
   snapshot: CampaignSnapshot,
   heroId: string
-): Aspect {
-  const hero = getHero(definition, heroId);
+): Aspect | null {
+  getHero(definition, heroId);
   const used = new Set(snapshot.usedAspects[heroId] ?? []);
-  return (definition.aspects.find((aspect) => !used.has(aspect)) ?? hero.recommendedAspectRoute.firstMirror) as Aspect;
+  if (used.size !== 3) return null;
+  return definition.aspects.find((aspect) => !used.has(aspect)) ?? null;
 }
 
 export function canSelectMirrorAspect(
@@ -154,7 +151,7 @@ export function canSelectMirrorAspect(
   });
   if (!heroAlreadyMirrored) {
     const required = selectFirstMirrorAspect(definition, snapshot, mirror.heroId);
-    if (aspect !== required) {
+    if (required && aspect !== required) {
       return err("ILLEGAL_ASPECT", `The first Mirror game for ${mirror.heroName.en} must use ${required}.`);
     }
   }

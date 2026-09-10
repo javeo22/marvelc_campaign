@@ -40,7 +40,7 @@ A player who chooses cloud backup and multi-device sync while retaining local-fi
 | ID | Requirement | Acceptance summary |
 |---|---|---|
 | PRD-PREP-001 | Show required loadout | Hero, bilingual name, villain, modular set, tier, stages, Standard/Expert encounter sets, and recommended aspect are visible above the fold. |
-| PRD-PREP-002 | Validate Aspect Passport | A repeated main-story aspect is blocked; the first mirror uses the fourth aspect; recommended route can be changed to another legal aspect. |
+| PRD-PREP-002 | Support optional Aspect Passport | Any campaign aspect is legal in the main story; the recommended route is clearly identified as guidance; winning with a new hero/aspect combination adds an optional passport stamp. |
 | PRD-PREP-003 | Compose setup in authored order | Pre-setup, normal setup, issue/continuity, Network/Final Preparation, opening hand, and Prepared Ambush are distinct steps. |
 | PRD-PREP-004 | Select legal Field Assets | Only unlocked assets are selectable; limit is one normally, two at Network 6+; Endgame Protocol exception is handled. |
 | PRD-PREP-005 | Explain persistent modifiers | Every active Network adaptation, Scar, prior flag, Interlude effect, and finale preparation is shown with its source. |

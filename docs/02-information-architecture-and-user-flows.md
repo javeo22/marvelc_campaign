@@ -72,7 +72,7 @@ Show hero/villain/modular/tier, villain stages, encounter sets, bilingual names,
 
 ### Panel 2 — Aspect Passport
 
-Show all four aspects with used, recommended, legal, and reserved-for-first-mirror states. A user may choose a different legal aspect than the recommended route.
+Show all four aspects with used, recommended, and passport-stamp states. Every campaign aspect is legal in the main story; the route is a teaching suggestion, and a win with a new hero/aspect combination adds an optional passport stamp.
 
 ### Panel 3 — Field Assets
 

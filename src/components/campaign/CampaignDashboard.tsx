@@ -5,7 +5,7 @@ import { ArrowRight, BookOpen, CheckCircle2, FileJson, RotateCcw } from "lucide-
 import { ComicHeader, ComicPanel, EmptyState, ErrorPanel } from "@/components/comic/ComicPrimitives";
 import { campaignDefinition } from "@/domain/content";
 import { getIssue, selectNextTransition } from "@/domain/selectors";
-import { AdaptationStack, CampaignMeters, FieldAssetSummary, HeroScarTile, IssueCover } from "./CampaignBits";
+import { AdaptationStack, CampaignMeters, FieldAssetSummary, HeroScarTile, IssueCover, ScarGuide } from "./CampaignBits";
 import { formatIdLabel } from "./display-labels";
 import { useCampaignSave } from "./useCampaignSave";
 
@@ -78,6 +78,7 @@ export function CampaignDashboard({ saveId }: { saveId: string }) {
           </ComicPanel>
           <ComicPanel>
             <span className="caption-box">Hero scars</span>
+            <ScarGuide />
             <div className="scar-tile-grid" style={{ marginTop: "0.25rem" }}>
               {campaignDefinition.heroes.map((hero) => (
                 <HeroScarTile

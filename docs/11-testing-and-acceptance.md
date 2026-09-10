@@ -19,8 +19,8 @@ Required cases:
 - Strike the Core suppresses only the highest adaptation through round 1;
 - both Act Recovery conditions independently and together;
 - Recovery floor at zero and one-time application;
-- Aspect Passport for all five heroes;
-- first Mirror fourth aspect;
+- any main-story campaign aspect is legal, repeated aspects do not block play, and only wins add optional Aspect Passport stamps;
+- first Mirror fourth aspect when three distinct story aspects are stamped;
 - Final Preparation 0–4 points, repeated spend options, overspend rejection;
 - all four defined endings;
 - undefined low-Network/low-Mastery win returns `needs_author_decision`;

@@ -4,6 +4,7 @@ import { campaignDefinition } from "@/domain/content";
 import { resolveEnding } from "@/domain/ending-resolver";
 import { createInitialSnapshot, reduceCampaign, replayCampaign } from "@/domain/reducer";
 import {
+  canSelectStoryAspect,
   canSelectMirrorAspect,
   selectActRecoveryPreview,
   selectActiveNetworkAdaptations,
@@ -203,6 +204,24 @@ describe("selectors for assets and adaptations", () => {
 });
 
 describe("Aspect Passport, Recovery, Final Preparation, Mirror, and endings", () => {
+  it("allows any campaign aspect in the main story and stamps only winning aspects", () => {
+    const run = harness();
+    expect(canSelectStoryAspect(campaignDefinition, run.state, 1, "aggression").ok).toBe(true);
+    run.startIssue("aggression");
+    run.completeIssue("hero_defeat", { objective: false });
+    expect(run.state.usedAspects["spider-man"]).toEqual([]);
+
+    for (let issueNumber = 2; issueNumber <= 5; issueNumber += 1) {
+      run.startIssue("protection");
+      run.completeIssue("win", { objective: false });
+    }
+    run.startIssue("aggression");
+    run.completeIssue("win", { objective: false });
+    expect(run.state.usedAspects["spider-man"]).toEqual(["aggression"]);
+    expect(canSelectStoryAspect(campaignDefinition, run.state, 6, "aggression").ok).toBe(true);
+    expect(canSelectMirrorAspect(campaignDefinition, run.state, 1, "protection").ok).toBe(true);
+  });
+
   it("tracks all five heroes through the recommended Aspect Passport route", () => {
     const run = harness();
     for (let issueNumber = 1; issueNumber <= 15; issueNumber += 1) {
@@ -378,12 +397,12 @@ describe("mode, replay, and sequencing behavior", () => {
     expect(run.state.usedAspects["spider-man"]).toEqual(["justice"]);
   });
 
-  it("fail-forward losses advance and consume the issue aspect", () => {
+  it("fail-forward losses advance without stamping the optional Aspect Passport", () => {
     const run = harness("fail-forward");
     run.startIssue("protection");
     run.completeIssue("hero_defeat", { objective: false });
     expect(run.state.currentIssueNumber).toBe(2);
-    expect(run.state.usedAspects["spider-man"]).toEqual(["protection"]);
+    expect(run.state.usedAspects["spider-man"]).toEqual([]);
   });
 
   it("replays to the same canonical snapshot", () => {

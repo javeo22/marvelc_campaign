@@ -32,8 +32,8 @@ The event journal is authoritative. The snapshot is a performance cache that mus
 1. Intel and Network never fall below zero.
 2. A hero has zero to two Scars.
 3. A flag and Mastery are awarded at most once.
-4. A main-story hero cannot commit the same aspect twice across three appearances.
-5. The first mirror for a hero uses the remaining fourth aspect.
+4. Any campaign aspect is legal in a main-story issue; the optional passport records distinct hero/aspect wins idempotently.
+5. When a hero has three distinct story stamps, the first mirror for that hero uses the remaining fourth aspect.
 6. A Field Asset must be unlocked and within the current limit.
 7. Endgame Protocol is legal only in Issue 15 at 15+ Intel.
 8. An Act Recovery is applied at most once per Act.
@@ -114,7 +114,7 @@ function completeIssue(state, issue, result) {
 
 ## Canon Mode retries
 
-A loss appends an attempt and its consequences but leaves `currentIssueNumber` unchanged. A later win advances. The story appearance records only one committed aspect stamp for the issue. Changing aspect between attempts requires a warning and stores attempt-level aspects for history.
+A loss appends an attempt and its consequences but leaves `currentIssueNumber` unchanged. A later win advances. Aspect choice may change freely between attempts, and only a winning result adds an optional hero/aspect passport stamp. Attempt-level aspects remain in history.
 
 ## Act Recovery
 

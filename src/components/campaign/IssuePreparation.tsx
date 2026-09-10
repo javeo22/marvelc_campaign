@@ -2,12 +2,12 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Check, Play } from "lucide-react";
+import { ArrowRight, Check, Layers3, Play } from "lucide-react";
 import { ComicHeader, ComicPanel, EmptyState, ErrorPanel } from "@/components/comic/ComicPrimitives";
+import cardReferenceJson from "@/content/card-reference.bilingual.json";
 import { campaignDefinition } from "@/domain/content";
 import { composeSetupPlan } from "@/domain/setup-plan";
 import {
-  canSelectStoryAspect,
   getIssue,
   selectEndgameProtocolAvailable,
   selectFinalPreparationPoints,
@@ -15,10 +15,138 @@ import {
   selectUnlockedAssets,
   validateFieldAssetSelection
 } from "@/domain/selectors";
-import type { Aspect } from "@/domain/types";
-import { AdaptationStack, FieldAssetSummary, IssueCover, ScarChip } from "./CampaignBits";
+import type { Aspect, CardReferenceIndex, CardReferenceRecord, IssueDefinition } from "@/domain/types";
+import { AdaptationStack, FieldAssetSummary, IssueCover, ScarChip, ScarGuide } from "./CampaignBits";
 import { formatAspectLabel } from "./display-labels";
+import { RemoteCardPreview } from "./RemoteCardPreview";
 import { useCampaignSave } from "./useCampaignSave";
+
+const cardReference = cardReferenceJson as CardReferenceIndex;
+
+function exactCard(name: string, setName?: string): CardReferenceRecord | null {
+  return cardReference.records.find((record) => record.name_en === name && (!setName || record.set_en === setName)) ?? null;
+}
+
+function setCards(setName: string): CardReferenceRecord[] {
+  return cardReference.records.filter((record) => record.category === "Encounter" && record.set_en === setName);
+}
+
+function VisualCard({ record, fallbackName }: { record: CardReferenceRecord | null; fallbackName: string }) {
+  if (!record) {
+    return (
+      <div className="visual-card visual-card--missing">
+        <Layers3 aria-hidden="true" />
+        <strong>{fallbackName}</strong>
+        <small>Use the named physical card.</small>
+      </div>
+    );
+  }
+  return (
+    <div className="visual-card">
+      <RemoteCardPreview
+        code={record.marvelcdb_code}
+        name={`${record.name_en} · ${record.name_es}`}
+        pack={record.pack_en}
+        collectorNumber={record.collector_number}
+      />
+      <div className="visual-card__label">
+        <strong>{record.name_en}</strong>
+        <span>{record.name_es}</span>
+        <small>{record.pack_en} #{record.collector_number}</small>
+      </div>
+    </div>
+  );
+}
+
+function SetGallery({ title, subtitle, cards }: { title: string; subtitle: string; cards: CardReferenceRecord[] }) {
+  return (
+    <details className="setup-set">
+      <summary>
+        <span className="setup-set__stack" aria-hidden="true"><Layers3 /></span>
+        <span><strong>{title}</strong><small>{subtitle} · {cards.length} named cards</small></span>
+      </summary>
+      <div className="visual-card-grid">
+        {cards.map((card) => <VisualCard key={card.record_id} record={card} fallbackName={card.name_en} />)}
+      </div>
+    </details>
+  );
+}
+
+function VisualSetup({ issue }: { issue: IssueDefinition }) {
+  const hero = exactCard(issue.heroName.en);
+  const villains = issue.villainStages.map((stage) => exactCard(`${issue.villainName.en} (${stage})`, issue.villainName.en));
+  const villainSet = setCards(issue.villainName.en);
+  const mainScheme = villainSet.find((card) => !card.name_en.startsWith(`${issue.villainName.en} (`)) ?? null;
+  const encounterSets = issue.encounterSets.map((setId) => {
+    const setName = setId === "standard" ? "Standard" : "Expert";
+    const label = setId === "standard" ? "Standard · Normal" : "Expert · Experto";
+    return { id: setId, label, cards: setCards(setName) };
+  });
+  const modularCards = setCards(issue.modularSetName.en);
+  const setAsideNames = Array.from(new Set(
+    issue.setupActions.filter((action) => action.kind === "set_aside" && action.cardAnchorName).map((action) => action.cardAnchorName!)
+  ));
+  const revealActions = issue.setupActions.filter((action) => action.kind === "reveal_card" && action.cardAnchorName);
+  const specialReferenceNames = issue.cardAnchorNames.filter((name) =>
+    name !== issue.heroName.en &&
+    name !== issue.modularSetName.en &&
+    !name.startsWith(`${issue.villainName.en} (`) &&
+    !setAsideNames.includes(name)
+  );
+
+  return (
+    <ComicPanel className="visual-setup-panel">
+      <span className="caption-box">Visual setup</span>
+      <p className="small">Use this table map to identify the physical cards, then confirm the authored checklist below.</p>
+      <div className="setup-diagram" aria-label={`Visual setup for ${issue.title.en}`}>
+        <section className="setup-zone setup-zone--player" data-step="1">
+          <span className="setup-zone__eyebrow">Player area</span>
+          <VisualCard record={hero} fallbackName={issue.heroName.en} />
+        </section>
+        <span className="setup-flow-arrow" aria-hidden="true"><ArrowRight /></span>
+        <section className="setup-zone setup-zone--villain" data-step="2">
+          <span className="setup-zone__eyebrow">Villain area</span>
+          <div className="visual-card-grid visual-card-grid--stages">
+            {villains.map((card, index) => (
+              <VisualCard key={issue.villainStages[index]} record={card} fallbackName={`${issue.villainName.en} (${issue.villainStages[index]})`} />
+            ))}
+            <VisualCard record={mainScheme} fallbackName={`${issue.villainName.en} main scheme`} />
+          </div>
+        </section>
+        <span className="setup-flow-arrow" aria-hidden="true"><ArrowRight /></span>
+        <section className="setup-zone setup-zone--encounter" data-step="3">
+          <span className="setup-zone__eyebrow">Encounter deck</span>
+          <div className="form-stack">
+            {encounterSets.map((set) => <SetGallery key={set.id} title={set.label} subtitle="Required encounter set" cards={set.cards} />)}
+            <SetGallery
+              title={`${issue.modularSetName.en} · ${issue.modularSetName.es ?? "English source name"}`}
+              subtitle="Required modular set"
+              cards={modularCards}
+            />
+          </div>
+        </section>
+        {setAsideNames.length > 0 ? (
+          <section className="setup-zone setup-zone--aside" data-step="4">
+            <span className="setup-zone__eyebrow">Set aside</span>
+            <div className="visual-card-grid visual-card-grid--aside">
+              {setAsideNames.map((name) => <VisualCard key={name} record={exactCard(name, issue.modularSetName.en)} fallbackName={name} />)}
+            </div>
+            {revealActions.map((action) => <p className="setup-callout" key={action.id}>{action.text}</p>)}
+          </section>
+        ) : null}
+        {specialReferenceNames.length > 0 ? (
+          <section className="setup-zone setup-zone--references" data-step={setAsideNames.length > 0 ? "5" : "4"}>
+            <span className="setup-zone__eyebrow">Special references</span>
+            <div className="visual-card-grid">
+              {specialReferenceNames.map((name) => <VisualCard key={name} record={exactCard(name)} fallbackName={name} />)}
+            </div>
+            <p className="setup-callout">Keep these named cards easy to identify for this issue’s special setup or continuity instructions.</p>
+          </section>
+        ) : null}
+      </div>
+    </ComicPanel>
+  );
+}
 
 export function IssuePreparation({ saveId, issueNumber }: { saveId: string; issueNumber: number }) {
   const router = useRouter();
@@ -87,41 +215,47 @@ export function IssuePreparation({ saveId, issueNumber }: { saveId: string; issu
       <ComicHeader
         eyebrow="Prepare"
         title={`Issue ${String(issue.number).padStart(2, "0")}`}
-        subtitle="Confirm the physical setup in source order. The app records only campaign selections when you start the issue."
+        subtitle={`${issue.heroName.en} vs ${issue.villainName.en} · ${issue.tierId} · ${issue.modularSetName.en}`}
       />
       {actionError ? <ErrorPanel title="Preparation blocked"><p>{actionError}</p></ErrorPanel> : null}
-      <div className="split-grid">
+      <div className="form-stack preparation-intro">
+        <IssueCover issue={issue} />
+        <ComicPanel>
+          <span className="caption-box">Previously</span>
+          <p className="narrative-copy">{issue.narrative.previously.en}</p>
+        </ComicPanel>
+        <ComicPanel>
+          <span className="caption-box">1 · Choose your deck</span>
+          <fieldset className="form-stack">
+            <legend className="sr-only">Choose aspect</legend>
+            <p><strong>Required hero:</strong> {issue.heroName.en}{issue.heroName.es ? ` · ${issue.heroName.es}` : ""}</p>
+            <p><strong>Recommended aspect:</strong> {formatAspectLabel(issue.recommendedAspect)}</p>
+            <div className="segmented">
+              {campaignDefinition.aspects.map((candidate) => (
+                <label key={candidate}>
+                  <input
+                    type="radio"
+                    name="aspect"
+                    checked={aspect === candidate}
+                    onChange={() => setAspect(candidate)}
+                  />
+                  {formatAspectLabel(candidate)}
+                  {candidate === issue.recommendedAspect ? " · Recommended" : ""}
+                </label>
+              ))}
+            </div>
+            <p className="setup-callout"><strong>Any campaign aspect is legal.</strong> Build the deck you think best fits this hero and mission. Winning with a new aspect advances the optional Aspect Passport.</p>
+            {save.playMode === "canon" ? (
+              <p className="small">Canon Mode records failed retries. The passport stamps only the aspect used for a win.</p>
+            ) : null}
+          </fieldset>
+        </ComicPanel>
+        <VisualSetup issue={issue} />
+      </div>
+      <div className="split-grid preparation-actions">
         <div className="form-stack">
-          <IssueCover issue={issue} />
           <ComicPanel>
-            <span className="caption-box">Aspect Passport</span>
-            <fieldset className="form-stack">
-              <legend className="sr-only">Choose aspect</legend>
-              <div className="segmented">
-                {campaignDefinition.aspects.map((candidate) => {
-                  const legal = canSelectStoryAspect(campaignDefinition, snapshot, issueNumber, candidate);
-                  return (
-                    <label key={candidate} aria-disabled={!legal.ok}>
-                      <input
-                        type="radio"
-                        name="aspect"
-                        checked={aspect === candidate}
-                        disabled={!legal.ok}
-                        onChange={() => setAspect(candidate)}
-                      />
-                      {formatAspectLabel(candidate)}
-                      {candidate === issue.recommendedAspect ? " · Recommended" : ""}
-                    </label>
-                  );
-                })}
-              </div>
-              {save.playMode === "canon" ? (
-                <p className="small">Canon Mode records failed retries but stamps the story passport only when this issue is committed.</p>
-              ) : null}
-            </fieldset>
-          </ComicPanel>
-          <ComicPanel>
-            <span className="caption-box">Setup sequence</span>
+            <span className="caption-box">Checklist · authored order</span>
             {plan?.groups.map((group) => (
               <section key={group.phaseId} className="form-stack" style={{ marginTop: "1rem" }}>
                 <h2>{group.label}</h2>
@@ -133,10 +267,13 @@ export function IssuePreparation({ saveId, issueNumber }: { saveId: string; issu
                         type="checkbox"
                         checked={confirmed.has(action.id)}
                         onChange={(event) => {
-                          const next = new Set(confirmed);
-                          if (event.target.checked) next.add(action.id);
-                          else next.delete(action.id);
-                          setConfirmed(next);
+                          const checked = event.target.checked;
+                          setConfirmed((current) => {
+                            const next = new Set(current);
+                            if (checked) next.add(action.id);
+                            else next.delete(action.id);
+                            return next;
+                          });
                         }}
                       />
                       <span>
@@ -159,12 +296,14 @@ export function IssuePreparation({ saveId, issueNumber }: { saveId: string; issu
             <span className="caption-box">Objective</span>
             <h2>{issue.objective.flag}</h2>
             <p>{issue.objective.description.en}</p>
-            <p className="small">{issue.objective.winGated ? "Debrief only; requires a win." : "Can be recorded during play after confirmation."}</p>
+            {issue.objective.completionNote.en ? <p>{issue.objective.completionNote.en}</p> : null}
+            <p className="setup-callout"><strong>Why it matters:</strong> {issue.objective.winGated ? "This objective is finalized during debrief and requires a win." : "+1 Intel when recorded. It remains earned even if you later lose this issue."}</p>
           </ComicPanel>
           <ComicPanel>
             <span className="caption-box">Scars</span>
             <p>{issue.heroName.en}</p>
             <ScarChip count={snapshot.scars[issue.heroId] ?? 0} />
+            <ScarGuide heroName={issue.heroName.en} count={snapshot.scars[issue.heroId] ?? 0} />
           </ComicPanel>
           <ComicPanel>
             <FieldAssetSummary definition={campaignDefinition} snapshot={snapshot} issueNumber={issueNumber} />
@@ -205,7 +344,9 @@ export function IssuePreparation({ saveId, issueNumber }: { saveId: string; issu
             </ComicPanel>
           ) : null}
           <ComicPanel>
+            <span className="caption-box">Campaign modifiers</span>
             <AdaptationStack definition={campaignDefinition} snapshot={snapshot} issueNumber={issueNumber} />
+            {snapshot.network === 0 ? <p className="setup-callout"><strong>Network onboarding:</strong> No adaptations are active. Network rises when an issue ends in hero defeat or main-scheme completion.</p> : null}
           </ComicPanel>
           {plan?.inGameReminders.length ? (
             <ComicPanel>

@@ -21,6 +21,10 @@ test("new local campaign through Issue 1 debrief advances to Issue 2", async ({ 
   await page.getByRole("link", { name: /Continue|Prepare Issue/ }).first().click();
 
   await expect(page.getByRole("heading", { name: "Issue 01" })).toBeVisible();
+  await expect(page.getByText("Visual setup")).toBeVisible();
+  await expect(page.getByText(/Standard · Normal/)).toBeVisible();
+  await expect(page.getByText(/Any campaign aspect is legal/)).toBeVisible();
+  await page.getByRole("radio", { name: "Aggression" }).check();
   const setupChecks = page.getByRole("checkbox", { name: /Confirm / });
   const checkCount = await setupChecks.count();
   expect(checkCount).toBeGreaterThan(0);
@@ -42,10 +46,41 @@ test("new local campaign through Issue 1 debrief advances to Issue 2", async ({ 
   await expect(page.getByText("Win Intel: +1")).toBeVisible();
   await page.getByRole("button", { name: /Commit 1 event/ }).click();
 
+  await expect(page.getByRole("heading", { name: "Victory" })).toBeVisible();
+  await page.getByRole("link", { name: "Return to campaign" }).click();
+
   await expect(page.getByRole("heading", { name: saveName })).toBeVisible();
   await expect(page.getByText("SOUND MONEY")).toBeVisible();
   await expect(page.locator('[aria-label^="Intel: 3."]')).toBeVisible();
   expect(browserErrors).toEqual([]);
+});
+
+test("Issue 1 hero defeat explains Network, adaptations, and Scars before leaving debrief", async ({ page }) => {
+  const saveName = `Loss tutorial ${Date.now()}`;
+  await page.goto("/onboarding");
+  await page.getByLabel("Save name").fill(saveName);
+  await page.getByRole("button", { name: /Create local campaign/ }).click();
+  await page.getByRole("link", { name: /Continue|Prepare Issue/ }).first().click();
+
+  await expect(page.getByRole("heading", { name: "Issue 01" })).toBeVisible();
+  const setupChecks = page.getByRole("checkbox", { name: /Confirm / });
+  const setupCheckCount = await setupChecks.count();
+  for (let index = 0; index < setupCheckCount; index += 1) {
+    await setupChecks.nth(index).check();
+  }
+  await page.getByRole("button", { name: /Start issue/ }).click();
+  await page.getByRole("link", { name: "End Game" }).click();
+
+  await page.getByRole("radio", { name: "Hero defeated" }).check();
+  await expect(page.getByText("Why +1?")).toBeVisible();
+  await expect(page.getByText(/Next at Network 2: Early Warning/)).toBeVisible();
+  await page.getByRole("button", { name: /Commit 1 event/ }).click();
+
+  await expect(page.getByRole("heading", { name: "Defeat" })).toBeVisible();
+  await expect(page.getByText("Network 0 → 1")).toBeVisible();
+  await expect(page.getByText(/Spider-Man Scar 0 → 1/)).toBeVisible();
+  await expect(page.getByText("None.")).toBeVisible();
+  await expect(page.getByRole("link", { name: "Prepare Issue 02" })).toBeVisible();
 });
 
 test("bilingual card search stays metadata-only", async ({ page }) => {

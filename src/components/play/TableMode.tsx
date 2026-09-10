@@ -121,6 +121,9 @@ export function TableMode({ saveId }: { saveId: string }) {
             <span className="caption-box">Objective</span>
             <h2>{issue.objective.flag}</h2>
             <p>{issue.objective.description.en}</p>
+            {issue.number === 1 ? (
+              <p className="setup-callout"><strong>Why this matters:</strong> Record the objective as soon as you complete it to gain 1 Intel. It stays earned even if this issue ends in a loss.</p>
+            ) : null}
             {"deadline" in tracker ? <p className="small">Deadline: {tracker.deadline}</p> : null}
             {"deadlineRound" in tracker ? <p className="small">Deadline: end of round {tracker.deadlineRound}</p> : null}
             {counterId ? (
@@ -178,6 +181,9 @@ export function TableMode({ saveId }: { saveId: string }) {
             <span className="caption-box">Hero Mastery</span>
             <h2>{issue.heroName.en}</h2>
             <p>{campaignDefinition.heroes.find((hero) => hero.id === issue.heroId)?.mastery.condition.en}</p>
+            {issue.number === 1 ? (
+              <p className="setup-callout"><strong>First Mastery:</strong> The first time this hero completes the condition, gain 1 Intel permanently—even if the issue is later lost.</p>
+            ) : null}
             <button
               type="button"
               disabled={masteryEarned}
