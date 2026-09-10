@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { ArrowRight, CheckCircle2, RadioTower, Shield, ShieldAlert } from "lucide-react";
+import { ArrowRight, CheckCircle2, RadioTower, Shield, ShieldAlert, Sparkles } from "lucide-react";
 import { ComicHeader, ComicPanel, EmptyState, ErrorPanel } from "@/components/comic/ComicPrimitives";
 import { campaignDefinition } from "@/domain/content";
-import { selectDebriefPreview } from "@/domain/selectors";
+import { replayCampaign } from "@/domain/reducer";
+import { selectDebriefPreview, selectUnlockedAssets } from "@/domain/selectors";
 import type { CampaignSnapshot, IssueDefinition, IssueResult } from "@/domain/types";
 import { useCampaignSave } from "./useCampaignSave";
 
@@ -105,6 +106,14 @@ function RecordedResult({
       : nextIssue
         ? `Prepare Issue ${String(nextIssue).padStart(2, "0")}`
         : "Continue campaign";
+  const newFlags = after.flags.filter((flag) => !before.flags.includes(flag));
+  const newMasteries = after.masteries.filter((heroId) => !before.masteries.includes(heroId));
+  const newAssets = selectUnlockedAssets(campaignDefinition, after).filter(
+    (asset) => !selectUnlockedAssets(campaignDefinition, before).some((prior) => prior.id === asset.id)
+  );
+  const newAdaptations = campaignDefinition.networkAdaptations.filter(
+    (adaptation) => adaptation.threshold > before.network && adaptation.threshold <= after.network
+  );
 
   return (
     <>
@@ -135,6 +144,35 @@ function RecordedResult({
           </ComicPanel>
         ) : null}
       </div>
+      <ComicPanel className="campaign-changes" aria-labelledby="campaign-changes-title">
+        <span className="caption-box">After-action report</span>
+        <h2 id="campaign-changes-title">What changed?</h2>
+        <div className="campaign-change-list">
+          {after.intel !== before.intel ? (
+            <div><Sparkles aria-hidden="true" /><span><strong>Intel {before.intel} → {after.intel}</strong><small>{after.intel - before.intel > 0 ? `Gained ${after.intel - before.intel} this game.` : `Adjusted by ${after.intel - before.intel}.`}</small></span></div>
+          ) : null}
+          {newFlags.map((flagId) => {
+            const flagIssue = campaignDefinition.issues.find((candidate) => candidate.objective.flagId === flagId);
+            return <div key={flagId}><CheckCircle2 aria-hidden="true" /><span><strong>Objective secured</strong><small>{flagIssue?.objective.flag ?? flagId}</small></span></div>;
+          })}
+          {newMasteries.map((heroId) => {
+            const hero = campaignDefinition.heroes.find((candidate) => candidate.id === heroId);
+            return <div key={heroId}><Shield aria-hidden="true" /><span><strong>First Mastery recorded</strong><small>{hero?.name.en ?? heroId}</small></span></div>;
+          })}
+          {newAssets.length > 0 ? (
+            <div><Sparkles aria-hidden="true" /><span><strong>Field Assets unlocked</strong><small>{newAssets.map((asset) => asset.name.en).join(" · ")}</small></span></div>
+          ) : null}
+          {newAdaptations.map((adaptation) => (
+            <div key={adaptation.id}><RadioTower aria-hidden="true" /><span><strong>Network adaptation activated</strong><small>{adaptation.name.en}: {adaptation.effect.en}</small></span></div>
+          ))}
+          {after.scars[issue.heroId] !== before.scars[issue.heroId] ? (
+            <div><ShieldAlert aria-hidden="true" /><span><strong>{issue.heroName.en} Scar {before.scars[issue.heroId] ?? 0} → {after.scars[issue.heroId] ?? 0}</strong><small>{(after.scars[issue.heroId] ?? 0) > (before.scars[issue.heroId] ?? 0) ? "Lower this hero’s starting HP by the new Scar total next game." : "A campaign win removed one Scar."}</small></span></div>
+          ) : null}
+          {after.intel === before.intel && newFlags.length === 0 && newMasteries.length === 0 && newAssets.length === 0 && newAdaptations.length === 0 && after.scars[issue.heroId] === before.scars[issue.heroId] ? (
+            <p className="small">No persistent campaign tracks changed this game.</p>
+          ) : null}
+        </div>
+      </ComicPanel>
       <div className="result-actions">
         <Link className="button" href={nextHref}><ArrowRight aria-hidden="true" /> {nextLabel}</Link>
         <Link className="button button--secondary" href={`/campaigns/${saveId}`}>Return to campaign</Link>
@@ -184,6 +222,11 @@ export function DebriefFlow({ saveId }: { saveId: string }) {
     setActionError(null);
     try {
       const snapshotBefore = save.snapshot;
+      const issueStarted = [...save.events].reverse().find((event) => event.type === "ISSUE_STARTED" && event.payload.issueNumber === issue.number);
+      const replayedBefore = issueStarted
+        ? replayCampaign(campaignDefinition, save.events.filter((event) => event.sequence < issueStarted.sequence), save.playMode)
+        : null;
+      const gameStartSnapshot = replayedBefore?.ok ? replayedBefore.value : snapshotBefore;
       const committedResult = result;
       const descriptors = [
         ...(!issue.objective.winGated && objectiveCompleted && !objectiveAlready
@@ -204,7 +247,7 @@ export function DebriefFlow({ saveId }: { saveId: string }) {
         }
       ];
       const next = await append(descriptors);
-      setCommitted({ issue, result: committedResult, before: snapshotBefore, after: next.snapshot });
+      setCommitted({ issue, result: committedResult, before: gameStartSnapshot, after: next.snapshot });
       setBusy(false);
     } catch (err) {
       setActionError(err instanceof Error ? err.message : String(err));

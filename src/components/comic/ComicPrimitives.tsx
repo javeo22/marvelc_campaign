@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
 export function ComicHeader({
   eyebrow,
@@ -23,8 +23,8 @@ export function ComicHeader({
   );
 }
 
-export function ComicPanel({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <section className={`comic-panel ${className}`}>{children}</section>;
+export function ComicPanel({ children, className = "", ...props }: ComponentPropsWithoutRef<"section">) {
+  return <section className={`comic-panel ${className}`} {...props}>{children}</section>;
 }
 
 export function CaptionBox({ children }: { children: ReactNode }) {

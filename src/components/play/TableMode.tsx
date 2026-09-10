@@ -1,13 +1,74 @@
 "use client";
 
 import Link from "next/link";
-import { Minus, Plus, RotateCcw, Save, Swords } from "lucide-react";
+import { BookOpenText, CheckCircle2, Gauge, HeartPulse, Minus, Plus, RotateCcw, Save, Swords, Target } from "lucide-react";
+import { useState, type ReactNode } from "react";
 import { ComicHeader, ComicPanel, EmptyState, ErrorPanel } from "@/components/comic/ComicPrimitives";
 import { campaignDefinition } from "@/domain/content";
-import { canObjectiveBeRecordedNow, trackerCheckIds } from "@/domain/objective-machine";
+import { canObjectiveBeRecordedNow, selectObjectiveStatus, trackerCheckIds } from "@/domain/objective-machine";
+import { composeSetupPlan } from "@/domain/setup-plan";
 import { getIssue, selectActiveNetworkAdaptations } from "@/domain/selectors";
 import type { CampaignEvent } from "@/domain/types";
 import { useCampaignSave } from "@/components/campaign/useCampaignSave";
+
+function TableDial({
+  label,
+  value,
+  icon,
+  onChange
+}: {
+  label: string;
+  value: number | undefined;
+  icon: ReactNode;
+  onChange: (value: number) => void;
+}) {
+  const [draft, setDraft] = useState("");
+
+  if (value === undefined) {
+    return (
+      <form
+        className="table-dial table-dial--unset"
+        onSubmit={(event) => {
+          event.preventDefault();
+          const next = Number(draft);
+          if (Number.isFinite(next) && next >= 0) onChange(Math.floor(next));
+        }}
+      >
+        <label htmlFor={`dial-${label.replaceAll(" ", "-").toLowerCase()}`}>
+          <span>{icon}<strong>{label}</strong></span>
+          <small>Enter the current value from the physical dial.</small>
+        </label>
+        <div className="table-dial__setup">
+          <input
+            id={`dial-${label.replaceAll(" ", "-").toLowerCase()}`}
+            type="number"
+            min="0"
+            inputMode="numeric"
+            value={draft}
+            onChange={(event) => setDraft(event.target.value)}
+            aria-label={`${label} current value`}
+          />
+          <button type="submit" disabled={draft === ""}>Track</button>
+        </div>
+      </form>
+    );
+  }
+
+  return (
+    <div className="table-dial">
+      <span className="table-dial__label">{icon}<strong>{label}</strong></span>
+      <div className="counter-control" aria-label={label}>
+        <button type="button" aria-label={`Decrease ${label} to ${Math.max(0, value - 1)}`} onClick={() => onChange(Math.max(0, value - 1))}>
+          <Minus aria-hidden="true" />
+        </button>
+        <output aria-live="polite" aria-label={`${label}: ${value}`}>{value}</output>
+        <button type="button" aria-label={`Increase ${label} to ${value + 1}`} onClick={() => onChange(value + 1)}>
+          <Plus aria-hidden="true" />
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function latestUndoDescriptor(events: CampaignEvent[]) {
   const last = [...events]
@@ -84,9 +145,27 @@ export function TableMode({ saveId }: { saveId: string }) {
   const tracker = issue.objective.tracker;
   const checks = trackerCheckIds(tracker);
   const adaptations = selectActiveNetworkAdaptations(campaignDefinition, save.snapshot, issue.number, session.round);
+  const setupPlan = composeSetupPlan(campaignDefinition, save.snapshot, issue.number);
   const undoDescriptor = latestUndoDescriptor(save.events);
   const canRecordObjective = canObjectiveBeRecordedNow(issue, save.snapshot);
+  const objectiveStatus = selectObjectiveStatus(issue, save.snapshot);
   const masteryEarned = save.snapshot.masteries.includes(issue.heroId) || session.masteryEarnedThisSession;
+  const deadlineRound = "deadlineRound" in tracker ? tracker.deadlineRound : null;
+  const deadlinePassed = deadlineRound !== null && session.round > deadlineRound && objectiveStatus !== "completed";
+  const stageIndex = Math.max(0, issue.villainStages.indexOf(session.villainStage ?? issue.villainStages[0]));
+  const endRoundItems = [
+    { id: `end-round:${session.round}:objective`, label: deadlinePassed ? "Review the missed objective deadline for debrief" : "Review objective progress and any deadline" },
+    ...(setupPlan.inGameReminders.length > 0
+      ? [{ id: `end-round:${session.round}:campaign`, label: "Resolve pinned campaign reminders" }]
+      : []),
+    ...(adaptations.active.length > 0
+      ? [{ id: `end-round:${session.round}:network`, label: "Resolve active Network reminders" }]
+      : []),
+    ...(session.selectedFieldAssetIds.length > 0
+      ? [{ id: `end-round:${session.round}:assets`, label: "Review equipped Field Assets and their use limits" }]
+      : [])
+  ];
+  const endRoundComplete = endRoundItems.every((item) => session.objectiveChecks[item.id]);
 
   const counterId = "counterId" in tracker ? tracker.counterId : null;
   const counterValue = counterId ? session.objectiveCounters[counterId] ?? 0 : 0;
@@ -101,9 +180,7 @@ export function TableMode({ saveId }: { saveId: string }) {
         subtitle="Manual table companion. Physical cards and official timing remain authoritative."
       />
       <div className="table-command-bar" aria-label="Table commands">
-        <button type="button" onClick={() => void append([{ type: "ROUND_CHANGED", payload: { delta: 1 } }])}>
-          <Plus aria-hidden="true" /> Round
-        </button>
+        <a className="button" href="#end-round"><CheckCircle2 aria-hidden="true" /> End round</a>
         <button type="button" disabled={!undoDescriptor} onClick={() => undoDescriptor && void append([undoDescriptor])}>
           <RotateCcw aria-hidden="true" /> Undo
         </button>
@@ -117,6 +194,79 @@ export function TableMode({ saveId }: { saveId: string }) {
 
       <div className="table-surface">
         <div className="form-stack">
+          <ComicPanel className="do-now-panel" data-urgent={canRecordObjective || deadlinePassed ? "true" : "false"}>
+            <span className="caption-box">Do this now · Round {session.round}</span>
+            <div className="do-now-list">
+              <div>
+                <Target aria-hidden="true" />
+                <span>
+                  <strong>{objectiveStatus === "completed" ? "Objective recorded" : canRecordObjective ? "Objective ready — record it now" : deadlinePassed ? "Objective deadline passed" : "Watch the objective"}</strong>
+                  <small>{issue.objective.description.en}</small>
+                </span>
+              </div>
+              {setupPlan.inGameReminders.map((reminder) => (
+                <div key={reminder.id}>
+                  <CheckCircle2 aria-hidden="true" />
+                  <span><strong>Campaign reminder</strong><small>{reminder.text}</small></span>
+                </div>
+              ))}
+              {adaptations.active.map((adaptation) => (
+                <div key={adaptation.id}>
+                  <Gauge aria-hidden="true" />
+                  <span>
+                    <strong>{adaptation.name.en}{adaptations.suppressed?.id === adaptation.id ? " · suppressed this round" : ""}</strong>
+                    <small>{adaptation.effect.en}</small>
+                  </span>
+                </div>
+              ))}
+            </div>
+            <Link className="context-link" href="/rules"><BookOpenText aria-hidden="true" /> Open my rules notes</Link>
+          </ComicPanel>
+
+          <ComicPanel>
+            <span className="caption-box">Table dials · optional</span>
+            <h2>Mirror the physical table</h2>
+            <p className="small">Set only the values you want nearby. These controls never apply damage, threat, or game rules automatically.</p>
+            <div className="table-dial-grid">
+              <TableDial
+                label="Hero HP"
+                value={session.heroHp}
+                icon={<HeartPulse aria-hidden="true" />}
+                onChange={(value) => void append([{ type: "COUNTER_CHANGED", payload: { counterId: "heroHp", value } }])}
+              />
+              <TableDial
+                label="Villain HP"
+                value={session.villainHp}
+                icon={<Swords aria-hidden="true" />}
+                onChange={(value) => void append([{ type: "COUNTER_CHANGED", payload: { counterId: "villainHp", value } }])}
+              />
+              <TableDial
+                label="Main scheme threat"
+                value={session.mainSchemeThreat}
+                icon={<Gauge aria-hidden="true" />}
+                onChange={(value) => void append([{ type: "COUNTER_CHANGED", payload: { counterId: "mainSchemeThreat", value } }])}
+              />
+            </div>
+            {issue.liveTrackerPreset.showVillainStage ? (
+              <fieldset className="form-stack villain-stage-control">
+                <legend>Villain stage</legend>
+                <div className="segmented">
+                  {issue.villainStages.map((stage, index) => (
+                    <label key={stage}>
+                      <input
+                        type="radio"
+                        name="villain-stage"
+                        checked={stageIndex === index}
+                        onChange={() => void append([{ type: "COUNTER_CHANGED", payload: { counterId: "villainStageIndex", value: index } }])}
+                      />
+                      Stage {stage}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            ) : null}
+          </ComicPanel>
+
           <ComicPanel>
             <span className="caption-box">Objective</span>
             <h2>{issue.objective.flag}</h2>
@@ -208,6 +358,33 @@ export function TableMode({ saveId }: { saveId: string }) {
               <textarea name="note" maxLength={2000} aria-label="Session note" />
               <button type="submit">Add note</button>
             </form>
+          </ComicPanel>
+
+          <ComicPanel id="end-round" className="end-round-panel">
+            <span className="caption-box">End Round {session.round}</span>
+            <h2>Quick table sweep</h2>
+            <p className="small">Optional reminders so campaign effects do not get lost between turns.</p>
+            <div className="end-round-checklist">
+              {endRoundItems.map((item) => (
+                <label key={item.id}>
+                  <input
+                    type="checkbox"
+                    checked={Boolean(session.objectiveChecks[item.id])}
+                    onChange={(event) => void append([{ type: "CHECKLIST_CHANGED", payload: { checkId: item.id, value: event.target.checked } }])}
+                  />
+                  {item.label}
+                </label>
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={async () => {
+                await append([{ type: "ROUND_CHANGED", payload: { delta: 1 } }]);
+                document.getElementById("main")?.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            >
+              <Plus aria-hidden="true" /> Start Round {session.round + 1}{endRoundComplete ? " · reviewed" : ""}
+            </button>
           </ComicPanel>
         </div>
 

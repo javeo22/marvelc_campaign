@@ -30,6 +30,8 @@ Required cases:
 - event replay equals stored snapshot;
 - duplicate client mutation is idempotent;
 - out-of-order event rejected.
+- optional table dials write typed live-session fields and replay identically;
+- a manual correction restores a typed table dial without polluting objective counters.
 
 ### Content tests
 
@@ -63,6 +65,9 @@ Required cases:
 
 - setup stepper state and keyboard operation;
 - counter accessible names and bounds;
+- unset table-dial opt-in, villain-stage selection, and 52 px table targets;
+- active-session Play shortcut appears and disappears with session lifecycle;
+- end-round checklist creates round-scoped confirmations;
 - Field Asset ready/used state;
 - objective record confirmation;
 - debrief preview and duplicate reward display;
@@ -74,7 +79,7 @@ Required cases:
 
 ### E2E-01 — First issue, offline
 
-Create a fail-forward save, choose Spanish physical names, select Spider-Man Protection, prepare Issue 1, complete setup, start play, record BOMB DEFUSED, end with a win, verify Intel and result narrative, terminate/reopen, and confirm state.
+Create a fail-forward save, choose Spanish physical names, select Spider-Man Protection, prepare Issue 1, complete setup, start play, verify the contextual Play shortcut, opt into a Hero HP dial, complete an end-round review, record BOMB DEFUSED, end with a win, verify the **What changed?** report, Intel and result narrative, terminate/reopen, and confirm state.
 
 ### E2E-02 — Objective survives loss
 

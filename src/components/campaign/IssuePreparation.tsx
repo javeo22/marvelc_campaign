@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Check, Layers3, Play } from "lucide-react";
+import { ArrowRight, Check, Layers3, Play, Search } from "lucide-react";
 import { ComicHeader, ComicPanel, EmptyState, ErrorPanel } from "@/components/comic/ComicPrimitives";
 import cardReferenceJson from "@/content/card-reference.bilingual.json";
 import { campaignDefinition } from "@/domain/content";
@@ -107,6 +108,7 @@ function VisualSetup({ issue }: { issue: IssueDefinition }) {
     <ComicPanel className="visual-setup-panel">
       <span className="caption-box">Visual setup</span>
       <p className="small">Use this table map to identify the physical cards, then confirm the authored checklist below.</p>
+      <Link className="context-link" href="/cards"><Search aria-hidden="true" /> Find another physical card</Link>
       <div className="setup-diagram" aria-label={`Visual setup for ${issue.title.en}`}>
         <section className="setup-zone setup-zone--player" data-step="1">
           <span className="setup-zone__eyebrow">Player area</span>

@@ -154,6 +154,32 @@ describe("campaign reducer core deltas", () => {
     expect(run.state.intel).toBe(afterFirst);
     expect(run.state.masteries).toEqual(["spider-man"]);
   });
+
+  it("keeps optional physical-table dials in typed session fields and makes corrections replayable", () => {
+    const run = harness();
+    run.startIssue("protection");
+    run.dispatch("COUNTER_CHANGED", { counterId: "heroHp", value: 9 });
+    run.dispatch("COUNTER_CHANGED", { counterId: "villainHp", value: 13 });
+    run.dispatch("COUNTER_CHANGED", { counterId: "mainSchemeThreat", value: 4 });
+    run.dispatch("COUNTER_CHANGED", { counterId: "villainStageIndex", value: 1 });
+    run.dispatch("MANUAL_CORRECTION", {
+      reason: "Undo table counter change",
+      counterId: "heroHp",
+      counterValue: 10
+    });
+
+    expect(run.state.activeSession).toMatchObject({
+      heroHp: 10,
+      villainHp: 13,
+      mainSchemeThreat: 4,
+      villainStage: "II"
+    });
+    expect(run.state.activeSession?.objectiveCounters).not.toHaveProperty("heroHp");
+
+    const replayed = replayCampaign(campaignDefinition, run.events, "fail-forward");
+    expect(replayed.ok).toBe(true);
+    if (replayed.ok) expect(replayed.value).toEqual(run.state);
+  });
 });
 
 describe("selectors for assets and adaptations", () => {

@@ -22,6 +22,7 @@ test("new local campaign through Issue 1 debrief advances to Issue 2", async ({ 
 
   await expect(page.getByRole("heading", { name: "Issue 01" })).toBeVisible();
   await expect(page.getByText("Visual setup")).toBeVisible();
+  await expect(page.getByRole("link", { name: "Find another physical card" })).toBeVisible();
   await expect(page.getByText(/Standard · Normal/)).toBeVisible();
   await expect(page.getByText(/Any campaign aspect is legal/)).toBeVisible();
   const mainSchemeFrame = page
@@ -41,6 +42,23 @@ test("new local campaign through Issue 1 debrief advances to Issue 2", async ({ 
   await page.getByRole("button", { name: /Start issue/ }).click();
 
   await expect(page.getByRole("heading", { name: "THE BREAK-IN" })).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Play" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Open my rules notes" })).toBeVisible();
+
+  const heroDial = page.locator(".table-dial", { hasText: "Hero HP" });
+  await heroDial.getByLabel("Hero HP current value").fill("10");
+  await heroDial.getByRole("button", { name: "Track" }).click();
+  await expect(heroDial.getByLabel("Hero HP: 10")).toBeVisible();
+  await heroDial.getByRole("button", { name: "Decrease Hero HP to 9" }).click();
+  await expect(heroDial.getByLabel("Hero HP: 9")).toBeVisible();
+
+  await page.getByRole("link", { name: "End round" }).click();
+  await expect(page.getByRole("heading", { name: "Quick table sweep" })).toBeVisible();
+  await page.getByLabel("Review objective progress and any deadline").click();
+  await expect(page.getByLabel("Review objective progress and any deadline")).toBeChecked();
+  await page.getByRole("button", { name: "Start Round 2 · reviewed" }).click();
+  await expect(page.getByText("Do this now · Round 2")).toBeVisible();
+
   await page.getByLabel("Bomb Scare defeated").click();
   await expect(page.getByLabel("Bomb Scare defeated")).toBeChecked();
   await page.getByRole("button", { name: "Record objective now" }).click();
@@ -54,6 +72,11 @@ test("new local campaign through Issue 1 debrief advances to Issue 2", async ({ 
   await page.getByRole("button", { name: /Commit 1 event/ }).click();
 
   await expect(page.getByRole("heading", { name: "Victory" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "What changed?" })).toBeVisible();
+  await expect(page.getByText("Objective secured")).toBeVisible();
+  await expect(page.getByText("First Mastery recorded")).toBeVisible();
+  await expect(page.getByText("Emergency Reserve · Field Medic")).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Play" })).toHaveCount(0);
   await page.getByRole("link", { name: "Return to campaign" }).click();
 
   await expect(page.getByRole("heading", { name: saveName })).toBeVisible();
@@ -85,7 +108,7 @@ test("Issue 1 hero defeat explains Network, adaptations, and Scars before leavin
 
   await expect(page.getByRole("heading", { name: "Defeat" })).toBeVisible();
   await expect(page.getByText("Network 0 → 1")).toBeVisible();
-  await expect(page.getByText(/Spider-Man Scar 0 → 1/)).toBeVisible();
+  await expect(page.getByText(/Spider-Man Scar 0 → 1/).first()).toBeVisible();
   await expect(page.getByText("None.")).toBeVisible();
   await expect(page.getByRole("link", { name: "Prepare Issue 02" })).toBeVisible();
 });

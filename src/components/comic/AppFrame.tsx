@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { BookOpen, Cog, UserRound } from "lucide-react";
+import { ActivePlayNavItem } from "./ActivePlayNavItem";
 import { PwaController } from "./PwaController";
 
 const navItems = [
@@ -20,7 +21,17 @@ export function AppFrame({ children }: { children: ReactNode }) {
         {children}
       </main>
       <nav className="shell-nav" aria-label="Primary">
-        {navItems.map((item) => {
+        {navItems.slice(0, 1).map((item) => {
+          const Icon = item.icon;
+          return (
+            <Link href={item.href} key={item.href}>
+              <Icon aria-hidden="true" />
+              <span>{item.label}</span>
+            </Link>
+          );
+        })}
+        <ActivePlayNavItem />
+        {navItems.slice(1).map((item) => {
           const Icon = item.icon;
           return (
             <Link href={item.href} key={item.href}>

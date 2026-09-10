@@ -5,12 +5,12 @@
 The app uses a compact bottom navigation on phones and a rail on larger screens.
 
 - **Campaign** — current issue, tracks, resume, progress.
-- **Play** — active session; hidden/disabled when no game is active.
+- **Play** — most recently updated active session; appears only while a game is active.
 - **Journey** — hero passport, flags, completion grid, Mirror Protocol.
 - **Account** — optional username/password sign-in, cloud upload/download, sync status.
 - **Settings** — language, display, backups, image mode, legal notice.
 
-The persistent shell exposes only Campaign, Account, and Settings. Card search, deck logs, and rules notes remain available as compatibility routes and backup data, but player feedback showed that they do not justify permanent navigation during campaign play. Card identification stays contextual inside issue preparation.
+The persistent shell exposes Campaign, Account, and Settings, plus a contextual Play shortcut while an issue is active. Card search, deck logs, and rules notes remain available as compatibility routes and backup data, but player feedback showed that they do not justify permanent navigation. Card identification and personal rules notes are linked where they are useful during preparation and play.
 
 ## Route map
 
@@ -111,6 +111,8 @@ The default layout is a calm dashboard inside an energetic comic frame:
 - Field Assets: large ready/used cards;
 - Mastery panel: condition and “Earned” action if not already unlocked;
 - quick note and activity/Undo drawer;
+- a round-sensitive **Do this now** panel for objectives, campaign reminders, and Network effects;
+- an optional end-of-round sweep that reviews campaign reminders before starting the next round;
 - **End Game** button protected from accidental taps.
 
 A “minimal table view” hides optional HP/villain controls and leaves only campaign-required tracking.
@@ -128,7 +130,8 @@ A “minimal table view” hides optional HP/villain controls and leaves only ca
    - official matchup clear when applicable.
 5. Commit debrief as one transaction.
 6. Read the appropriate authored result narrative.
-7. Move to Interlude/Recovery/finale/next issue according to source state.
+7. Read a **What changed?** report covering this game's Intel, flags, Mastery, unlocks, Network Adaptations, and Scars.
+8. Move to Interlude/Recovery/finale/next issue according to source state.
 
 ## Interlude and recovery flow
 

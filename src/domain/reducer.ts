@@ -109,6 +109,37 @@ function finalPreparationOptionIsValid(definition: CampaignDefinition, optionId:
   return definition.finalPreparation.spendOptions.some((option) => option.id === optionId);
 }
 
+function applySessionCounter(
+  definition: CampaignDefinition,
+  state: CampaignSnapshot,
+  counterId: string,
+  value: number
+) {
+  const session = state.activeSession;
+  if (!session) return;
+  const normalizedValue = Math.max(0, value);
+
+  switch (counterId) {
+    case "heroHp":
+      session.heroHp = normalizedValue;
+      break;
+    case "villainHp":
+      session.villainHp = normalizedValue;
+      break;
+    case "mainSchemeThreat":
+      session.mainSchemeThreat = normalizedValue;
+      break;
+    case "villainStageIndex": {
+      const stages = getIssue(definition, session.issueNumber).villainStages;
+      const stageIndex = Math.min(stages.length - 1, Math.floor(normalizedValue));
+      session.villainStage = stages[stageIndex] ?? stages[0];
+      break;
+    }
+    default:
+      session.objectiveCounters[counterId] = normalizedValue;
+  }
+}
+
 export function reduceCampaign(
   definition: CampaignDefinition,
   previous: CampaignSnapshot,
@@ -248,7 +279,7 @@ export function reduceCampaign(
       const counterId = stringPayload(event, "counterId");
       const value = numberPayload(event, "value");
       if (!counterId || value === null || value < 0) return err("INVALID_EVENT", "COUNTER_CHANGED requires a non-negative value.");
-      state.activeSession.objectiveCounters[counterId] = value;
+      applySessionCounter(definition, state, counterId, value);
       break;
     }
 
@@ -483,7 +514,7 @@ export function reduceCampaign(
       if (state.activeSession) {
         const counterId = stringPayload(event, "counterId");
         const counterValue = numberPayload(event, "counterValue");
-        if (counterId && counterValue !== null) state.activeSession.objectiveCounters[counterId] = Math.max(0, counterValue);
+        if (counterId && counterValue !== null) applySessionCounter(definition, state, counterId, counterValue);
         const checkId = stringPayload(event, "checkId");
         const checkValue = booleanPayload(event, "checkValue");
         if (checkId && checkValue !== null) state.activeSession.objectiveChecks[checkId] = checkValue;

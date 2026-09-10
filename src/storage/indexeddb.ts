@@ -18,6 +18,13 @@ import { CURRENT_SAVE_SCHEMA_VERSION } from "./migrations";
 
 const DB_NAME = "core-protocol-companion";
 const DB_VERSION = 1;
+export const CAMPAIGN_SAVES_CHANGED_EVENT = "core-protocol:campaign-saves-changed";
+
+function announceCampaignSavesChanged() {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new Event(CAMPAIGN_SAVES_CHANGED_EVENT));
+  }
+}
 
 export interface SaveSummary {
   saveId: string;
@@ -226,6 +233,7 @@ export async function createLocalSave(options: { name: string; playMode: PlayMod
   await tx.objectStore("campaign_events").put({ saveId, event });
   await tx.done;
   enqueueCampaignSavePush(save);
+  announceCampaignSavesChanged();
   return save;
 }
 
@@ -312,6 +320,7 @@ export async function appendCampaignEvents(
   await tx.done;
   const nextSave = { ...nextSaveRecord, events: allEvents };
   enqueueCampaignSavePush(nextSave);
+  announceCampaignSavesChanged();
   return nextSave;
 }
 
@@ -322,6 +331,7 @@ export async function renameCampaignSave(saveId: string, name: string) {
   const nextSave = { ...save, name: name.trim() || save.name, updatedAt: new Date().toISOString() };
   await db.put("campaign_saves", nextSave);
   enqueueCampaignSavePush({ ...nextSave, events: await eventsForSave(db, saveId) });
+  announceCampaignSavesChanged();
 }
 
 export async function deleteCampaignSave(saveId: string) {
@@ -341,6 +351,7 @@ export async function deleteCampaignSave(saveId: string) {
     await tx.objectStore("campaign_events").delete([saveId, event.sequence]);
   }
   await tx.done;
+  announceCampaignSavesChanged();
 }
 
 export async function duplicateCampaignSave(saveId: string): Promise<CampaignSave> {
@@ -375,6 +386,7 @@ export async function duplicateCampaignSave(saveId: string): Promise<CampaignSav
   }
   await tx.done;
   enqueueCampaignSavePush(duplicate);
+  announceCampaignSavesChanged();
   return duplicate;
 }
 
@@ -402,6 +414,7 @@ export async function replaceCampaignSaveFromCloud(save: CampaignSave): Promise<
     await tx.objectStore("campaign_events").put({ saveId: save.saveId, event });
   }
   await tx.done;
+  announceCampaignSavesChanged();
   return nextSave;
 }
 

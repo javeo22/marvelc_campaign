@@ -137,7 +137,19 @@ Shows objective, flag reward, tracker controls to be enabled, whether a win is r
 
 ### `TableCommandBar`
 
-Large controls for round, note, undo, display lock, and debrief. The main controls target at least 52 px. The bar remains reachable with one hand and does not cover objective content.
+Large controls for end-round review, undo, debrief, and exit. The main controls target at least 52 px. The bar remains reachable with one hand and does not cover objective content. Round advancement is offered from the end-round review so campaign reminders are visible at the moment they matter.
+
+### `DoThisNow`
+
+Shows the current round, objective readiness or missed deadline, persistent authored reminders, and every active Network Adaptation. It links to personal rules notes contextually and never presents those notes as official rulings.
+
+### `TableDials`
+
+Optional manual Hero HP, Villain HP, main-scheme threat, and villain-stage controls mirror the physical table. HP and threat begin unset and require a player-entered value. Controls never infer damage, healing, threat acceleration, stage advancement, or legality.
+
+### `EndRoundChecklist`
+
+Builds a short round-scoped checklist from objective deadlines, persistent campaign reminders, active Network effects, and equipped Field Assets. Checks are optional and do not block round advancement. Starting the next round appends `ROUND_CHANGED`; it does not erase prior checklist events.
 
 ### `ObjectiveTracker`
 
@@ -191,6 +203,8 @@ Shows prior mid-game awards separately from new debrief deltas. It lists current
 Requires a result and any win-gated objective decision. “Other loss” requires explicit zero-consequence acknowledgement or a manual correction reason. The commit button shows the number of append-only events to be written.
 
 After a successful transaction, the app presents a result splash and one clear next action. A network/sync failure does not roll back a committed local result.
+
+The result splash includes a **What changed?** report calculated from the snapshot before the issue started through the committed result. It names new objective flags, first Masteries, Field Asset unlocks, Network Adaptations, and Scar changes rather than showing track totals alone.
 
 ## 14.8 Reference results
 

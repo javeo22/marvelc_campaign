@@ -104,6 +104,8 @@ Optional counters improve convenience without creating a simulator:
 
 No counter is authoritative over the physical board. Every control can be hidden except source-required objective tracking.
 
+Unset HP and threat counters do not guess printed or scaled values. The player opts in by entering the current physical value; subsequent plus/minus taps append normal counter events. The active Play navigation shortcut is derived from local save summaries and disappears when debrief commits. Table mode also presents a round-sensitive action panel and an optional end-of-round campaign checklist. Checklist confirmations are stored under round-scoped IDs, so each new round begins with a clean review without rewriting history.
+
 ## 3.11 Debrief calculation
 
 Display a preview before commit. Consequences are applied once:
@@ -117,6 +119,8 @@ Display a preview before commit. Consequences are applied once:
 | Abandoned | 0 | 0 by default | No automatic Scar |
 
 Objective and first Mastery Intel may already have been awarded during play. The preview shows them as prior events, not new debrief deltas.
+
+After commit, compare the resulting snapshot with the snapshot immediately before `ISSUE_STARTED`. Present a plain-language **What changed?** summary including mid-game objective/Mastery awards, result deltas, newly crossed Field Asset thresholds, newly active Network Adaptations, and Scar changes.
 
 ## 3.12 Act Recovery
 
