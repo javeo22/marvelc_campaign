@@ -98,6 +98,12 @@ test("bilingual card search stays metadata-only", async ({ page }) => {
   await expect(page.getByText("Card images are disabled by the global launch gate.").first()).toBeVisible();
 });
 
+test("account sign-in never prefills a shared username", async ({ page }) => {
+  await page.goto("/account");
+  await expect(page.getByLabel("Username")).toHaveValue("");
+  await expect(page.getByLabel("Username")).toHaveAttribute("placeholder", "Your username");
+});
+
 test("PWA shell serves bundled reference pages offline after install", async ({ context, page }) => {
   await page.goto("/cards");
   await expect(page.getByRole("heading", { name: "Bilingual card search" })).toBeVisible();

@@ -32,7 +32,7 @@ function formatDate(value: string) {
 export function AccountView() {
   const syncStatus = useMemo(() => getSupabaseSyncStatus(), []);
   const [account, setAccount] = useState<AccountSession | null>(null);
-  const [username, setUsername] = useState("javier");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [localSaves, setLocalSaves] = useState<SaveSummary[]>([]);
   const [cloudSaves, setCloudSaves] = useState<CloudSaveSummary[]>([]);
@@ -215,6 +215,8 @@ export function AccountView() {
               <input
                 id="account-username"
                 autoComplete="username"
+                placeholder="Your username"
+                required
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
                 disabled={Boolean(disabledReason) || busy === "sign-in"}
@@ -224,6 +226,7 @@ export function AccountView() {
                 id="account-password"
                 type="password"
                 autoComplete="current-password"
+                required
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 disabled={Boolean(disabledReason) || busy === "sign-in"}
@@ -231,7 +234,7 @@ export function AccountView() {
               <button type="submit" disabled={Boolean(disabledReason) || busy === "sign-in"}>
                 <LogIn aria-hidden="true" /> Sign in
               </button>
-              <p className="meta">The requested account username is prefilled. Saves stay local until you upload them or autosync catches the next local change.</p>
+              <p className="meta">Enter your account username. Saves stay local until you upload them or autosync catches the next local change.</p>
             </form>
           )}
         </ComicPanel>
