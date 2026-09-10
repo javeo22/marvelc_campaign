@@ -176,7 +176,7 @@ textarea {
   grid-area: nav;
   z-index: 20;
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.25rem;
   padding: 0.5rem max(0.5rem, env(safe-area-inset-left)) max(0.5rem, env(safe-area-inset-bottom)) max(0.5rem, env(safe-area-inset-right));
   border-top: var(--panel-border) solid var(--ink);

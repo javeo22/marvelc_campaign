@@ -104,6 +104,18 @@ test("account sign-in never prefills a shared username", async ({ page }) => {
   await expect(page.getByLabel("Username")).toHaveAttribute("placeholder", "Your username");
 });
 
+test("primary navigation focuses on campaign play", async ({ page }) => {
+  await page.goto("/");
+  const primaryNavigation = page.getByRole("navigation", { name: "Primary" });
+  await expect(primaryNavigation.getByRole("link")).toHaveCount(3);
+  await expect(primaryNavigation.getByRole("link", { name: "Campaign" })).toBeVisible();
+  await expect(primaryNavigation.getByRole("link", { name: "Account" })).toBeVisible();
+  await expect(primaryNavigation.getByRole("link", { name: "Settings" })).toBeVisible();
+  await expect(primaryNavigation.getByRole("link", { name: "Cards" })).toHaveCount(0);
+  await expect(primaryNavigation.getByRole("link", { name: "Decks" })).toHaveCount(0);
+  await expect(primaryNavigation.getByRole("link", { name: "Rules" })).toHaveCount(0);
+});
+
 test("PWA shell serves bundled reference pages offline after install", async ({ context, page }) => {
   await page.goto("/cards");
   await expect(page.getByRole("heading", { name: "Bilingual card search" })).toBeVisible();

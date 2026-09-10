@@ -87,6 +87,10 @@ The tracker includes Core Set and The Rise of Red Skull, but Core Protocol itsel
 
 Playtest Feedback 001 is the approved amendment for campaign content version 1.2.0. Main-story heroes remain mandatory, but any campaign aspect is legal. The recommended route remains a teaching suggestion. A hero/aspect stamp is recorded only when that hero wins an issue with that aspect; stamps are optional progression and never block story advancement. The existing first-Mirror rule remains unchanged when a fourth unused aspect is determinable.
 
+## Approved revision AR-002 — Player-focused primary navigation
+
+Player feedback found that standalone Cards, Decks, and Rules tabs were not used during campaign play. The primary shell now focuses on Campaign, Account, and Settings. Existing reference routes and stored deck/rules records remain intact for backward compatibility and export/import safety; exact card identification remains part of issue preparation.
+
 ## Content change protocol
 
 Every source-level change requires:

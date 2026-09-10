@@ -6,10 +6,11 @@ The app uses a compact bottom navigation on phones and a rail on larger screens.
 
 - **Campaign** — current issue, tracks, resume, progress.
 - **Play** — active session; hidden/disabled when no game is active.
-- **Reference** — cards, deck log, rules log.
 - **Journey** — hero passport, flags, completion grid, Mirror Protocol.
 - **Account** — optional username/password sign-in, cloud upload/download, sync status.
 - **Settings** — language, display, backups, image mode, legal notice.
+
+The persistent shell exposes only Campaign, Account, and Settings. Card search, deck logs, and rules notes remain available as compatibility routes and backup data, but player feedback showed that they do not justify permanent navigation during campaign play. Card identification stays contextual inside issue preparation.
 
 ## Route map
 
@@ -62,7 +63,7 @@ Below:
 - act progress strip;
 - objective flags and Masteries;
 - recent activity;
-- quick links to passport, completion grid, decks, rules, and backup.
+- quick links to passport, completion grid, and backup.
 
 ## Preparation wizard
 
