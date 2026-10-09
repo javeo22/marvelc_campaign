@@ -102,7 +102,7 @@ src/
     migrations.ts
   integrations/
     marvelcdb/
-    supabase/
+    cloud/
   i18n/
   styles/
   test/

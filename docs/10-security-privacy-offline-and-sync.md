@@ -5,7 +5,7 @@
 - No account required.
 - No telemetry, advertising identifiers, or third-party analytics by default.
 - Campaign notes and logs remain on the device unless the user explicitly enables sync.
-- Settings disclose which external requests occur: app host, optional MarvelCDB metadata/images, optional Supabase, optional diagnostics.
+- Settings disclose which external requests occur: app host, optional MarvelCDB metadata/images, optional PostgreSQL cloud sync, optional diagnostics.
 - Provide export and delete controls without contacting support.
 
 IndexedDB is not encrypted storage. Do not claim encryption at rest. Avoid collecting sensitive personal data; the campaign does not need it.
@@ -35,7 +35,7 @@ Primary risks:
 
 ## Browser security
 
-Set a restrictive Content Security Policy. When images are disabled, `img-src` should include only self/data for original assets. When remote mode is enabled, add only exact approved MarvelCDB hosts. Keep `connect-src` limited to the app, metadata hosts, and optional Supabase.
+Set a restrictive Content Security Policy. When images are disabled, `img-src` should include only self/data for original assets. When remote mode is enabled, add only exact approved MarvelCDB hosts. Keep `connect-src` limited to the app, metadata hosts, and optional PostgreSQL cloud sync.
 
 Use standard protections:
 
@@ -77,8 +77,8 @@ The UI must state which layer is unavailable without implying data loss.
 
 Cloud sync is event-based and opt-in.
 
-- Authenticate with Supabase Auth or equivalent.
-- RLS limits saves/logs to the owner.
+- Authenticate with GitHub or Google through app-managed Auth.js JWT sessions.
+- Server queries scope campaign saves to the verified session owner. Database credentials never reach the browser.
 - Events are append-only and idempotent by `clientMutationId`.
 - The client sends its base sequence and new events.
 - Server rejects gaps/conflicts with 409.

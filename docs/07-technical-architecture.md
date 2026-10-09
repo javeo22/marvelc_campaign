@@ -2,7 +2,7 @@
 
 ## Chosen architecture
 
-A Next.js App Router application provides a static/offline-capable shell plus small server boundaries for external metadata and optional sync. The core product is local-first; the server is an enhancement, not a dependency.
+A Next.js App Router application provides a static/offline-capable shell plus small server boundaries for external metadata and optional sync. See [current cloud setup](CLOUD_SYNC_SETUP.md). The core product is local-first; the server is an enhancement, not a dependency.
 
 ## Layer diagram
 
@@ -35,7 +35,7 @@ Ports
 Adapters
   ├── IndexedDB
   ├── MarvelCDB route handlers
-  └── optional Supabase
+  └── optional PostgreSQL cloud sync
 ```
 
 ## Next.js conventions
@@ -44,7 +44,7 @@ Adapters
 - Server Components by default.
 - Client components cannot be async and must receive serializable props.
 - Await modern async request APIs such as `params`, `searchParams`, `cookies()`, and `headers()` where the selected Next.js version requires it.
-- Use Route Handlers for `/api/cards/**` and optional sync.
+- Use Route Handlers for `/api/cards/**` and optional sync. See [current cloud setup](CLOUD_SYNC_SETUP.md).
 - Default Route Handlers to Node.js runtime.
 - Add `error.tsx`, `not-found.tsx`, and global error handling.
 - If the selected Next.js release uses `proxy.ts` rather than `middleware.ts`, follow that convention; do not add either unless authentication/routing needs it.

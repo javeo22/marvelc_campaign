@@ -121,10 +121,11 @@ test("bilingual card search stays metadata-only", async ({ page }) => {
   await expect(page.getByText("Card images are disabled by the global launch gate.").first()).toBeVisible();
 });
 
-test("account sign-in never prefills a shared username", async ({ page }) => {
+test("account offers provider sign-in without collecting passwords", async ({ page }) => {
   await page.goto("/account");
-  await expect(page.getByLabel("Username")).toHaveValue("");
-  await expect(page.getByLabel("Username")).toHaveAttribute("placeholder", "Your username");
+  await expect(page.getByRole("button", { name: "Continue with GitHub" })).toBeVisible();
+  await expect(page.locator('input[type="password"]')).toHaveCount(0);
+  await expect(page.getByText("Local saves are available")).toBeVisible();
 });
 
 test("primary navigation focuses on campaign play", async ({ page }) => {

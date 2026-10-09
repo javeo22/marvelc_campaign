@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Copy, Download, Play, Plus, Trash2 } from "lucide-react";
 import { EmptyState, ErrorPanel, ComicHeader, ComicPanel } from "@/components/comic/ComicPrimitives";
-import { deleteCampaignSave, duplicateCampaignSave, listCampaignSaves, type SaveSummary } from "@/storage/indexeddb";
+import { CAMPAIGN_SAVES_CHANGED_EVENT, deleteCampaignSave, duplicateCampaignSave, listCampaignSaves, type SaveSummary } from "@/storage/indexeddb";
 import { formatPhaseLabel } from "./display-labels";
 
 export function CampaignLibrary() {
@@ -41,7 +41,10 @@ export function CampaignLibrary() {
       }
     };
     void boot();
+    const changed = () => { void boot(); };
+    window.addEventListener(CAMPAIGN_SAVES_CHANGED_EVENT, changed);
     return () => {
+      window.removeEventListener(CAMPAIGN_SAVES_CHANGED_EVENT, changed);
       active = false;
     };
   }, []);

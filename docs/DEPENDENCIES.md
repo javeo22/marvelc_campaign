@@ -10,14 +10,18 @@ Runtime baseline:
 
 Selected dependency roles:
 
-- `next@16.3.4`, `react@19.2.8`, `react-dom@19.2.8`: App Router PWA runtime.
-- `@supabase/supabase-js@2.116.0`: optional username/password auth and Supabase row-level-security sync adapter.
+- `next@16.4.0`, `react@19.2.8`, `react-dom@19.2.8`: App Router PWA runtime.
+- `next-auth@4.24.15`: app-managed GitHub/Google OAuth and JWT sessions.
+- `pg@8.23.1`: server-only PostgreSQL cloud save transactions.
+- `@electric-sql/pglite`: embedded PostgreSQL for transaction/integration tests; not a production database.
 - `idb@8.0.3`: small IndexedDB wrapper for local event/snapshot transactions.
 - `ajv@8.20.0`, `ajv-formats@3.0.1`: Draft 2020-12 JSON Schema validation.
 - `zod@4.5.4`: runtime validation for environment and import envelopes.
 - `lucide-react@1.43.0`: accessible UI icons.
 - `vitest@5.0.0`, `@testing-library/react@16.3.3`, `@testing-library/jest-dom@7.0.1`, `@testing-library/user-event@14.6.7`, `jsdom@30.0.1`: domain, storage, integration, and component tests.
 - `@playwright/test@1.63.0`, `@axe-core/playwright@4.13.0`: E2E and accessibility checks.
-- `tsx@4.23.13`, `typescript@6.0.3`, `eslint@9.39.5`, `eslint-config-next@16.3.4`: scripts and quality gates.
+- `tsx@4.23.13`, `typescript@6.0.3`, `eslint@9.39.5`, `eslint-config-next@16.4.0`: scripts and quality gates.
 
 Playwright runs the built app on `127.0.0.1:3217` to avoid accidentally reusing another local service on port 3000.
+
+Cloud deployment instructions: [CLOUD_SYNC_SETUP.md](CLOUD_SYNC_SETUP.md). Hosting comparison: [HOSTING_COMPARISON.md](HOSTING_COMPARISON.md).

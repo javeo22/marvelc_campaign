@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { BookOpen, Cog, UserRound } from "lucide-react";
 import { ActivePlayNavItem } from "./ActivePlayNavItem";
+import { CloudSyncController } from "./CloudSyncController";
 import { PwaController } from "./PwaController";
 
 const navItems = [
@@ -18,6 +19,7 @@ export function AppFrame({ children }: { children: ReactNode }) {
       </a>
       <main id="main" className="app-main">
         <PwaController />
+        <CloudSyncController />
         {children}
       </main>
       <nav className="shell-nav" aria-label="Primary">
