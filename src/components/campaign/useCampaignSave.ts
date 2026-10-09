@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import type { CampaignSave } from "@/domain/types";
-import { appendCampaignEvents, getCampaignSave, type EventDescriptor } from "@/storage/indexeddb";
+import { appendCampaignEvents, CAMPAIGN_SAVES_CHANGED_EVENT, getCampaignSave, type EventDescriptor } from "@/storage/indexeddb";
 
 export function useCampaignSave(saveId: string) {
   const [save, setSave] = useState<CampaignSave | null>(null);
@@ -51,7 +51,10 @@ export function useCampaignSave(saveId: string) {
       }
     };
     void boot();
+    const changed = () => { void boot(); };
+    window.addEventListener(CAMPAIGN_SAVES_CHANGED_EVENT, changed);
     return () => {
+      window.removeEventListener(CAMPAIGN_SAVES_CHANGED_EVENT, changed);
       active = false;
     };
   }, [saveId]);

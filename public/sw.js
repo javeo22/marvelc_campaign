@@ -1,4 +1,4 @@
-const CACHE_NAME = "core-protocol-companion-v1";
+const CACHE_NAME = "core-protocol-companion-v2";
 const PRECACHE_URLS = [
   "/",
   "/campaigns/new",
@@ -28,7 +28,8 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
   if (event.request.destination === "image" && !url.pathname.startsWith("/original-ui-only/")) return;
-  if (url.pathname.startsWith("/api/cards/")) return;
+  // Never cache authentication, account responses, or private cloud data.
+  if (url.pathname.startsWith("/api/") || url.pathname === "/account" || event.request.method !== "GET") return;
 
   event.respondWith(
     fetch(event.request)

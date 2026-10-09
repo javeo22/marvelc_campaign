@@ -24,7 +24,7 @@ For a single polished review document, open `Core_Protocol_Companion_Web_App_Bui
 - Server Components by default; small client boundaries for table interactions.
 - A pure TypeScript campaign engine with no React dependency.
 - IndexedDB as the authoritative local store; no account required.
-- Optional Supabase/PostgreSQL event sync behind a feature flag.
+- Optional PostgreSQL cloud saves with GitHub/Google sign-in behind a feature flag. See [cloud setup](docs/CLOUD_SYNC_SETUP.md) and [hosting comparison](docs/HOSTING_COMPARISON.md).
 - Installable PWA with campaign content available offline.
 - MarvelCDB adapter for card metadata and optional externally hosted images.
 - Vitest for reducers and contracts; Testing Library for components; Playwright for end-to-end and offline flows.
@@ -56,7 +56,8 @@ Exact dependency versions are deliberately not pinned in this documentation. The
 | `schemas/` | JSON contracts for content, saves, card reference, and settings |
 | `types/domain.ts` | TypeScript domain interfaces |
 | `api/openapi.yaml` | Optional server/API contract; intentionally excludes image binaries |
-| `database/001_initial_schema.sql` | Optional Supabase/PostgreSQL cloud-sync schema with RLS |
+| `database/002_oauth_cloud_saves.sql` | Current PostgreSQL cloud-save table; app-managed OAuth |
+| `database/001_initial_schema.sql` | Historical Supabase schema; unused by the current app |
 | `design/` | Comic design tokens and responsive wireframes |
 | `examples/` | Valid event-sourced sample save |
 | `legal/` | Fan notice, card-image launch gate, and takedown template |

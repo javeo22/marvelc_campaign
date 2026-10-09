@@ -7,7 +7,7 @@ The app uses a compact bottom navigation on phones and a rail on larger screens.
 - **Campaign** — current issue, tracks, resume, progress.
 - **Play** — most recently updated active session; appears only while a game is active.
 - **Journey** — hero passport, flags, completion grid, Mirror Protocol.
-- **Account** — optional username/password sign-in, cloud upload/download, sync status.
+- **Account** — optional GitHub/Google sign-in, cloud upload/download, sync status.
 - **Settings** — language, display, backups, image mode, legal notice.
 
 The persistent shell exposes Campaign, Account, and Settings, plus a contextual Play shortcut while an issue is active. Card search, deck logs, and rules notes remain available as compatibility routes and backup data, but player feedback showed that they do not justify permanent navigation. Card identification and personal rules notes are linked where they are useful during preparation and play.

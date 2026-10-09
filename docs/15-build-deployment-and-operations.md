@@ -109,7 +109,7 @@ Adjust the CSP to the actual Next.js production requirements. If authorized remo
 Cloud sync is optional and may be omitted from the first release. When enabled:
 
 - apply SQL migrations through a reviewed migration workflow;
-- test row-level security with two different accounts;
+- test server authorization with two different accounts;
 - verify append-only event permissions;
 - never accept a client-provided `user_id` as authorization;
 - use idempotent `client_mutation_id` values for retries;

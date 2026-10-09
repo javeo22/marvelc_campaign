@@ -12,12 +12,11 @@ import type {
   PlayMode,
   UiSettings
 } from "@/domain/types";
-import { enqueueCampaignSavePush } from "@/integrations/supabase/sync";
 import { checksumSync } from "./checksum";
 import { CURRENT_SAVE_SCHEMA_VERSION } from "./migrations";
 
 const DB_NAME = "core-protocol-companion";
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 export const CAMPAIGN_SAVES_CHANGED_EVENT = "core-protocol:campaign-saves-changed";
 
 function announceCampaignSavesChanged() {
@@ -63,7 +62,10 @@ export interface RulesLogRecord {
   updatedAt: string;
 }
 
+export interface CloudLink { saveId: string; ownerId: string; revision: number; name: string }
+
 interface CoreProtocolDb extends DBSchema {
+  cloud_links: { key: string; value: CloudLink };
   campaign_saves: {
     key: string;
     value: Omit<CampaignSave, "events">;
@@ -120,6 +122,7 @@ export function openCoreDb() {
   }
   dbPromise ??= openDB<CoreProtocolDb>(DB_NAME, DB_VERSION, {
     upgrade(db) {
+      if (!db.objectStoreNames.contains("cloud_links")) db.createObjectStore("cloud_links", { keyPath: "saveId" });
       if (!db.objectStoreNames.contains("campaign_saves")) {
         db.createObjectStore("campaign_saves", { keyPath: "saveId" });
       }
@@ -232,7 +235,6 @@ export async function createLocalSave(options: { name: string; playMode: PlayMod
   await tx.objectStore("campaign_saves").put(saveRecord);
   await tx.objectStore("campaign_events").put({ saveId, event });
   await tx.done;
-  enqueueCampaignSavePush(save);
   announceCampaignSavesChanged();
   return save;
 }
@@ -319,7 +321,6 @@ export async function appendCampaignEvents(
   await tx.objectStore("campaign_saves").put(nextSaveRecord);
   await tx.done;
   const nextSave = { ...nextSaveRecord, events: allEvents };
-  enqueueCampaignSavePush(nextSave);
   announceCampaignSavesChanged();
   return nextSave;
 }
@@ -330,7 +331,6 @@ export async function renameCampaignSave(saveId: string, name: string) {
   if (!save) throw new Error("Save not found.");
   const nextSave = { ...save, name: name.trim() || save.name, updatedAt: new Date().toISOString() };
   await db.put("campaign_saves", nextSave);
-  enqueueCampaignSavePush({ ...nextSave, events: await eventsForSave(db, saveId) });
   announceCampaignSavesChanged();
 }
 
@@ -385,12 +385,11 @@ export async function duplicateCampaignSave(saveId: string): Promise<CampaignSav
     await tx.objectStore("campaign_events").put({ saveId: newSaveId, event });
   }
   await tx.done;
-  enqueueCampaignSavePush(duplicate);
   announceCampaignSavesChanged();
   return duplicate;
 }
 
-export async function replaceCampaignSaveFromCloud(save: CampaignSave): Promise<CampaignSave> {
+export async function replaceCampaignSaveFromCloud(save: CampaignSave, expected?: { checksum: string; name: string }): Promise<CampaignSave> {
   const db = await openCoreDb();
   const existingEvents = await eventsForSave(db, save.saveId);
   const digest = checksumSync({ snapshot: save.snapshot, events: save.events });
@@ -398,6 +397,11 @@ export async function replaceCampaignSaveFromCloud(save: CampaignSave): Promise<
   const saveRecord = toSaveRecord(nextSave);
   const tx = db.transaction(["campaign_saves", "campaign_events", "migration_backups"], "readwrite");
   const existingSave = await tx.objectStore("campaign_saves").get(save.saveId);
+  if (expected && (!existingSave || existingSave.checksum !== expected.checksum || existingSave.name !== expected.name)) {
+    tx.abort();
+    await tx.done.catch(() => {});
+    throw new Error("Local progress changed during sync. Retry to keep your latest changes.");
+  }
   if (existingSave) {
     await tx.objectStore("migration_backups").put({
       id: `cloud-replace-${save.saveId}-${Date.now()}`,
@@ -454,3 +458,9 @@ export async function exportRepositoryState() {
     rulesLogs: await listRulesLogs()
   };
 }
+
+// Cloud consent belongs to this device/account, never to an exported campaign save.
+export async function getCloudLink(saveId: string) { return (await openCoreDb()).get("cloud_links", saveId); }
+export async function setCloudLink(link: CloudLink) { await (await openCoreDb()).put("cloud_links", link); }
+export async function unlinkCloudSave(saveId: string) { await (await openCoreDb()).delete("cloud_links", saveId); }
+export async function listCloudLinks() { return (await openCoreDb()).getAll("cloud_links"); }
